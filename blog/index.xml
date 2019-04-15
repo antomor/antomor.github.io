@@ -2,12 +2,14 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on antomor</title>
-    <link>http://localhost:1313/blog/index.xml</link>
+    <link>http://localhost:1313/blog/</link>
     <description>Recent content in Posts on antomor</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 02 Jul 2017 08:14:51 +0700</lastBuildDate>
-    <atom:link href="http://localhost:1313/blog/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 14 Apr 2019 21:40:25 +0200</lastBuildDate>
+    
+	<atom:link href="http://localhost:1313/blog/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Getting Started with my website :-)</title>
@@ -15,55 +17,8 @@
       <pubDate>Sun, 14 Apr 2019 21:40:25 +0200</pubDate>
       
       <guid>http://localhost:1313/blog/why/</guid>
-      <description>
-
-&lt;p&gt;Here in this post, I am going to explain &lt;em&gt;why&lt;/em&gt; I am starting writing something on INTERNET and what I am going to share. I perfectly know that there are so many sites today, describing almost everything, but these are only some of the reasons which drive me at this point:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;to improve my language skills;&lt;/li&gt;
-&lt;li&gt;to improve my online presence;&lt;/li&gt;
-&lt;li&gt;to receive feedbacks (feedback is the key to grow up);&lt;/li&gt;
-&lt;li&gt;to share what I do (and how, I am going to list also some of my biggest mistakes).&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;&lt;em&gt;And what&amp;rsquo;s about the content?&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;Well regarding the content I am not completely sure about &lt;em&gt;what&lt;/em&gt; I am going to describe, but approximately it could be:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;coding (small snipped of code, that solve very small problems);&lt;/li&gt;
-&lt;li&gt;software engineer (patterns and architectures);&lt;/li&gt;
-&lt;li&gt;security/privacy&lt;/li&gt;
-&lt;li&gt;comparisons (I look for tools comparisons every day, they drive our daily choices);&lt;/li&gt;
-&lt;li&gt;travelling (as soon as I could)&lt;/li&gt;
-&lt;li&gt;who knows what else?&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;language-skills&#34;&gt;Language skills&lt;/h2&gt;
-
-&lt;p&gt;I started learning english seriously when I began University, and as self-taught. So I often make some very big mistakes, and in most cases I am very insecure about by communication skills. One of the most common advice I have ever heard about languages is: &lt;em&gt;&amp;ldquo;try&amp;rdquo;&lt;/em&gt;. So after followed my master degree completely in English, moved abroad working for six months in an international company, I was thinking about what could I do to continue improving it; I believe that leaving my &lt;em&gt;&amp;ldquo;comfort zone&amp;rdquo;&lt;/em&gt; to connect myself with different people can only be helpful.&lt;/p&gt;
-
-&lt;h2 id=&#34;online-presence&#34;&gt;Online presence&lt;/h2&gt;
-
-&lt;p&gt;Every now and then, during my daily job or simply reading other authors, I often find people do what I would like, so why should I only watch other people doing, if I could? Maybe I am not so good at writing like others are, but it doesn&amp;rsquo;t mean I can&amp;rsquo;t try.&lt;/p&gt;
-
-&lt;h2 id=&#34;feedbacks&#34;&gt;Feedbacks&lt;/h2&gt;
-
-&lt;p&gt;By exposing myself to many and different people, I expose what I do to different comments. Maybe I can regret what I am saying but:&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Criticism is welcome.&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;All comments are welcome, but critics permit to grow up, to avoid mistakes already done.
-Also advices are very important, from &lt;em&gt;everyone&lt;/em&gt;, all ages, all experiences.&lt;/p&gt;
-
-&lt;h2 id=&#34;conclusions&#34;&gt;Conclusions&lt;/h2&gt;
-
-&lt;p&gt;The best way to learn something is to play with it, in short:&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;&amp;ldquo;The game is on&amp;rdquo;&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;(cit. Sherlock).&lt;/p&gt;
-</description>
+      <description>Here in this post, I am going to explain why I am starting writing something on INTERNET and what I am going to share. I perfectly know that there are so many sites today, describing almost everything, but these are only some of the reasons which drive me at this point:
+ to improve my language skills; to improve my online presence; to receive feedbacks (feedback is the key to grow up); to share what I do (and how, I am going to list also some of my biggest mistakes).</description>
     </item>
     
   </channel>
