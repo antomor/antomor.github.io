@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="generator" content="Hugo 0.57.2" />
+		<title>Let&#39;s Test - antomor</title>
+
+		<meta name="description" content="About the Post">
+
+
+		
+	
+		
+
+
+
+
+<link rel="stylesheet" href="/css/ui.css">
+
+	
+		
+
+		<link  rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Mono|Lato|Raleway">
+
+		
+	</head>
+
+<body>
+<header class="container no-print">
+	<div class="u-header">
+		<nav class="bar">
+	<ul><li>
+			<a href="/">
+				<img class="icon-text" src="/img/prev.svg"/>
+			</a>
+		</li><li><a href="/about/">About</a></li><li><a href="/blog/">Posts</a></li></ul>
+</nav>
+
+	</div>
+</header>
+<main class="container">
+
+<article>
+	<header><hgroup id="brand">
+	<h1>Let&#39;s Test</h1>
+	<h5>
+		
+		<time datetime="2019-08-25 10:48:40 &#43;0200 CEST">Aug 25, 2019</time>
+		<span class="no-print">
+			-
+				
+				<a href="/tags/blog">blog</a>
+				
+				<a href="/tags/test">test</a>
+				<span>
+	</h5>
+	
+</hgroup>
+<hr class="sep" />
+</header>
+	
+
+<h2 id="preamble">Preamble</h2>
+
+<p>This article is not intended to cover the whole <em>testing process</em> due to its vastness. Having a glance at its <a href="https://en.wikipedia.org/wiki/Software_testing">Wikipedia page</a> could give an idea of it. I am going to cover only the tip of the iceberg, but it is important to remind that bugs cannot be eliminated from the software, but in contrast, they <strong>must</strong> be discovered as soon as possible.</p>
+
+<blockquote>
+<p>The higher is the time passed since the bug come into the system, the higher is the cost to fix it.</p>
+</blockquote>
+
+<p>So any techniques that could be useful to identify a bug should be used, taking into account the resources available and the type of system to be implemented.</p>
+
+<hr />
+
+<p>I am going to focus to the developer point of view: what a developer can do (related to software testing) to improve the quality of the code? The first word that comes to mind is <strong>TDD</strong>. Of course, as already said, this isn&rsquo;t the only way to implement software testing, and it is far from me saying that it is enough, but surely it is a good starting point. I strongly believe that <em>TDD</em>/<em>BDD</em> are very supportive techniques that could help writing more robust and stable software.
+The problem is mine: I haven&rsquo;t ever applied it from scratch so far, so I decided to fill this defect from now on.</p>
+
+<p>Although I have been programming since about 5 years, I think to have very few practical experience about <em>software testing</em>. Please, don&rsquo;t misjudge me about that. In past I wrote some test, but usually working in an already set up environment, by writing small tests regarding the functionality I was adding to the system. Here I am speaking about establishing a test-oriented development process.</p>
+
+<p>I won&rsquo;t consider any language specific framework, but I am going to define only some of the main keywords.I am going to dive deep in details of some specific framework (hurrah, practice!) in some specific article, but not here.</p>
+
+<h2 id="keywords">Keywords</h2>
+
+<h3 id="unit-test">Unit test</h3>
+
+<p>Unit test refers to a single unit of code. What actually is a unit? According with the paradigm used, a unit code can be a function or a class in case of object-oriented programming. The important thing is that, unit testing should not be performed by considering the success case only; on the contrary the unit test should take into account especially the corner case, in a <a href="https://en.wikipedia.org/wiki/Defensive_programming">defensive programming</a> manner. Why? Because as a developer, you will try the normal workflow dozens, hundreds or maybe thousands of times.</p>
+
+<h3 id="integration-test">Integration test</h3>
+
+<p>On the other hand, integration tests should refer to the interaction of multiple units of code, by trying to locate interface issues. The integration tests can be seen in a hierarchical way: once a group of units are tested, it can be considered at the same time as a unit, a single module, to be integrated with other modules, so an integration test can be performed in an upper layer, and so on. Anyway the importance of the integration test should not be overlooked, since that with unit testing only, it is not possible to identify defects at the interface level.</p>
+
+<h3 id="mock">Mock</h3>
+
+<p>Mocking during test is fundamental. It is the process of creating an object that can simulate the behavior of a real object. It is necessary to simulate the behavior of a component because in the real world, often a unit is composed or depends on other units. To be sure to isolate the code to be tested, to avoid the side-effects can occur in other units, mock objects should be created, objects that simulate what the real object would do, but without the risk of defects that can occur externally with respect the unit to be tested.</p>
+
+<h3 id="tdd">TDD</h3>
+
+<p>Test-Driven Development is a software development process which involves the creation of the test before actually implementing the functionally. The process involves the following steps:</p>
+
+<ol>
+<li>Verify if the actually design fits good with the functionality to be added.
+
+<ol>
+<li>If necessary, refactor the code to adhere to the new feature.</li>
+<li>Repeat the tests, to be sure that after refactoring everything still works properly.</li>
+</ol></li>
+<li>Write the tests for the new feature (at this point, all the new tests should fail).</li>
+<li>Implement the functionality to adhere to the specification represented by the tests (at the end of this step, all the tests should pass).</li>
+<li>If necessary refactor the code just implemented (cleanup if necessary, remove duplications, etc&hellip;).</li>
+<li>Run the tests.</li>
+</ol>
+
+<p>The upside of the process is highlighted by the steps 1. and 4.: the step 1. permits to apply the refactoring of the existing code without being scared of it, and without leveraging the confidence; the step 4. is useful to maintain the code always clean to improve readability and maintainability; it could be useful also in some case, to try to figure out, if there is a solution with improves the performances, and such operation could be performed on step 4.</p>
+
+<h3 id="bdd">BDD</h3>
+
+<p>Behavior-Driven Development can be seen as a specialization of the aforementioned TDD, but it is oriented to the user. It involves the definition of the tests as a description of the desired behavior. It permits a clearer way of communication among different actors, when the process involves not only developers, but also QA Testers, which can define the specification of the tests in a domain-specific language, and then the developers can translate them (by means of automatic tools also), in a specific programming language.</p>
+
+<hr />
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>If I am not the only person in the world to have not yet established a real TDD strategy in the daily job, I strongly recommend giving it a try. Keep in mind, a very robust system, should be be tested as much as possible, from every perspective, both functional and not function, by taking into account also features too often overlooked like security and performance; so please consider investigating also on <strong>performance test</strong> and <strong>security test</strong>; I will try to describe them in a related post.</p>
+
+</article>
+<nav class="no-print post-nav">
+
+	<a class="prev-post" href="http://localhost:1313/blog/why/">
+		<img class="icon-text" src="/img/prev.svg"/>Getting Started With My Website :-)</a>
+
+
+</nav>
+
+
+<section id="related">
+  <h4>See Also</h4>
+  <ul>
+    
+  	<li><a href="/blog/why/">Getting Started With My Website :-)</a></li>
+  	
+  </ul>
+</section>
+
+
+
+	<div id="disqus_thread" class="no-print"></div>
+<script type="text/javascript">
+
+(function() {
+    
+    
+    if (window.location.hostname == "localhost")
+        return;
+
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'antomor';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+			<hr class="sep" />
+		</main>
+		<footer class="container no-print">
+			<div class="u-footer">
+				
+<a href="mailto:antonio.morrone90@gmail.com"><img class="icon-social" src="/img/email.svg" alt="Email Me!"/></a>
+
+
+<a href="https://github.com/antomor/"><img class="icon-social" src="/img/github.svg" alt="Github"/></a>
+
+
+<a href="https://twitter.com/antomor"><img class="icon-social" src="/img/twitter.svg" alt="Twitter"/></a>
+
+
+<a href="https://www.linkedin.com/in/antoniomorrone/en"><img class="icon-social" src="/img/linkedin.svg" alt="Linkedin"/></a>
+
+
+
+				<p>
+					
+					
+					&copy; 2019 Antonio Morrone
+					
+					
+				</p>
+				
+				<a href="#brand">
+					<img class="icon-text" src="/img/toup.svg" alt="To Up"/>
+					<span>Back to Up</span>
+				</a>
+				
+			</div>
+		</footer>
+		
+		
+		
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-112054652-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+	</body>
+</html>
+

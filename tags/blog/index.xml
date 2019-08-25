@@ -7,10 +7,20 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2019 Antonio Morrone</copyright>
-    <lastBuildDate>Sun, 14 Apr 2019 21:40:25 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 25 Aug 2019 10:48:40 +0200</lastBuildDate>
     
 	<atom:link href="http://localhost:1313/tags/blog/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Let&#39;s Test</title>
+      <link>http://localhost:1313/blog/lets-test/</link>
+      <pubDate>Sun, 25 Aug 2019 10:48:40 +0200</pubDate>
+      
+      <guid>http://localhost:1313/blog/lets-test/</guid>
+      <description>Preamble This article is not intended to cover the whole testing process due to its vastness. Having a glance at its Wikipedia page could give an idea of it. I am going to cover only the tip of the iceberg, but it is important to remind that bugs cannot be eliminated from the software, but in contrast, they must be discovered as soon as possible.
+ The higher is the time passed since the bug come into the system, the higher is the cost to fix it.</description>
+    </item>
     
     <item>
       <title>Getting Started With My Website :-)</title>
