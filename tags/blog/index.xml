@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Blog on antomor</title>
+    <title>blog on antomor</title>
     <link>http://localhost:1313/tags/blog/</link>
-    <description>Recent content in Blog on antomor</description>
+    <description>Recent content in blog on antomor</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2019 Antonio Morrone</copyright>
@@ -13,7 +13,7 @@
     
     
     <item>
-      <title>Getting Started with my website :-)</title>
+      <title>Getting Started With My Website :-)</title>
       <link>http://localhost:1313/blog/why/</link>
       <pubDate>Sun, 14 Apr 2019 21:40:25 +0200</pubDate>
       

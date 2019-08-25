@@ -13,7 +13,7 @@
     
     
     <item>
-      <title>Blog</title>
+      <title>blog</title>
       <link>http://localhost:1313/tags/blog/</link>
       <pubDate>Sun, 14 Apr 2019 21:40:25 +0200</pubDate>
       
@@ -22,7 +22,7 @@
     </item>
     
     <item>
-      <title>Personal</title>
+      <title>personal</title>
       <link>http://localhost:1313/tags/personal/</link>
       <pubDate>Sun, 14 Apr 2019 21:40:25 +0200</pubDate>
       
