@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="generator" content="Hugo 0.57.2" />
+		<title>Browser Extension Development - antomor</title>
+
+		<meta name="description" content="Web extensions or browser plugins is a way to improve browser functionalities. The following examples summarize the different scopes they can have.
+ no-script - to block script served from not-trusted domains ublock Origin - it is &ldquo;a wide-spectrum blocker&rdquo; dark-mode - it changes the appearance of web pages React Developer Tools - to inspect react-specific properties of a page that makes use of React.  Anatomy of an extension The main components of a browser extension are:">
+
+
+		
+	
+		
+
+
+
+
+<link rel="stylesheet" href="/css/ui.css">
+
+	
+		
+
+		<link  rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Mono|Lato|Raleway">
+
+		
+	</head>
+
+<body>
+<header class="container no-print">
+	<div class="u-header">
+		<nav class="bar">
+	<ul><li>
+			<a href="/">
+				<img class="icon-text" src="/img/prev.svg"/>
+			</a>
+		</li><li><a href="/about/">About</a></li><li><a href="/blog/">Posts</a></li></ul>
+</nav>
+
+	</div>
+</header>
+<main class="container">
+
+<article>
+	<header><hgroup id="brand">
+	<h1>Browser Extension Development</h1>
+	<h5>
+		
+		<time datetime="2019-11-20 17:15:01 &#43;0100 CET">Nov 20, 2019</time>
+		<span class="no-print">
+			-
+				
+				<a href="/tags/dev">dev</a>
+				
+				<a href="/tags/blog">blog</a>
+				
+				<a href="/tags/web-extension">web-extension</a>
+				
+				<a href="/tags/browser%20plugin">browser plugin</a>
+				<span>
+	</h5>
+	
+</hgroup>
+<hr class="sep" />
+</header>
+	
+
+<p>Web extensions or browser plugins is a way to improve browser functionalities. The following examples summarize the different scopes they can have.</p>
+
+<ul>
+<li><a href="https://noscript.net/">no-script</a> - to block script served from not-trusted domains</li>
+<li><a href="https://github.com/gorhill/uBlock#ublock-origin">ublock Origin</a> - it is &ldquo;a wide-spectrum blocker&rdquo;</li>
+<li><a href="https://addons.mozilla.org/it/firefox/addon/dark-mode-zen/">dark-mode</a> - it changes the appearance of web pages</li>
+<li><a href="https://addons.mozilla.org/it/firefox/addon/react-devtools/">React Developer Tools</a> - to inspect react-specific properties of a page that makes use of React.</li>
+</ul>
+
+<h2 id="anatomy-of-an-extension">Anatomy of an extension</h2>
+
+<p>The main components of a browser extension are:</p>
+
+<ul>
+<li>Manifest.json - it is the only mandatory file and it describes the extension itself. It is as an entry-point for the browser to declare what are the files/resources/permissions will be used.</li>
+<li>Background scripts - They contain the logic that are not strictly related to the single web-page. They are loaded when the extension is loaded and remain active until the extension is disabled or uninstalled.</li>
+<li>Content scripts - Unlike background scripts, they are loaded into web pages, so they can manipulates DOM exactly like normal script can do.</li>
+
+<li><p>UI components - They includes all the parts that permit a user to interact with the extension, by means of an HTML document. There are three different UI components:</p>
+
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/user_interface/Sidebars">sidebar</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/user_interface/Popups">popup</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/user_interface/Options_pages">options page</a></li>
+</ul></li>
+
+<li><p>Web-accessible resources -  They include all the resources that are made available to the scripts (e.g. HTML, images, jss, css)</p></li>
+
+<li><p>Extension pages - They are additional pages used to handle specific user interactions.</p></li>
+</ul>
+
+<h2 id="web-extension-toolbox">Web-extension toolbox</h2>
+
+<p>As for many browser APIs, also the web extension APIs can behave differently according with the browser on which they are executed. In case of cross-browser development it could be handful <a href="https://github.com/mozilla/webextension-polyfill/">web-extension polyfill</a> developed by Mozilla.</p>
+
+<p>Furthermore, to ease the development process, there is also <a href="https://github.com/webextension-toolbox/webextension-toolbox">web-extension toolbox</a> and its related <a href="https://github.com/webextension-toolbox/generator-web-extension">yeoman generator</a>. Among the others it provides the following functionalities:
+ * Compiles the extension via webpack to dist/<vendor>
+ * Watches all extension files and recompiles on demand
+ * Reloads extension or extension page as soon something changed</p>
+
+<p>After answering to some questions, it generates a ready-to-run web extension.</p>
+
+<h2 id="development">Development</h2>
+
+<p>You only need to run <code>npm run dev &lt;vendor_name&gt;</code>, where <vendor_name> can be <code>chrome</code>, <code>firefox</code>, <code>opera</code> or <code>edge</code>; now you can load the generated extension in the browser of choice.</p>
+
+<h2 id="build">Build</h2>
+
+<p>As easy as running <code>npm run build &lt;vendor_name&gt;</code>.</p>
+
+<h2 id="conclusions">Conclusions</h2>
+
+<p>So, what are you waiting for? Are you ready to develop your own browser plugin? I am already planning mine ;-)</p>
+
+<h3 id="resources">Resources</h3>
+
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions">MDN Browser Extensions</a></li>
+<li><a href="https://github.com/webextension-toolbox/webextension-toolbox">webextension-toolbox</a></li>
+<li><a href="https://github.com/mozilla/web-ext">Mozilla web-ext</a></li>
+</ul>
+
+</article>
+<nav class="no-print post-nav">
+
+	<a class="prev-post" href="http://localhost:1313/blog/lets-test/">
+		<img class="icon-text" src="/img/prev.svg"/>Let&#39;s Test</a>
+
+
+	<a class="next-post" href="http://localhost:1313/blog/gitlab-cd/">SPA deployment with GitLab<img class="icon-text" src="/img/next.svg"/>
+	</a>
+
+</nav>
+
+
+<section id="related">
+  <h4>See Also</h4>
+  <ul>
+    
+  	<li><a href="/blog/lets-test/">Let&#39;s Test</a></li>
+  	
+  	<li><a href="/blog/why/">Getting Started With My Website :-)</a></li>
+  	
+  </ul>
+</section>
+
+
+
+	<div id="disqus_thread" class="no-print"></div>
+<script type="text/javascript">
+
+(function() {
+    
+    
+    if (window.location.hostname == "localhost")
+        return;
+
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'antomor';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+			<hr class="sep" />
+		</main>
+		<footer class="container no-print">
+			<div class="u-footer">
+				
+<a href="mailto:antonio.morrone90@gmail.com"><img class="icon-social" src="/img/email.svg" alt="Email Me!"/></a>
+
+
+<a href="https://github.com/antomor/"><img class="icon-social" src="/img/github.svg" alt="Github"/></a>
+
+
+<a href="https://twitter.com/antomor"><img class="icon-social" src="/img/twitter.svg" alt="Twitter"/></a>
+
+
+<a href="https://www.linkedin.com/in/antoniomorrone/en"><img class="icon-social" src="/img/linkedin.svg" alt="Linkedin"/></a>
+
+
+
+				<p>
+					
+					
+					&copy; 2019 Antonio Morrone
+					
+					
+				</p>
+				
+				<a href="#brand">
+					<img class="icon-text" src="/img/toup.svg" alt="To Up"/>
+					<span>Back to Up</span>
+				</a>
+				
+			</div>
+		</footer>
+		
+		
+		
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-112054652-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+	</body>
+</html>
+

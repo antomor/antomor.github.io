@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>web-extension on antomor</title>
+    <link>http://localhost:1313/tags/web-extension/</link>
+    <description>Recent content in web-extension on antomor</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2019 Antonio Morrone</copyright>
+    <lastBuildDate>Wed, 20 Nov 2019 17:15:01 +0100</lastBuildDate>
+    
+	<atom:link href="http://localhost:1313/tags/web-extension/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Browser Extension Development</title>
+      <link>http://localhost:1313/blog/browser-extension/</link>
+      <pubDate>Wed, 20 Nov 2019 17:15:01 +0100</pubDate>
+      
+      <guid>http://localhost:1313/blog/browser-extension/</guid>
+      <description>Web extensions or browser plugins is a way to improve browser functionalities. The following examples summarize the different scopes they can have.
+ no-script - to block script served from not-trusted domains ublock Origin - it is &amp;ldquo;a wide-spectrum blocker&amp;rdquo; dark-mode - it changes the appearance of web pages React Developer Tools - to inspect react-specific properties of a page that makes use of React.  Anatomy of an extension The main components of a browser extension are:</description>
+    </item>
+    
+  </channel>
+</rss>

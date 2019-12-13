@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="generator" content="Hugo 0.57.2" />
+		<title>SPA deployment with GitLab - antomor</title>
+
+		<meta name="description" content="A small example of a single-page application deployment using GitLab, docker and nginx">
+
+
+		
+	
+		
+
+
+
+
+<link rel="stylesheet" href="/css/ui.css">
+
+	
+		
+
+		<link  rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Mono|Lato|Raleway">
+
+		
+	</head>
+
+<body>
+<header class="container no-print">
+	<div class="u-header">
+		<nav class="bar">
+	<ul><li>
+			<a href="/">
+				<img class="icon-text" src="/img/prev.svg"/>
+			</a>
+		</li><li><a href="/about/">About</a></li><li><a href="/blog/">Posts</a></li></ul>
+</nav>
+
+	</div>
+</header>
+<main class="container">
+
+<article>
+	<header><hgroup id="brand">
+	<h1>SPA deployment with GitLab</h1>
+	<h5>
+		
+		<time datetime="2019-12-13 10:53:54 &#43;0100 CET">Dec 13, 2019</time>
+		<span class="no-print">
+			-
+				
+				<a href="/tags/dev">dev</a>
+				
+				<a href="/tags/ci/cd">ci/cd</a>
+				
+				<a href="/tags/gitlab">gitlab</a>
+				
+				<a href="/tags/nginx">nginx</a>
+				
+				<a href="/tags/docker">docker</a>
+				<span>
+	</h5>
+	
+</hgroup>
+<hr class="sep" />
+</header>
+	
+
+<p>In the last projects, I started using <a href="https://about.gitlab.com/">GitLab</a>, not only as git repository server, but also as DevOps platform. So here I am going to describe a very simple architecture to deploy a single page application using <a href="https://www.docker.com/">Docker</a> and <a href="https://docs.docker.com/compose/">docker-compose</a>, <a href="https://www.nginx.com/">nginx</a>.
+In this specific project I used also <a href="https://docs.microsoft.com/en-us/dotnet/core/">dotnet-core</a> for the back-end API and <a href="https://vuejs.org/">VueJS</a> as front-end framework, but it is language-agnostic, meaning that you can replace whatever back-end or front-end you prefer.</p>
+
+<p>First of all, following the separation of concerns, let&rsquo;s consider each part on its own. I have created 3 repositories:</p>
+
+<ol>
+<li>Front-end</li>
+<li>Back-end</li>
+<li>Deploy</li>
+</ol>
+
+<blockquote>
+<p>I have considered using one single repo to maintain all the codebase, but I ended-up with this structure for the following reasons:</p>
+
+<ol>
+<li>Often the teams working on back-end and front-end are not the same, so in this way they are completely independent from each-other</li>
+<li>In that way the project structure can be re-used with all frameworks/languages combinations</li>
+<li>We are almost separating the local development phase, with the DevOps phase (apart from the inclusion of the <code>gitlab-ci.yml</code> files).</li>
+</ol>
+</blockquote>
+
+<h2 id="front-end-static-files-generation">Front-end static files generation</h2>
+
+<p>I have used the <a href="https://vuejs.org/">VueJS</a> and the related <a href="https://cli.vuejs.org/">vue-cli</a> tools to generate the static files, but it doesn&rsquo;t really matter in the whole application; the only important thing is to generate static files.</p>
+
+<p>In our case the <code>gitlab-ci.yml</code> file will look like:</p>
+
+<pre><code>build site:
+  image: node:latest
+  stage: build
+  script:
+    - npm ci
+    - npm run build
+  artifacts:
+    paths:
+      - dist
+</code></pre>
+
+<p>Description:</p>
+
+<ol>
+<li>It creates a job named <code>build site</code></li>
+<li>It executes the script in a docker image <code>node:latest</code></li>
+
+<li><p>It creates a <code>build</code> stage to execute the following script in the image aforementioned:</p>
+
+<pre><code>npm ci
+npm run build
+</code></pre></li>
+
+<li><p>It stores the artifacts created in the <code>dist</code> directory.</p></li>
+</ol>
+
+<h2 id="back-end-api-build">Back-end API build</h2>
+
+<p>Since that we make use of <a href="https://docs.microsoft.com/en-us/dotnet/core/">dotnet-core</a>, we need to build the project, so this step could be unnecessary if you choose some language that doesn&rsquo;t require to be compiled (e.g. NodeJs, Python, etc&hellip;).</p>
+
+<p>Our <code>gitlab-ci.yml</code></p>
+
+<pre><code>build:
+  image: microsoft/dotnet:sdk
+  stage: build
+  script:
+    - dotnet restore
+    - dotnet publish -c Release -o out
+  artifacts:
+    paths:
+      - out
+</code></pre>
+
+<p>As you can see, the file looks very similar to the previous one.</p>
+
+<ol>
+<li>It creates a <code>build</code> job</li>
+<li>It uses a different docker image to build the project <code>microsoft/dotnet:sdk</code></li>
+
+<li><p>It creates a <code>build</code> stage to execute the following scripts:</p>
+
+<pre><code>- dotnet restore  # it restores the dependencies
+- dotnet publish -c Release -o out # it builds the project
+</code></pre></li>
+
+<li><p>It stores the artifacts created in the <code>out</code> directory.</p></li>
+</ol>
+
+<blockquote>
+<p><em>So at the moment, we have 2 projects that produces their own artifacts. It&rsquo;s time to let them talk!</em></p>
+</blockquote>
+
+<h2 id="deploy-project">Deploy project</h2>
+
+<h3 id="project-structure">Project structure</h3>
+
+<pre><code>|__ api
+|     |__ Dockerfile
+|__ nginx
+|     |__ nginx.conf    
+|__ gitlab-ci.yml
+|__ docker-compose.yml
+</code></pre>
+
+<p>This project performs the following steps:</p>
+
+<ol>
+<li>Retrieve files generated from the front-end</li>
+<li>Retrieve files generated from the back-end</li>
+<li>Set-up <em>nginx</em></li>
+</ol>
+
+<p><strong>docker-compose.yml</strong></p>
+
+<pre><code>version: '3'
+services:
+  nginx: 
+    image: nginx:latest
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./dist/:/var/www/html/
+    ports:
+      - 80:80
+      - 443:443
+    networks:
+      - proxy-net
+
+  web:
+    build: ./api/
+    networks:
+      - proxy-net
+networks:
+  proxy-net:
+</code></pre>
+
+<p>From the docker-compose file it is important to notice two folders:</p>
+
+<ul>
+<li><code>./dist/</code> used to map the static file folders the nginx container</li>
+<li><code>./api/</code> the folder containing the <code>Dockerfile</code> used to setup the dotnet APIs container.</li>
+</ul>
+
+<p>For completeness here the content of the <code>Dockerfile</code> used to run the dotnet APIs.</p>
+
+<pre><code># Build runtime image
+FROM microsoft/dotnet:aspnetcore-runtime
+WORKDIR /app
+COPY . .
+ENTRYPOINT [&quot;dotnet&quot;, &quot;Api.dll&quot;] 
+</code></pre>
+
+<p>Where <em>Api</em> is the name of the dotnet API project.</p>
+
+<p><strong>nginx.conf</strong></p>
+
+<pre><code>events {
+    worker_connections  1024;
+}
+
+http {
+
+    include       /etc/nginx/mime.types;
+    default_type  application/octet-stream;
+    server {
+        server_name &lt;name_of_the_server&gt;; # TODO: to be replaced
+
+        location / {
+            # This would be the directory where your SPA static files are stored at
+            root /var/www/html/;
+            try_files $uri $uri/ /index.html;
+        }
+
+        location /api {
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Proto $scheme;
+            proxy_pass http://web;
+            proxy_ssl_session_reuse off;
+            proxy_set_header Host $http_host;
+            proxy_cache_bypass $http_upgrade;
+            proxy_redirect off;
+            proxy_set_header   Upgrade $http_upgrade;
+            proxy_set_header   Connection keep-alive;
+        }
+    }
+}
+</code></pre>
+
+<blockquote>
+<p><strong>The previous nginx configuration is to be intended as example only. For nginx production configuration please refer to the following resources</strong></p>
+
+<ul>
+<li><a href="https://mozilla.github.io/server-side-tls/ssl-config-generator/">Ssl-config generator by Mozilla</a></li>
+<li><a href="https://securityheaders.io/">Security Headers</a></li>
+</ul>
+</blockquote>
+
+<p><strong>We are assuming this project is deployed by an agent running on a machine with <a href="https://docs.docker.com/compose/">docker-compose</a> installed.</strong></p>
+
+<p>Let&rsquo;s have a look at <code>gitlab-ci.yml</code>.</p>
+
+<pre><code>deploy:
+  stage: deploy
+  only:
+    - &quot;master&quot;
+  environment: production
+  script:
+    - &quot;curl -L --header \&quot;PRIVATE-TOKEN: $TOKEN\&quot; \&quot;https://gitlab.com/api/v4/projects/14072554/jobs/artifacts/master/download?job=build+site\&quot; --output artifacts.zip&quot;
+    - unzip artifacts.zip
+    - &quot;curl -L --header \&quot;PRIVATE-TOKEN: $TOKEN\&quot; \&quot;https://gitlab.com/api/v4/projects/10080203/jobs/artifacts/master/download?job=build\&quot; --output api.zip&quot;
+    - unzip api.zip
+    - cp -R out/* api/
+    - sh down.sh
+    - sh up.sh
+</code></pre>
+
+<ol>
+<li>It creates a <code>deploy</code> job</li>
+
+<li><p>It creates a <code>deploy</code> stage with the following script section:</p>
+
+<pre><code>- &quot;curl -L --header \&quot;PRIVATE-TOKEN: $TOKEN\&quot; \&quot;https://gitlab.com/api/v4/projects/14072554/jobs/artifacts/master/download?job=build+site\&quot; --output artifacts.zip&quot;
+- unzip artifacts.zip
+- &quot;curl -L --header \&quot;PRIVATE-TOKEN: $TOKEN\&quot; \&quot;https://gitlab.com/api/v4/projects/10080203/jobs/artifacts/master/download?job=build\&quot; --output api.zip&quot;
+- unzip api.zip
+- cp -R out/* api/
+- docker-compose up --build -d
+</code></pre></li>
+</ol>
+
+<p>So let&rsquo;s dive deeper in the script commands:</p>
+
+<ol>
+<li>Retrieve the front-end artifacts by using the gitlab API (for non-enterprise users)
+
+<ul>
+<li>It also requires to set the <code>PRIVATE-TOKEN</code> variable with a personal access token, that can be generated from <code>User Settings -&gt; Access Tokens</code></li>
+</ul></li>
+<li>Unzip the front-end artifacts</li>
+<li>Retrieve the back-end artifacts</li>
+<li>Unzip the back-end artifacts</li>
+<li>Run <code>docker-compose</code></li>
+</ol>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>I have tried to describe only the steps necessary to deploy a single-page application using docker and GitLab, without considering the initial steps of repositories creation and GitLab runner setup.</p>
+
+<p>While the setup of the <em>GitLab runner</em> used to deploy the application is required, the front-end and back-end builds make use of the <em>shared runners</em> available in GitLab.</p>
+
+<p>For further details, please don&rsquo;t hesitate to get in touch!</p>
+
+</article>
+<nav class="no-print post-nav">
+
+	<a class="prev-post" href="http://localhost:1313/blog/browser-extension/">
+		<img class="icon-text" src="/img/prev.svg"/>Browser Extension Development</a>
+
+
+</nav>
+
+
+<section id="related">
+  <h4>See Also</h4>
+  <ul>
+    
+  	<li><a href="/blog/browser-extension/">Browser Extension Development</a></li>
+  	
+  </ul>
+</section>
+
+
+
+	<div id="disqus_thread" class="no-print"></div>
+<script type="text/javascript">
+
+(function() {
+    
+    
+    if (window.location.hostname == "localhost")
+        return;
+
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'antomor';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+			<hr class="sep" />
+		</main>
+		<footer class="container no-print">
+			<div class="u-footer">
+				
+<a href="mailto:antonio.morrone90@gmail.com"><img class="icon-social" src="/img/email.svg" alt="Email Me!"/></a>
+
+
+<a href="https://github.com/antomor/"><img class="icon-social" src="/img/github.svg" alt="Github"/></a>
+
+
+<a href="https://twitter.com/antomor"><img class="icon-social" src="/img/twitter.svg" alt="Twitter"/></a>
+
+
+<a href="https://www.linkedin.com/in/antoniomorrone/en"><img class="icon-social" src="/img/linkedin.svg" alt="Linkedin"/></a>
+
+
+
+				<p>
+					
+					
+					&copy; 2019 Antonio Morrone
+					
+					
+				</p>
+				
+				<a href="#brand">
+					<img class="icon-text" src="/img/toup.svg" alt="To Up"/>
+					<span>Back to Up</span>
+				</a>
+				
+			</div>
+		</footer>
+		
+		
+		
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-112054652-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+	</body>
+</html>
+

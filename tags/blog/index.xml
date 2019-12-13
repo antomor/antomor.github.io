@@ -7,10 +7,20 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2019 Antonio Morrone</copyright>
-    <lastBuildDate>Sun, 25 Aug 2019 10:48:40 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 20 Nov 2019 17:15:01 +0100</lastBuildDate>
     
 	<atom:link href="http://localhost:1313/tags/blog/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Browser Extension Development</title>
+      <link>http://localhost:1313/blog/browser-extension/</link>
+      <pubDate>Wed, 20 Nov 2019 17:15:01 +0100</pubDate>
+      
+      <guid>http://localhost:1313/blog/browser-extension/</guid>
+      <description>Web extensions or browser plugins is a way to improve browser functionalities. The following examples summarize the different scopes they can have.
+ no-script - to block script served from not-trusted domains ublock Origin - it is &amp;ldquo;a wide-spectrum blocker&amp;rdquo; dark-mode - it changes the appearance of web pages React Developer Tools - to inspect react-specific properties of a page that makes use of React.  Anatomy of an extension The main components of a browser extension are:</description>
+    </item>
     
     <item>
       <title>Let&#39;s Test</title>

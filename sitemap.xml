@@ -4,21 +4,66 @@
   
   <url>
     <loc>http://localhost:1313/</loc>
-    <lastmod>2019-08-25T10:48:40+02:00</lastmod>
+    <lastmod>2019-12-13T10:53:54+01:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost:1313/tags/blog/</loc>
-    <lastmod>2019-08-25T10:48:40+02:00</lastmod>
+    <loc>http://localhost:1313/tags/ci/cd/</loc>
+    <lastmod>2019-12-13T10:53:54+01:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost:1313/blog/lets-test/</loc>
-    <lastmod>2019-08-25T10:48:40+02:00</lastmod>
+    <loc>http://localhost:1313/tags/dev/</loc>
+    <lastmod>2019-12-13T10:53:54+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/tags/docker/</loc>
+    <lastmod>2019-12-13T10:53:54+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/tags/gitlab/</loc>
+    <lastmod>2019-12-13T10:53:54+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/tags/nginx/</loc>
+    <lastmod>2019-12-13T10:53:54+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/blog/gitlab-cd/</loc>
+    <lastmod>2019-12-13T10:53:54+01:00</lastmod>
   </url>
   
   <url>
     <loc>http://localhost:1313/tags/</loc>
+    <lastmod>2019-12-13T10:53:54+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/tags/blog/</loc>
+    <lastmod>2019-11-20T17:15:01+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/blog/browser-extension/</loc>
+    <lastmod>2019-11-20T17:15:01+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/tags/browser-plugin/</loc>
+    <lastmod>2019-11-20T17:15:01+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/tags/web-extension/</loc>
+    <lastmod>2019-11-20T17:15:01+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/blog/lets-test/</loc>
     <lastmod>2019-08-25T10:48:40+02:00</lastmod>
   </url>
   
