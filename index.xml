@@ -2,53 +2,65 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>antomor</title>
-    <link>http://localhost:1313/</link>
+    <link>https://antomor.com/</link>
     <description>Recent content on antomor</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2019 Antonio Morrone</copyright>
     <lastBuildDate>Fri, 13 Dec 2019 10:53:54 +0100</lastBuildDate>
     
-	<atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://antomor.com/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>SPA deployment with GitLab</title>
-      <link>http://localhost:1313/blog/gitlab-cd/</link>
+      <link>https://antomor.com/blog/gitlab-cd/</link>
       <pubDate>Fri, 13 Dec 2019 10:53:54 +0100</pubDate>
       
-      <guid>http://localhost:1313/blog/gitlab-cd/</guid>
+      <guid>https://antomor.com/blog/gitlab-cd/</guid>
       <description>In the last projects, I started using GitLab, not only as git repository server, but also as DevOps platform. So here I am going to describe a very simple architecture to deploy a single page application using Docker and docker-compose, nginx. In this specific project I used also dotnet-core for the back-end API and VueJS as front-end framework, but it is language-agnostic, meaning that you can replace whatever back-end or front-end you prefer.</description>
     </item>
     
     <item>
       <title>Browser Extension Development</title>
-      <link>http://localhost:1313/blog/browser-extension/</link>
+      <link>https://antomor.com/blog/browser-extension/</link>
       <pubDate>Wed, 20 Nov 2019 17:15:01 +0100</pubDate>
       
-      <guid>http://localhost:1313/blog/browser-extension/</guid>
+      <guid>https://antomor.com/blog/browser-extension/</guid>
       <description>Web extensions or browser plugins is a way to improve browser functionalities. The following examples summarize the different scopes they can have.
  no-script - to block script served from not-trusted domains ublock Origin - it is &amp;ldquo;a wide-spectrum blocker&amp;rdquo; dark-mode - it changes the appearance of web pages React Developer Tools - to inspect react-specific properties of a page that makes use of React.  Anatomy of an extension The main components of a browser extension are:</description>
     </item>
     
     <item>
       <title>Let&#39;s Test</title>
-      <link>http://localhost:1313/blog/lets-test/</link>
+      <link>https://antomor.com/blog/lets-test/</link>
       <pubDate>Sun, 25 Aug 2019 10:48:40 +0200</pubDate>
       
-      <guid>http://localhost:1313/blog/lets-test/</guid>
+      <guid>https://antomor.com/blog/lets-test/</guid>
       <description>Preamble This article is not intended to cover the whole testing process due to its vastness. Having a glance at its Wikipedia page could give an idea of it. I am going to cover only the tip of the iceberg, but it is important to remind that bugs cannot be eliminated from the software, but in contrast, they must be discovered as soon as possible.
  The higher is the time passed since the bug come into the system, the higher is the cost to fix it.</description>
     </item>
     
     <item>
       <title>Getting Started With My Website :-)</title>
-      <link>http://localhost:1313/blog/why/</link>
+      <link>https://antomor.com/blog/why/</link>
       <pubDate>Sun, 14 Apr 2019 21:40:25 +0200</pubDate>
       
-      <guid>http://localhost:1313/blog/why/</guid>
+      <guid>https://antomor.com/blog/why/</guid>
       <description>Here in this post, I am going to explain why I am starting writing something on INTERNET and what I am going to share. I perfectly know that there are so many sites today, describing almost everything, but these are only some of the reasons which drive me at this point:
  to improve my language skills; to improve my online presence; to receive feedbacks (feedback is the key to grow up); to share what I do (and how, I am going to list also some of my biggest mistakes).</description>
+    </item>
+    
+    <item>
+      <title>About</title>
+      <link>https://antomor.com/about/</link>
+      <pubDate>Sat, 24 Jun 2017 18:57:12 +0700</pubDate>
+      
+      <guid>https://antomor.com/about/</guid>
+      <description>Hi, I am Antonio, a polyglot Software Engineer.
+I like facing code challenges, learning programming languages and exploring software security, which is my secret hobby.
+I try to practice any kind of sport, from running to swimming, from soccer to yoga, and I have recently added boxe to the list :-).
+I would like to spend most of my time traveling, exploring the world. Next places I plan to visit: Norway, Spain, Portugal, Greece.</description>
     </item>
     
   </channel>

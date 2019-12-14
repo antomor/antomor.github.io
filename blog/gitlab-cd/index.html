@@ -1,71 +1,85 @@
 <!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="utf-8"/>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta name="generator" content="Hugo 0.57.2" />
-		<title>SPA deployment with GitLab - antomor</title>
+<html lang='en'><head>
+  <title>S p a deployment with git lab | antomor</title>
+  <meta charset='utf-8'>
+  <meta name="generator" content="Hugo 0.57.2" />
+  <meta name = 'viewport' content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'>
+  <meta http-equiv = 'X-UA-Compatible' content = 'IE=edge'>
+  
+<meta property = 'og:locale' content = 'en_US' />
+<meta property="og:type" content="article">
+<meta property = 'og:title' content = 'SPA deployment with GitLab' />
+<meta name="description" content="A small example of a single-page application deployment using GitLab, docker and nginx">
+<meta property = 'og:description' content = 'A small example of a single-page application deployment using GitLab, docker and nginx'>
+<meta property = 'og:url' content = 'https://antomor.com/blog/gitlab-cd/' />
+<meta property = 'og:image' content = 'images/%!s()'/>
+<meta name = 'twitter:card' content = 'summary_large_image' />
+<meta name = 'twitter:creator' content = 'https://twitter.com/antomor'>
+<meta name = 'twitter:title' content = 'SPA deployment with GitLab' />
+<meta property = 'twitter:description'  content = 'A small example of a single-page application deployment using GitLab, docker and nginx'/>
+<meta name = 'twitter:image' content = 'images/%!s()' />
+  <script type = "application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "BlogPosting",
+      "mainEntityOfPage":"https:\/\/antomor.com\/blog\/gitlab-cd\/",
+      "name": "antomor",
+      "headline": "SPA deployment with GitLab",
+      "description": "A small example of a single-page application deployment using GitLab, docker and nginx",
+      "url": "https:\/\/antomor.com\/blog\/gitlab-cd\/",
+      "datePublished": "2019-12-13T10:53:54+01:00",
+      "dateModified": "2019-12-13T10:53:54+01:00",
+      "author": {
+        "@type": "Person",
+        "name": ""
+      },
+      "image":{
+        "@type":"ImageObject",
+        "url": "images\/%!s(\x3cnil\x3e)"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "logo": {
+          "@type":"ImageObject",
+          "url": "images\/%!s(\x3cnil\x3e)"
+        },
+        "name": "antomor"
+      }
+    }
+  </script>
+<link rel='apple-touch-icon' sizes='180x180' href='https://antomor.com/images/icons/apple-touch-icon.png'>
+<link rel='icon' type='image/png' sizes='32x32' href='https://antomor.com/images/icons/favicon-32x32.png'>
+<link rel='icon' type='image/png' sizes='16x16' href='https://antomor.com/images/icons/favicon-16x16.png'>
+<link rel='manifest' href='https://antomor.com/images/icons/site.webmanifest'>
 
-		<meta name="description" content="A small example of a single-page application deployment using GitLab, docker and nginx">
+  <link rel='canonical' href='https://antomor.com/blog/gitlab-cd/'>
+  <link rel = 'stylesheet' href = 'https://antomor.com/css/styles.51fd84ce4ec10432a867371baab54f7262f86223e74818f4d972b2d241d6dca13fe451b58c504a620bb761bb03bc8ebb7a4fdfe78829ccb3acebfb519e264b61.css' integrity = 'sha512-Uf2Ezk7BBDKoZzcbqrVPcmL4YiPnSBj02XKy0kHW3KE/5FG1jFBKYgu3YbsDvI67ek/f54gpzLOs6/tRniZLYQ=='>
+</head>
 
-
-		
-	
-		
-
-
-
-
-<link rel="stylesheet" href="/css/ui.css">
-
-	
-		
-
-		<link  rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Mono|Lato|Raleway">
-
-		
-	</head>
-
-<body>
-<header class="container no-print">
-	<div class="u-header">
-		<nav class="bar">
-	<ul><li>
-			<a href="/">
-				<img class="icon-text" src="/img/prev.svg"/>
-			</a>
-		</li><li><a href="/about/">About</a></li><li><a href="/blog/">Posts</a></li></ul>
-</nav>
-
-	</div>
+  <body><div class = 'nav-drop'>
+  <div class = 'nav-body'>
+      <a href = 'https://antomor.com/about/' class = 'nav_item'>About</a>
+      <a href = 'https://antomor.com/' class = 'nav_item'>Blog</a>
+      <a href = 'https://antomor.com/tags' class = 'nav_item'>Tag</a>
+    <div class = 'nav-close'></div>
+  </div>
+</div><header class = 'nav' >
+  <nav class = 'nav-menu'>
+    <a href='https://antomor.com/' class = 'nav-brand nav_item'>antomor</a>
+    <div class = 'nav_bar-wrap'>
+      <div class = 'nav_bar'></div>
+    </div>
+  </nav>
 </header>
-<main class="container">
 
-<article>
-	<header><hgroup id="brand">
-	<h1>SPA deployment with GitLab</h1>
-	<h5>
-		
-		<time datetime="2019-12-13 10:53:54 &#43;0100 CET">Dec 13, 2019</time>
-		<span class="no-print">
-			-
-				
-				<a href="/tags/dev">dev</a>
-				
-				<a href="/tags/ci/cd">ci/cd</a>
-				
-				<a href="/tags/gitlab">gitlab</a>
-				
-				<a href="/tags/nginx">nginx</a>
-				
-				<a href="/tags/docker">docker</a>
-				<span>
-	</h5>
-	
-</hgroup>
-<hr class="sep" />
-</header>
-	
+
+    <main>
+  
+<section class = 'post_header' style = 'background-image:url(https://antomor.com/images/thumbnail.svg);'>
+  <h1 class='post_title'>SPA deployment with GitLab</h1>
+</section>
+<div class = 'post'>
+  <article class='post_content'>
 
 <p>In the last projects, I started using <a href="https://about.gitlab.com/">GitLab</a>, not only as git repository server, but also as DevOps platform. So here I am going to describe a very simple architecture to deploy a single page application using <a href="https://www.docker.com/">Docker</a> and <a href="https://docs.docker.com/compose/">docker-compose</a>, <a href="https://www.nginx.com/">nginx</a>.
 In this specific project I used also <a href="https://docs.microsoft.com/en-us/dotnet/core/">dotnet-core</a> for the back-end API and <a href="https://vuejs.org/">VueJS</a> as front-end framework, but it is language-agnostic, meaning that you can replace whatever back-end or front-end you prefer.</p>
@@ -93,8 +107,7 @@ In this specific project I used also <a href="https://docs.microsoft.com/en-us/d
 <p>I have used the <a href="https://vuejs.org/">VueJS</a> and the related <a href="https://cli.vuejs.org/">vue-cli</a> tools to generate the static files, but it doesn&rsquo;t really matter in the whole application; the only important thing is to generate static files.</p>
 
 <p>In our case the <code>gitlab-ci.yml</code> file will look like:</p>
-
-<pre><code>build site:
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">build site:
   image: node:latest
   stage: build
   script:
@@ -102,9 +115,7 @@ In this specific project I used also <a href="https://docs.microsoft.com/en-us/d
     - npm run build
   artifacts:
     paths:
-      - dist
-</code></pre>
-
+      - dist</pre></div>
 <p>Description:</p>
 
 <ol>
@@ -112,10 +123,8 @@ In this specific project I used also <a href="https://docs.microsoft.com/en-us/d
 <li>It executes the script in a docker image <code>node:latest</code></li>
 
 <li><p>It creates a <code>build</code> stage to execute the following script in the image aforementioned:</p>
-
-<pre><code>npm ci
-npm run build
-</code></pre></li>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">npm ci
+npm run build</pre></div></li>
 
 <li><p>It stores the artifacts created in the <code>dist</code> directory.</p></li>
 </ol>
@@ -125,8 +134,7 @@ npm run build
 <p>Since that we make use of <a href="https://docs.microsoft.com/en-us/dotnet/core/">dotnet-core</a>, we need to build the project, so this step could be unnecessary if you choose some language that doesn&rsquo;t require to be compiled (e.g. NodeJs, Python, etc&hellip;).</p>
 
 <p>Our <code>gitlab-ci.yml</code></p>
-
-<pre><code>build:
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">build:
   image: microsoft/dotnet:sdk
   stage: build
   script:
@@ -134,9 +142,7 @@ npm run build
     - dotnet publish -c Release -o out
   artifacts:
     paths:
-      - out
-</code></pre>
-
+      - out</pre></div>
 <p>As you can see, the file looks very similar to the previous one.</p>
 
 <ol>
@@ -144,10 +150,8 @@ npm run build
 <li>It uses a different docker image to build the project <code>microsoft/dotnet:sdk</code></li>
 
 <li><p>It creates a <code>build</code> stage to execute the following scripts:</p>
-
-<pre><code>- dotnet restore  # it restores the dependencies
-- dotnet publish -c Release -o out # it builds the project
-</code></pre></li>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">- dotnet restore  # it restores the dependencies
+- dotnet publish -c Release -o out # it builds the project</pre></div></li>
 
 <li><p>It stores the artifacts created in the <code>out</code> directory.</p></li>
 </ol>
@@ -159,15 +163,12 @@ npm run build
 <h2 id="deploy-project">Deploy project</h2>
 
 <h3 id="project-structure">Project structure</h3>
-
-<pre><code>|__ api
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">|__ api
 |     |__ Dockerfile
 |__ nginx
 |     |__ nginx.conf    
 |__ gitlab-ci.yml
-|__ docker-compose.yml
-</code></pre>
-
+|__ docker-compose.yml</pre></div>
 <p>This project performs the following steps:</p>
 
 <ol>
@@ -177,8 +178,7 @@ npm run build
 </ol>
 
 <p><strong>docker-compose.yml</strong></p>
-
-<pre><code>version: '3'
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">version: &#39;3&#39;
 services:
   nginx: 
     image: nginx:latest
@@ -196,9 +196,7 @@ services:
     networks:
       - proxy-net
 networks:
-  proxy-net:
-</code></pre>
-
+  proxy-net:</pre></div>
 <p>From the docker-compose file it is important to notice two folders:</p>
 
 <ul>
@@ -207,19 +205,15 @@ networks:
 </ul>
 
 <p>For completeness here the content of the <code>Dockerfile</code> used to run the dotnet APIs.</p>
-
-<pre><code># Build runtime image
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"># Build runtime image
 FROM microsoft/dotnet:aspnetcore-runtime
 WORKDIR /app
 COPY . .
-ENTRYPOINT [&quot;dotnet&quot;, &quot;Api.dll&quot;] 
-</code></pre>
-
+ENTRYPOINT [&#34;dotnet&#34;, &#34;Api.dll&#34;] </pre></div>
 <p>Where <em>Api</em> is the name of the dotnet API project.</p>
 
 <p><strong>nginx.conf</strong></p>
-
-<pre><code>events {
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">events {
     worker_connections  1024;
 }
 
@@ -249,9 +243,7 @@ http {
             proxy_set_header   Connection keep-alive;
         }
     }
-}
-</code></pre>
-
+}</pre></div>
 <blockquote>
 <p><strong>The previous nginx configuration is to be intended as example only. For nginx production configuration please refer to the following resources</strong></p>
 
@@ -264,34 +256,29 @@ http {
 <p><strong>We are assuming this project is deployed by an agent running on a machine with <a href="https://docs.docker.com/compose/">docker-compose</a> installed.</strong></p>
 
 <p>Let&rsquo;s have a look at <code>gitlab-ci.yml</code>.</p>
-
-<pre><code>deploy:
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">deploy:
   stage: deploy
   only:
-    - &quot;master&quot;
+    - &#34;master&#34;
   environment: production
   script:
-    - &quot;curl -L --header \&quot;PRIVATE-TOKEN: $TOKEN\&quot; \&quot;https://gitlab.com/api/v4/projects/14072554/jobs/artifacts/master/download?job=build+site\&quot; --output artifacts.zip&quot;
+    - &#34;curl -L --header \&#34;PRIVATE-TOKEN: $TOKEN\&#34; \&#34;https://gitlab.com/api/v4/projects/14072554/jobs/artifacts/master/download?job=build+site\&#34; --output artifacts.zip&#34;
     - unzip artifacts.zip
-    - &quot;curl -L --header \&quot;PRIVATE-TOKEN: $TOKEN\&quot; \&quot;https://gitlab.com/api/v4/projects/10080203/jobs/artifacts/master/download?job=build\&quot; --output api.zip&quot;
+    - &#34;curl -L --header \&#34;PRIVATE-TOKEN: $TOKEN\&#34; \&#34;https://gitlab.com/api/v4/projects/10080203/jobs/artifacts/master/download?job=build\&#34; --output api.zip&#34;
     - unzip api.zip
     - cp -R out/* api/
     - sh down.sh
-    - sh up.sh
-</code></pre>
-
+    - sh up.sh</pre></div>
 <ol>
 <li>It creates a <code>deploy</code> job</li>
 
 <li><p>It creates a <code>deploy</code> stage with the following script section:</p>
-
-<pre><code>- &quot;curl -L --header \&quot;PRIVATE-TOKEN: $TOKEN\&quot; \&quot;https://gitlab.com/api/v4/projects/14072554/jobs/artifacts/master/download?job=build+site\&quot; --output artifacts.zip&quot;
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">- &#34;curl -L --header \&#34;PRIVATE-TOKEN: $TOKEN\&#34; \&#34;https://gitlab.com/api/v4/projects/14072554/jobs/artifacts/master/download?job=build+site\&#34; --output artifacts.zip&#34;
 - unzip artifacts.zip
-- &quot;curl -L --header \&quot;PRIVATE-TOKEN: $TOKEN\&quot; \&quot;https://gitlab.com/api/v4/projects/10080203/jobs/artifacts/master/download?job=build\&quot; --output api.zip&quot;
+- &#34;curl -L --header \&#34;PRIVATE-TOKEN: $TOKEN\&#34; \&#34;https://gitlab.com/api/v4/projects/10080203/jobs/artifacts/master/download?job=build\&#34; --output api.zip&#34;
 - unzip api.zip
 - cp -R out/* api/
-- docker-compose up --build -d
-</code></pre></li>
+- docker-compose up --build -d</pre></div></li>
 </ol>
 
 <p>So let&rsquo;s dive deeper in the script commands:</p>
@@ -316,92 +303,69 @@ http {
 
 <p>For further details, please don&rsquo;t hesitate to get in touch!</p>
 
-</article>
-<nav class="no-print post-nav">
+    <div class = 'post_extra'><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
+  <svg>
+    <use xlink:href="#copy"></use>
+  </svg>  
+</div>
 
-	<a class="prev-post" href="http://localhost:1313/blog/browser-extension/">
-		<img class="icon-text" src="/img/prev.svg"/>Browser Extension Development</a>
+    </div>
+  <div class = 'author'>
+    <a href = 'https://antomor.com' target = "antomor's profile" class = 'author_pic'>
+      <img src = 'https://antomor.com/images/antomor.jpg' alt = ''>
+    </a>
+    <div class = 'author_meta'>
+      <a class = 'author_name' href = 'https://antomor.com' title = "map[Count:antomor]&#39;s profile">antomor</a>
+      <p class = 'pale author_bio solo'>It&#39;s time to flex. Write a short or not-so-short summary about yourself.</p>
+    </div>
+  </div>
 
+  </article>
+  <aside><h3>More from antomor</h3>
+<ul class='posts aside'>
+<li class = 'post_item'>
+  <a class = 'post_card' href='/blog/browser-extension/' title = 'Browser Extension Development' style = 'background-image: url(https://antomor.com/images/thumbnail.svg);'>
+  </a>
+  <div class = 'excerpt'>
+    <div class = 'excerpt_meta'>
+      <a href = 'https://antomor.com/tags/dev' class = 'post_tag'>dev
+      </a><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
+  <svg>
+    <use xlink:href="#copy"></use>
+  </svg>  
+</div>
 
-</nav>
+    </div>
+    <h3 class = 'post_link'>
+      <a href='/blog/browser-extension/'>Browser Extension Development</a>
+    </h3>
+    <p class = 'pale'>Web extensions or browser plugins is a way to improve browser functionalities. The …</p>
+  </div>
+</li>
 
+</ul>
 
-<section id="related">
-  <h4>See Also</h4>
-  <ul>
+  </aside>
+</div>
+<script src = 'https://antomor.com/js/autosize.min.js'></script>
+<script src = 'https://antomor.com/js/timeago.js'></script>
+    </main><svg width="0" height="0" class="hidden">
+  <symbol viewBox="0 0 699.428 699.428" xmlns="http://www.w3.org/2000/svg" id="copy">
+    <path d="M502.714 0H240.428C194.178 0 153 42.425 153 87.429l-25.267.59c-46.228 0-84.019 41.834-84.019 86.838V612c0 45.004 41.179 87.428 87.429 87.428H459c46.249 0 87.428-42.424 87.428-87.428h21.857c46.25 0 87.429-42.424 87.429-87.428v-349.19zM459 655.715H131.143c-22.95 0-43.714-21.441-43.714-43.715V174.857c0-22.272 18.688-42.993 41.638-42.993l23.933-.721v393.429C153 569.576 194.178 612 240.428 612h262.286c0 22.273-20.765 43.715-43.714 43.715zm153-131.143c0 22.271-20.765 43.713-43.715 43.713H240.428c-22.95 0-43.714-21.441-43.714-43.713V87.429c0-22.272 20.764-43.714 43.714-43.714H459c-.351 50.337 0 87.975 0 87.975 0 45.419 40.872 86.882 87.428 86.882H612zm-65.572-349.715c-23.277 0-43.714-42.293-43.714-64.981V44.348L612 174.857zm-43.714 131.537H306c-12.065 0-21.857 9.77-21.857 21.835s9.792 21.835 21.857 21.835h196.714c12.065 0 21.857-9.771 21.857-21.835 0-12.065-9.792-21.835-21.857-21.835zm0 109.176H306c-12.065 0-21.857 9.77-21.857 21.834 0 12.066 9.792 21.836 21.857 21.836h196.714c12.065 0 21.857-9.77 21.857-21.836 0-12.064-9.792-21.834-21.857-21.834z"
+    ></path>
+  </symbol>
+  <symbol viewBox="0 0 60.015 60.015" xmlns="http://www.w3.org/2000/svg" id="reply">
+    <path d="M42.007 0h-24c-9.925 0-18 8.075-18 18v14c0 9.59 7.538 17.452 17 17.973v8.344a1.694 1.694 0 0 0 1.699 1.698c.44 0 .873-.173 1.198-.498l1.876-1.876C26.708 52.713 33.259 50 40.227 50h1.78c9.925 0 18-8.075 18-18V18c0-9.925-8.075-18-18-18zm16 32c0 8.822-7.178 16-16 16h-1.78c-7.502 0-14.556 2.921-19.86 8.226l-1.359 1.359V44a1 1 0 1 0-2 0v3.949c-8.356-.52-15-7.465-15-15.949V18c0-8.822 7.178-16 16-16h24c8.822 0 16 7.178 16 16v14z"></path>
+  </symbol>
+</svg>
+<footer class = 'footer'>
+  <div class = 'footer_inner wrap pale'>
+    <p>&copy; <span class = 'year'></span> antomor</p>
     
-  	<li><a href="/blog/browser-extension/">Browser Extension Development</a></li>
-  	
-  </ul>
-</section>
+  </div>
+</footer>
 
+<script src = 'https://antomor.com/js/index.js'></script>
 
-
-	<div id="disqus_thread" class="no-print"></div>
-<script type="text/javascript">
-
-(function() {
-    
-    
-    if (window.location.hostname == "localhost")
-        return;
-
-    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-    var disqus_shortname = 'antomor';
-    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-
-
-			<hr class="sep" />
-		</main>
-		<footer class="container no-print">
-			<div class="u-footer">
-				
-<a href="mailto:antonio.morrone90@gmail.com"><img class="icon-social" src="/img/email.svg" alt="Email Me!"/></a>
-
-
-<a href="https://github.com/antomor/"><img class="icon-social" src="/img/github.svg" alt="Github"/></a>
-
-
-<a href="https://twitter.com/antomor"><img class="icon-social" src="/img/twitter.svg" alt="Twitter"/></a>
-
-
-<a href="https://www.linkedin.com/in/antoniomorrone/en"><img class="icon-social" src="/img/linkedin.svg" alt="Linkedin"/></a>
-
-
-
-				<p>
-					
-					
-					&copy; 2019 Antonio Morrone
-					
-					
-				</p>
-				
-				<a href="#brand">
-					<img class="icon-text" src="/img/toup.svg" alt="To Up"/>
-					<span>Back to Up</span>
-				</a>
-				
-			</div>
-		</footer>
-		
-		
-		
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-112054652-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
-
-	</body>
+  </body>
 </html>
-
