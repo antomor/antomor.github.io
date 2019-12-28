@@ -13,6 +13,16 @@
     
     
     <item>
+      <title>Security Headers on Static Websites</title>
+      <link>https://antomor.com/blog/security-headers-on-static-websites/</link>
+      <pubDate>Thu, 26 Dec 2019 10:56:23 +0100</pubDate>
+      
+      <guid>https://antomor.com/blog/security-headers-on-static-websites/</guid>
+      <description>When I started this blog, I evaluated many options: - blogging platform vs static-generated website - self-hosted vs hosted solutions - costs - and many more.
+I ended up trying to build something very simple, consisting in a static website hosted on GitHub Pages. With this solution, I have been able to cut the cost on any host solution, since that, being a dev, I am quite comfortable in writing in a text editor.</description>
+    </item>
+    
+    <item>
       <title>SPA deployment with GitLab</title>
       <link>https://antomor.com/blog/gitlab-cd/</link>
       <pubDate>Fri, 13 Dec 2019 10:53:54 +0100</pubDate>

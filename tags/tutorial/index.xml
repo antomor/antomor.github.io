@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>tutorial on antomor</title>
+    <link>https://antomor.com/tags/tutorial/</link>
+    <description>Recent content in tutorial on antomor</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2019 Antonio Morrone</copyright>
+    <lastBuildDate>Thu, 26 Dec 2019 10:56:23 +0100</lastBuildDate>
+    
+	<atom:link href="https://antomor.com/tags/tutorial/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Security Headers on Static Websites</title>
+      <link>https://antomor.com/blog/security-headers-on-static-websites/</link>
+      <pubDate>Thu, 26 Dec 2019 10:56:23 +0100</pubDate>
+      
+      <guid>https://antomor.com/blog/security-headers-on-static-websites/</guid>
+      <description>When I started this blog, I evaluated many options: - blogging platform vs static-generated website - self-hosted vs hosted solutions - costs - and many more.
+I ended up trying to build something very simple, consisting in a static website hosted on GitHub Pages. With this solution, I have been able to cut the cost on any host solution, since that, being a dev, I am quite comfortable in writing in a text editor.</description>
+    </item>
+    
+  </channel>
+</rss>

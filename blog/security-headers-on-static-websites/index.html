@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang='en'><head>
+  <title>Security headers on static websites | antomor</title>
+  <meta charset='utf-8'>
+  <meta name="generator" content="Hugo 0.57.2" />
+  <meta name = 'viewport' content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'>
+  <meta http-equiv = 'X-UA-Compatible' content = 'IE=edge'>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-112054652-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-112054652-1');
+</script>
+  
+<meta property = 'og:locale' content = 'en_US' />
+<meta property="og:type" content="article">
+<meta property = 'og:title' content = 'Security Headers on Static Websites' />
+<meta name="description" content="Security implication on hosting a static website on GitHub Pages">
+<meta property = 'og:description' content = 'Security implication on hosting a static website on GitHub Pages'>
+<meta property = 'og:url' content = 'https://antomor.com/blog/security-headers-on-static-websites/' />
+<meta property = 'og:image' content = 'https://antomor.com/images/sec-headers/key.jpg'/>
+<meta name = 'twitter:card' content = 'summary_large_image' />
+<meta name = 'twitter:creator' content = 'https://twitter.com/antomor'>
+<meta name = 'twitter:title' content = 'Security Headers on Static Websites' />
+<meta property = 'twitter:description'  content = 'Security implication on hosting a static website on GitHub Pages'/>
+<meta name = 'twitter:image' content = 'https://antomor.com/images/sec-headers/key.jpg' />
+  <script type = "application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "BlogPosting",
+      "mainEntityOfPage":"https:\/\/antomor.com\/blog\/security-headers-on-static-websites\/",
+      "name": "antomor",
+      "headline": "Security Headers on Static Websites",
+      "description": "Security implication on hosting a static website on GitHub Pages",
+      "url": "https:\/\/antomor.com\/blog\/security-headers-on-static-websites\/",
+      "datePublished": "2019-12-26T10:56:23+01:00",
+      "dateModified": "2019-12-26T10:56:23+01:00",
+      "author": {
+        "@type": "Person",
+        "name": ""
+      },
+      "image":{
+        "@type":"ImageObject",
+        "url": "https:\/\/antomor.com\/images\/sec-headers\/key.jpg"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "logo": {
+          "@type":"ImageObject",
+          "url": "images\/%!s(\x3cnil\x3e)"
+        },
+        "name": "antomor"
+      }
+    }
+  </script>
+<link rel='apple-touch-icon' sizes='180x180' href='https://antomor.com/images/icons/apple-touch-icon.png'>
+<link rel='icon' type='image/png' sizes='32x32' href='https://antomor.com/images/icons/favicon-32x32.png'>
+<link rel='icon' type='image/png' sizes='16x16' href='https://antomor.com/images/icons/favicon-16x16.png'>
+<link rel='manifest' href='https://antomor.com/images/icons/site.webmanifest'>
+
+  <link rel='canonical' href='https://antomor.com/blog/security-headers-on-static-websites/'>
+  <link rel = 'stylesheet' href = 'https://antomor.com/css/styles.51fd84ce4ec10432a867371baab54f7262f86223e74818f4d972b2d241d6dca13fe451b58c504a620bb761bb03bc8ebb7a4fdfe78829ccb3acebfb519e264b61.css' integrity = 'sha512-Uf2Ezk7BBDKoZzcbqrVPcmL4YiPnSBj02XKy0kHW3KE/5FG1jFBKYgu3YbsDvI67ek/f54gpzLOs6/tRniZLYQ=='>
+</head>
+
+  <body><div class = 'nav-drop'>
+  <div class = 'nav-body'>
+      <a href = 'https://antomor.com/about/' class = 'nav_item'>About</a>
+      <a href = 'https://antomor.com/' class = 'nav_item'>Blog</a>
+      <a href = 'https://antomor.com/tags' class = 'nav_item'>Tag</a>
+    <div class = 'nav-close'></div>
+  </div>
+</div><header class = 'nav' >
+  <nav class = 'nav-menu'>
+    <a href='https://antomor.com/' class = 'nav-brand nav_item'>antomor</a>
+    <div class = 'nav_bar-wrap'>
+      <div class = 'nav_bar'></div>
+    </div>
+  </nav>
+</header>
+
+
+    <main>
+<section class = 'post_header' style = 'background-image:url(https://antomor.com/images/sec-headers/key.jpg);'>
+  <h1 class='post_title'>Security Headers on Static Websites</h1>
+</section>
+<div class = 'post'>
+  <article class='post_content'>
+
+<p>When I started this blog, I evaluated many options:
+ - blogging platform vs static-generated website
+ - self-hosted vs hosted solutions
+ - costs
+ - and many more.</p>
+
+<p>I ended up trying to build something very simple, consisting in a static website hosted on <a href="https://pages.github.com/">GitHub Pages</a>.
+With this solution, I have been able to cut the cost on any host solution, since that, being a dev, I am quite comfortable in writing in a text editor. But soon some problem arises.</p>
+
+<p>I discovered the impossibility to harden the server to customize the response headers. Why should someone customize the response headers?
+The response to question is:</p>
+
+<blockquote>
+<p>&ldquo;When she/he encounters <a href="https://securityheaders.com/">securityheaders.com</a> and she/he get an <strong>F</strong>&rdquo;.</p>
+</blockquote>
+
+<figure>
+    <img src="/images/sec-headers/omg.gif"
+         alt="O.M.G."/> 
+</figure>
+
+
+<p>I believe that many people do not apply the required security constraints due to the barriers they encounter to understand the reason behind. On the contrary, <a href="https://securityheaders.com/">securityheaders.com</a> made a very good job to let people understand what is wrong with the security headers, and why it is necessary to change them accordingly.</p>
+
+<h2 id="why">Why</h2>
+
+<figure>
+    <img src="/images/sec-headers/why.jpg"
+         alt="Why?"/> 
+</figure>
+
+
+<p>Although there is a misleading conception that static websites are intrinsically secure, web server misconfiguration represents one of the attack vectors shared among dynamic and static websites.</p>
+
+<p>Web server misconfiguration can lead to well-known vulnerabilities such as:</p>
+
+<ul>
+<li><p>Referrer leakage</p>
+
+<ul>
+<li>With the <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer-Policy">Referrer-Policy</a>, it is possible to instruct the browser not to send the referrer header along with requests.</li>
+</ul></li>
+
+<li><p>XSS (Cross-site scripting)</p>
+
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy">Content-Security-Policy</a> usage instructs the browser about the content will be rendered in a page</li>
+<li>Along with CSP security header, it would be useful to set the <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-XSS-Protection">X-XSS-Protection header</a> to instruct old browsers not to render the page if an attack is detected.</li>
+</ul></li>
+
+<li><p>Click-jacking</p>
+
+<ul>
+<li>The <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options">X-Frame-Options header</a> can be used to instruct the browser if it is allowed rendering content in a frame.</li>
+</ul></li>
+
+<li><p>Tab nabbing</p>
+
+<ul>
+<li>Along with other <a href="https://cheatsheetseries.owasp.org/cheatsheets/HTML5_Security_Cheat_Sheet.html#tabnabbing">mechanisms</a> can be used to mitigate this attack, also setting the <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer-Policy">Referrer-Policy</a> header can be useful.</li>
+</ul></li>
+
+<li><p>and many more.</p></li>
+</ul>
+
+<p>For a much detailed description about the risks associated with HTML5 page, please have a look at <a href="https://cheatsheetseries.owasp.org/cheatsheets/HTML5_Security_Cheat_Sheet.html">OWASP HTML5 Security Cheat Sheet</a>.</p>
+
+<h2 id="how">How</h2>
+
+<figure>
+    <img src="/images/sec-headers/you-are-here.jpg"
+         alt="You are here"/> 
+</figure>
+
+
+<p>So, back to this blog, how it is possible to reach an <strong>A+</strong> report, running a static website on GitHub Pages? No, you don&rsquo;t need to pay something to improve your website security.</p>
+
+<p>A free plan on <a href="https://www.cloudflare.com/">Cloudflare</a> is enough 😎.</p>
+
+<p>We are going to customize the response headers by using the <a href="https://www.cloudflare.com/products/cloudflare-workers/">Cloudflare Workers</a> service provided by the <a href="https://www.cloudflare.com/">Cloudflare</a> free tier.</p>
+
+<p>Here below the script to be used. It can also be found on <a href="https://github.com/antomor/security-headers-cloudflare-worker">GitHub</a>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Javascript" data-lang="Javascript"><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">securityHeaders</span> <span style="color:#f92672">=</span> {
+  <span style="color:#e6db74">&#34;Content-Security-Policy&#34;</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;upgrade-insecure-requests&#34;</span>,
+  <span style="color:#e6db74">&#34;Strict-Transport-Security&#34;</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;max-age=2592000&#34;</span>,
+  <span style="color:#e6db74">&#34;X-Xss-Protection&#34;</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;1; mode=block&#34;</span>,
+  <span style="color:#e6db74">&#34;X-Frame-Options&#34;</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;DENY&#34;</span>,
+  <span style="color:#e6db74">&#34;X-Content-Type-Options&#34;</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;nosniff&#34;</span>,
+  <span style="color:#e6db74">&#34;Referrer-Policy&#34;</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;strict-origin-when-cross-origin&#34;</span>,
+  <span style="color:#e6db74">&#34;Feature-Policy&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;accelerometer &#39;none&#39;; camera &#39;none&#39;; geolocation &#39;none&#39;; gyroscope &#39;none&#39;; magnetometer &#39;none&#39;;  microphone &#39;none&#39;; payment &#39;none&#39;; usb &#39;none&#39;&#34;</span>
+}
+
+<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">sanitiseHeaders</span> <span style="color:#f92672">=</span> {
+  <span style="color:#e6db74">&#34;Server&#34;</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;My New Server Header!!!&#34;</span>,
+}
+
+<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">removeHeaders</span> <span style="color:#f92672">=</span> [
+  <span style="color:#e6db74">&#34;Public-Key-Pins&#34;</span>,
+  <span style="color:#e6db74">&#34;X-Powered-By&#34;</span>,
+  <span style="color:#e6db74">&#34;X-AspNet-Version&#34;</span>,
+]
+
+<span style="color:#a6e22e">addEventListener</span>(<span style="color:#e6db74">&#39;fetch&#39;</span>, <span style="color:#a6e22e">event</span> =&gt; {
+  <span style="color:#a6e22e">event</span>.<span style="color:#a6e22e">respondWith</span>(<span style="color:#a6e22e">addHeaders</span>(<span style="color:#a6e22e">event</span>.<span style="color:#a6e22e">request</span>))
+})
+
+<span style="color:#66d9ef">async</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">addHeaders</span>(<span style="color:#a6e22e">req</span>) {
+  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">response</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">fetch</span>(<span style="color:#a6e22e">req</span>)
+  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">newHdrs</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Headers</span>(<span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">headers</span>)
+
+  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">newHdrs</span>.<span style="color:#a6e22e">has</span>(<span style="color:#e6db74">&#34;Content-Type&#34;</span>) <span style="color:#f92672">&amp;&amp;</span> <span style="color:#f92672">!</span><span style="color:#a6e22e">newHdrs</span>.<span style="color:#a6e22e">get</span>(<span style="color:#e6db74">&#34;Content-Type&#34;</span>).<span style="color:#a6e22e">includes</span>(<span style="color:#e6db74">&#34;text/html&#34;</span>)) {
+    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Response</span>(<span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">body</span> , {
+      <span style="color:#a6e22e">status</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">status</span>,
+      <span style="color:#a6e22e">statusText</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">statusText</span>,
+      <span style="color:#a6e22e">headers</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">newHdrs</span>
+    })
+  }
+
+  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">setHeaders</span> <span style="color:#f92672">=</span> Object.<span style="color:#a6e22e">assign</span>({}, <span style="color:#a6e22e">securityHeaders</span>, <span style="color:#a6e22e">sanitiseHeaders</span>)
+
+  Object.<span style="color:#a6e22e">keys</span>(<span style="color:#a6e22e">setHeaders</span>).<span style="color:#a6e22e">forEach</span>(<span style="color:#a6e22e">name</span> =&gt; {
+    <span style="color:#a6e22e">newHdrs</span>.<span style="color:#a6e22e">set</span>(<span style="color:#a6e22e">name</span>, <span style="color:#a6e22e">setHeaders</span>[<span style="color:#a6e22e">name</span>]);
+  })
+
+  <span style="color:#a6e22e">removeHeaders</span>.<span style="color:#a6e22e">forEach</span>(<span style="color:#a6e22e">name</span> =&gt; {
+    <span style="color:#a6e22e">newHdrs</span>.<span style="color:#66d9ef">delete</span>(<span style="color:#a6e22e">name</span>)
+  })
+
+  <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Response</span>(<span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">body</span> , {
+    <span style="color:#a6e22e">status</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">status</span>,
+    <span style="color:#a6e22e">statusText</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">statusText</span>,
+    <span style="color:#a6e22e">headers</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">newHdrs</span>
+  })
+}
+</code></pre></div>
+<p>I took the script from the creator of <a href="https://securityheaders.com">securityheaders.com</a>, from its <a href="https://scotthelme.co.uk/security-headers-cloudflare-worker/">post</a>, where he exactly describes what each header is used for. I strongly recommend to have a look at rest of his blog for a detailed description of many security headers.</p>
+
+<h3 id="resources">Resources</h3>
+
+<ul>
+<li><a href="https://scotthelme.co.uk/security-headers-cloudflare-worker/">Original Scott Helme post</a></li>
+<li><a href="https://securityheaders.com">securityheaders.com</a></li>
+<li><a href="https://pages.github.com">GitHub Pages</a></li>
+<li><a href="https://cheatsheetseries.owasp.org/cheatsheets/HTML5_Security_Cheat_Sheet.html">OWASP HTML5 Security Cheat Sheet</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers">HTTP Headers on MDN</a></li>
+</ul>
+
+    <div class = 'post_extra'><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
+  <svg>
+    <use xlink:href="#copy"></use>
+  </svg>  
+</div>
+
+    </div>
+  <div class = 'author'>
+    <a href = 'https://antomor.com' target = "antomor's profile" class = 'author_pic'>
+      <img src = 'https://antomor.com/images/antomor.jpg' alt = ''>
+    </a>
+    <div class = 'author_meta'>
+      <a class = 'author_name' href = 'https://antomor.com' title = "map[Count:antomor]&#39;s profile">antomor</a>
+      <p class = 'pale author_bio solo'>Software Engineer passionate about Security and Privacy. Nature and animals lover. Sports (running, yoga, boxing) practitioner.</p>
+    </div>
+  </div>
+
+  </article>
+  
+	  <div id="disqus_thread" class="no-print"></div>
+<script type="text/javascript">
+
+(function() {
+    
+    
+    if (window.location.hostname == "localhost")
+        return;
+
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'antomor';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+  
+  <aside><h3>More from antomor</h3>
+<ul class='posts aside'>
+<li class = 'post_item'>
+  <a class = 'post_card' href='/blog/browser-extension/' title = 'Browser Extension Development' style = 'background-image: url(https://antomor.com/images/web-ext.jpg);'>
+  </a>
+  <div class = 'excerpt'>
+    <div class = 'excerpt_meta'>
+      <a href = 'https://antomor.com/tags/dev' class = 'post_tag'>dev
+      </a><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
+  <svg>
+    <use xlink:href="#copy"></use>
+  </svg>  
+</div>
+
+    </div>
+    <h3 class = 'post_link'>
+      <a href='/blog/browser-extension/'>Browser Extension Development</a>
+    </h3>
+    <p class = 'pale'>Web extensions or browser plugins is a way to improve browser functionalities. The …</p>
+  </div>
+</li>
+
+<li class = 'post_item'>
+  <a class = 'post_card' href='/blog/lets-test/' title = 'Let&#39;s Test' style = 'background-image: url(https://antomor.com/images/lets-test.jpg);'>
+  </a>
+  <div class = 'excerpt'>
+    <div class = 'excerpt_meta'>
+      <a href = 'https://antomor.com/tags/blog' class = 'post_tag'>blog
+      </a><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
+  <svg>
+    <use xlink:href="#copy"></use>
+  </svg>  
+</div>
+
+    </div>
+    <h3 class = 'post_link'>
+      <a href='/blog/lets-test/'>Let&#39;s Test</a>
+    </h3>
+    <p class = 'pale'>Preamble This article is not intended to cover the whole testing process due to its …</p>
+  </div>
+</li>
+
+</ul>
+
+  </aside>
+</div>
+<script src = 'https://antomor.com/js/autosize.min.js'></script>
+<script src = 'https://antomor.com/js/timeago.js'></script>
+    </main><svg width="0" height="0" class="hidden">
+  <symbol viewBox="0 0 699.428 699.428" xmlns="http://www.w3.org/2000/svg" id="copy">
+    <path d="M502.714 0H240.428C194.178 0 153 42.425 153 87.429l-25.267.59c-46.228 0-84.019 41.834-84.019 86.838V612c0 45.004 41.179 87.428 87.429 87.428H459c46.249 0 87.428-42.424 87.428-87.428h21.857c46.25 0 87.429-42.424 87.429-87.428v-349.19zM459 655.715H131.143c-22.95 0-43.714-21.441-43.714-43.715V174.857c0-22.272 18.688-42.993 41.638-42.993l23.933-.721v393.429C153 569.576 194.178 612 240.428 612h262.286c0 22.273-20.765 43.715-43.714 43.715zm153-131.143c0 22.271-20.765 43.713-43.715 43.713H240.428c-22.95 0-43.714-21.441-43.714-43.713V87.429c0-22.272 20.764-43.714 43.714-43.714H459c-.351 50.337 0 87.975 0 87.975 0 45.419 40.872 86.882 87.428 86.882H612zm-65.572-349.715c-23.277 0-43.714-42.293-43.714-64.981V44.348L612 174.857zm-43.714 131.537H306c-12.065 0-21.857 9.77-21.857 21.835s9.792 21.835 21.857 21.835h196.714c12.065 0 21.857-9.771 21.857-21.835 0-12.065-9.792-21.835-21.857-21.835zm0 109.176H306c-12.065 0-21.857 9.77-21.857 21.834 0 12.066 9.792 21.836 21.857 21.836h196.714c12.065 0 21.857-9.77 21.857-21.836 0-12.064-9.792-21.834-21.857-21.834z"
+    ></path>
+  </symbol>
+  <symbol viewBox="0 0 60.015 60.015" xmlns="http://www.w3.org/2000/svg" id="reply">
+    <path d="M42.007 0h-24c-9.925 0-18 8.075-18 18v14c0 9.59 7.538 17.452 17 17.973v8.344a1.694 1.694 0 0 0 1.699 1.698c.44 0 .873-.173 1.198-.498l1.876-1.876C26.708 52.713 33.259 50 40.227 50h1.78c9.925 0 18-8.075 18-18V18c0-9.925-8.075-18-18-18zm16 32c0 8.822-7.178 16-16 16h-1.78c-7.502 0-14.556 2.921-19.86 8.226l-1.359 1.359V44a1 1 0 1 0-2 0v3.949c-8.356-.52-15-7.465-15-15.949V18c0-8.822 7.178-16 16-16h24c8.822 0 16 7.178 16 16v14z"></path>
+  </symbol>
+</svg>
+<footer class = 'footer'>
+  <div class = 'footer_inner wrap pale'>
+    <p>&copy; <span class = 'year'></span> antomor</p>
+    
+  </div>
+</footer>
+
+<script src = 'https://antomor.com/js/index.js'></script>
+
+  </body>
+</html>

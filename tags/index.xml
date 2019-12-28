@@ -7,10 +7,37 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2019 Antonio Morrone</copyright>
-    <lastBuildDate>Fri, 13 Dec 2019 10:53:54 +0100</lastBuildDate>
+    <lastBuildDate>Thu, 26 Dec 2019 10:56:23 +0100</lastBuildDate>
     
 	<atom:link href="https://antomor.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>blog</title>
+      <link>https://antomor.com/tags/blog/</link>
+      <pubDate>Thu, 26 Dec 2019 10:56:23 +0100</pubDate>
+      
+      <guid>https://antomor.com/tags/blog/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>sec</title>
+      <link>https://antomor.com/tags/sec/</link>
+      <pubDate>Thu, 26 Dec 2019 10:56:23 +0100</pubDate>
+      
+      <guid>https://antomor.com/tags/sec/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>tutorial</title>
+      <link>https://antomor.com/tags/tutorial/</link>
+      <pubDate>Thu, 26 Dec 2019 10:56:23 +0100</pubDate>
+      
+      <guid>https://antomor.com/tags/tutorial/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>ci/cd</title>
@@ -54,15 +81,6 @@
       <pubDate>Fri, 13 Dec 2019 10:53:54 +0100</pubDate>
       
       <guid>https://antomor.com/tags/nginx/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>blog</title>
-      <link>https://antomor.com/tags/blog/</link>
-      <pubDate>Wed, 20 Nov 2019 17:15:01 +0100</pubDate>
-      
-      <guid>https://antomor.com/tags/blog/</guid>
       <description></description>
     </item>
     
