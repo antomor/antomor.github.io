@@ -2,7 +2,7 @@
 <html lang='en'><head>
   <title>Security headers on static websites | antomor</title>
   <meta charset='utf-8'>
-  <meta name="generator" content="Hugo 0.57.2" />
+  <meta name="generator" content="Hugo 0.62.0" />
   <meta name = 'viewport' content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'>
   <meta http-equiv = 'X-UA-Compatible' content = 'IE=edge'>
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-112054652-1"></script>
@@ -85,89 +85,74 @@
   <h1 class='post_title'>Security Headers on Static Websites</h1>
 </section>
 <div class = 'post'>
-  <article class='post_content'>
-
-<p>When I started this blog, I evaluated many options:
- - blogging platform vs static-generated website
- - self-hosted vs hosted solutions
- - costs
- - and many more.</p>
-
+  <article class='post_content'><p>When I started this blog, I evaluated many options:</p>
+<ul>
+<li>blogging platform vs static-generated website</li>
+<li>self-hosted vs hosted solutions</li>
+<li>costs</li>
+<li>and many more.</li>
+</ul>
 <p>I ended up trying to build something very simple, consisting in a static website hosted on <a href="https://pages.github.com/">GitHub Pages</a>.
 With this solution, I have been able to cut the cost on any host solution, since that, being a dev, I am quite comfortable in writing in a text editor. But soon some problem arises.</p>
-
 <p>I discovered the impossibility to harden the server to customize the response headers. Why should someone customize the response headers?
 The response to question is:</p>
-
 <blockquote>
-<p>&ldquo;When she/he encounters <a href="https://securityheaders.com/">securityheaders.com</a> and she/he get an <strong>F</strong>&rdquo;.</p>
+<p>&ldquo;When she/he encounters <a href="https://securityheaders.com/">securityheaders.com</a> and she/he get an <strong>F</strong>&quot;.</p>
 </blockquote>
-
 <figure>
     <img src="/images/sec-headers/omg.gif"
          alt="O.M.G."/> 
 </figure>
 
-
 <p>I believe that many people do not apply the required security constraints due to the barriers they encounter to understand the reason behind. On the contrary, <a href="https://securityheaders.com/">securityheaders.com</a> made a very good job to let people understand what is wrong with the security headers, and why it is necessary to change them accordingly.</p>
-
 <h2 id="why">Why</h2>
-
 <figure>
     <img src="/images/sec-headers/why.jpg"
          alt="Why?"/> 
 </figure>
 
-
 <p>Although there is a misleading conception that static websites are intrinsically secure, web server misconfiguration represents one of the attack vectors shared among dynamic and static websites.</p>
-
 <p>Web server misconfiguration can lead to well-known vulnerabilities such as:</p>
-
 <ul>
-<li><p>Referrer leakage</p>
-
+<li>
+<p>Referrer leakage</p>
 <ul>
 <li>With the <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer-Policy">Referrer-Policy</a>, it is possible to instruct the browser not to send the referrer header along with requests.</li>
-</ul></li>
-
-<li><p>XSS (Cross-site scripting)</p>
-
+</ul>
+</li>
+<li>
+<p>XSS (Cross-site scripting)</p>
 <ul>
 <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy">Content-Security-Policy</a> usage instructs the browser about the content will be rendered in a page</li>
 <li>Along with CSP security header, it would be useful to set the <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-XSS-Protection">X-XSS-Protection header</a> to instruct old browsers not to render the page if an attack is detected.</li>
-</ul></li>
-
-<li><p>Click-jacking</p>
-
+</ul>
+</li>
+<li>
+<p>Click-jacking</p>
 <ul>
 <li>The <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options">X-Frame-Options header</a> can be used to instruct the browser if it is allowed rendering content in a frame.</li>
-</ul></li>
-
-<li><p>Tab nabbing</p>
-
+</ul>
+</li>
+<li>
+<p>Tab nabbing</p>
 <ul>
 <li>Along with other <a href="https://cheatsheetseries.owasp.org/cheatsheets/HTML5_Security_Cheat_Sheet.html#tabnabbing">mechanisms</a> can be used to mitigate this attack, also setting the <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer-Policy">Referrer-Policy</a> header can be useful.</li>
-</ul></li>
-
-<li><p>and many more.</p></li>
 </ul>
-
+</li>
+<li>
+<p>and many more.</p>
+</li>
+</ul>
 <p>For a much detailed description about the risks associated with HTML5 page, please have a look at <a href="https://cheatsheetseries.owasp.org/cheatsheets/HTML5_Security_Cheat_Sheet.html">OWASP HTML5 Security Cheat Sheet</a>.</p>
-
 <h2 id="how">How</h2>
-
 <figure>
     <img src="/images/sec-headers/you-are-here.jpg"
          alt="You are here"/> 
 </figure>
 
-
-<p>So, back to this blog, how it is possible to reach an <strong>A+</strong> report, running a static website on GitHub Pages? No, you don&rsquo;t need to pay something to improve your website security.</p>
-
+<p>So, back to this blog, how it is possible to reach an <strong>A+</strong> report, running a static website on GitHub Pages? No, you don't need to pay something to improve your website security.</p>
 <p>A free plan on <a href="https://www.cloudflare.com/">Cloudflare</a> is enough 😎.</p>
-
 <p>We are going to customize the response headers by using the <a href="https://www.cloudflare.com/products/cloudflare-workers/">Cloudflare Workers</a> service provided by the <a href="https://www.cloudflare.com/">Cloudflare</a> free tier.</p>
-
 <p>Here below the script to be used. It can also be found on <a href="https://github.com/antomor/security-headers-cloudflare-worker">GitHub</a>.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Javascript" data-lang="Javascript"><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">securityHeaders</span> <span style="color:#f92672">=</span> {
   <span style="color:#e6db74">&#34;Content-Security-Policy&#34;</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;upgrade-insecure-requests&#34;</span>,
@@ -193,8 +178,8 @@ The response to question is:</p>
   <span style="color:#a6e22e">event</span>.<span style="color:#a6e22e">respondWith</span>(<span style="color:#a6e22e">addHeaders</span>(<span style="color:#a6e22e">event</span>.<span style="color:#a6e22e">request</span>))
 })
 
-<span style="color:#66d9ef">async</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">addHeaders</span>(<span style="color:#a6e22e">req</span>) {
-  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">response</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">fetch</span>(<span style="color:#a6e22e">req</span>)
+<span style="color:#a6e22e">async</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">addHeaders</span>(<span style="color:#a6e22e">req</span>) {
+  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">response</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">fetch</span>(<span style="color:#a6e22e">req</span>)
   <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">newHdrs</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Headers</span>(<span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">headers</span>)
 
   <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">newHdrs</span>.<span style="color:#a6e22e">has</span>(<span style="color:#e6db74">&#34;Content-Type&#34;</span>) <span style="color:#f92672">&amp;&amp;</span> <span style="color:#f92672">!</span><span style="color:#a6e22e">newHdrs</span>.<span style="color:#a6e22e">get</span>(<span style="color:#e6db74">&#34;Content-Type&#34;</span>).<span style="color:#a6e22e">includes</span>(<span style="color:#e6db74">&#34;text/html&#34;</span>)) {
@@ -221,11 +206,8 @@ The response to question is:</p>
     <span style="color:#a6e22e">headers</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">newHdrs</span>
   })
 }
-</code></pre></div>
-<p>I took the script from the creator of <a href="https://securityheaders.com">securityheaders.com</a>, from its <a href="https://scotthelme.co.uk/security-headers-cloudflare-worker/">post</a>, where he exactly describes what each header is used for. I strongly recommend to have a look at rest of his blog for a detailed description of many security headers.</p>
-
+</code></pre></div><p>I took the script from the creator of <a href="https://securityheaders.com">securityheaders.com</a>, from its <a href="https://scotthelme.co.uk/security-headers-cloudflare-worker/">post</a>, where he exactly describes what each header is used for. I strongly recommend to have a look at rest of his blog for a detailed description of many security headers.</p>
 <h3 id="resources">Resources</h3>
-
 <ul>
 <li><a href="https://scotthelme.co.uk/security-headers-cloudflare-worker/">Original Scott Helme post</a></li>
 <li><a href="https://securityheaders.com">securityheaders.com</a></li>
@@ -252,27 +234,28 @@ The response to question is:</p>
   </div>
 
   </article>
-  
-	  <div id="disqus_thread" class="no-print"></div>
-<script type="text/javascript">
-
-(function() {
-    
-    
-    if (window.location.hostname == "localhost")
-        return;
-
-    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-    var disqus_shortname = 'antomor';
-    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-
-  
   <aside><h3>More from antomor</h3>
 <ul class='posts aside'>
+<li class = 'post_item'>
+  <a class = 'post_card' href='/blog/mongodb-query-profiler/' title = 'Mongodb Query Profiler' style = 'background-image: url(https://antomor.com/images/mongodb-profiling.jpg);'>
+  </a>
+  <div class = 'excerpt'>
+    <div class = 'excerpt_meta'>
+      <a href = 'https://antomor.com/tags/dev' class = 'post_tag'>dev
+      </a><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
+  <svg>
+    <use xlink:href="#copy"></use>
+  </svg>  
+</div>
+
+    </div>
+    <h3 class = 'post_link'>
+      <a href='/blog/mongodb-query-profiler/'>Mongodb Query Profiler</a>
+    </h3>
+    <p class = 'pale'>Some months ago, I was creating a web page to show some aggregated data, but I soon …</p>
+  </div>
+</li>
+
 <li class = 'post_item'>
   <a class = 'post_card' href='/blog/browser-extension/' title = 'Browser Extension Development' style = 'background-image: url(https://antomor.com/images/web-ext.jpg);'>
   </a>
@@ -290,26 +273,6 @@ The response to question is:</p>
       <a href='/blog/browser-extension/'>Browser Extension Development</a>
     </h3>
     <p class = 'pale'>Web extensions or browser plugins is a way to improve browser functionalities. The …</p>
-  </div>
-</li>
-
-<li class = 'post_item'>
-  <a class = 'post_card' href='/blog/lets-test/' title = 'Let&#39;s Test' style = 'background-image: url(https://antomor.com/images/lets-test.jpg);'>
-  </a>
-  <div class = 'excerpt'>
-    <div class = 'excerpt_meta'>
-      <a href = 'https://antomor.com/tags/blog' class = 'post_tag'>blog
-      </a><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
-  <svg>
-    <use xlink:href="#copy"></use>
-  </svg>  
-</div>
-
-    </div>
-    <h3 class = 'post_link'>
-      <a href='/blog/lets-test/'>Let&#39;s Test</a>
-    </h3>
-    <p class = 'pale'>Preamble This article is not intended to cover the whole testing process due to its …</p>
   </div>
 </li>
 

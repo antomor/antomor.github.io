@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on antomor</title>
@@ -7,7 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2019 Antonio Morrone</copyright>
-    <lastBuildDate>Thu, 26 Dec 2019 10:56:23 +0100</lastBuildDate>
+    <lastBuildDate>Sat, 28 Dec 2019 18:06:38 +0100</lastBuildDate>
     
 	<atom:link href="https://antomor.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
@@ -15,9 +15,45 @@
     <item>
       <title>blog</title>
       <link>https://antomor.com/tags/blog/</link>
-      <pubDate>Thu, 26 Dec 2019 10:56:23 +0100</pubDate>
+      <pubDate>Sat, 28 Dec 2019 18:06:38 +0100</pubDate>
       
       <guid>https://antomor.com/tags/blog/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>dev</title>
+      <link>https://antomor.com/tags/dev/</link>
+      <pubDate>Sat, 28 Dec 2019 18:06:38 +0100</pubDate>
+      
+      <guid>https://antomor.com/tags/dev/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>mongodb</title>
+      <link>https://antomor.com/tags/mongodb/</link>
+      <pubDate>Sat, 28 Dec 2019 18:06:38 +0100</pubDate>
+      
+      <guid>https://antomor.com/tags/mongodb/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>nosql</title>
+      <link>https://antomor.com/tags/nosql/</link>
+      <pubDate>Sat, 28 Dec 2019 18:06:38 +0100</pubDate>
+      
+      <guid>https://antomor.com/tags/nosql/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>tutorial</title>
+      <link>https://antomor.com/tags/tutorial/</link>
+      <pubDate>Sat, 28 Dec 2019 18:06:38 +0100</pubDate>
+      
+      <guid>https://antomor.com/tags/tutorial/</guid>
       <description></description>
     </item>
     
@@ -31,29 +67,11 @@
     </item>
     
     <item>
-      <title>tutorial</title>
-      <link>https://antomor.com/tags/tutorial/</link>
-      <pubDate>Thu, 26 Dec 2019 10:56:23 +0100</pubDate>
-      
-      <guid>https://antomor.com/tags/tutorial/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>ci/cd</title>
       <link>https://antomor.com/tags/ci/cd/</link>
       <pubDate>Fri, 13 Dec 2019 10:53:54 +0100</pubDate>
       
       <guid>https://antomor.com/tags/ci/cd/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>dev</title>
-      <link>https://antomor.com/tags/dev/</link>
-      <pubDate>Fri, 13 Dec 2019 10:53:54 +0100</pubDate>
-      
-      <guid>https://antomor.com/tags/dev/</guid>
       <description></description>
     </item>
     

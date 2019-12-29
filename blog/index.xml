@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on antomor</title>
@@ -13,13 +13,23 @@
     
     
     <item>
+      <title>Mongodb Query Profiler</title>
+      <link>https://antomor.com/blog/mongodb-query-profiler/</link>
+      <pubDate>Sat, 28 Dec 2019 18:06:38 +0100</pubDate>
+      
+      <guid>https://antomor.com/blog/mongodb-query-profiler/</guid>
+      <description>Some months ago, I was creating a web page to show some aggregated data, but I soon noticed the API used to retrieve the data was very slow. After investigating on the possible issue, we discovered the bottleneck: the database. The solution was to re-structure the data to make it consumable from a web page.
+Although I had used sometimes the SQLServer profiler, I had no experience about MongoDB profiler, so here below the steps involved to analyse a MongoDB query.</description>
+    </item>
+    
+    <item>
       <title>Security Headers on Static Websites</title>
       <link>https://antomor.com/blog/security-headers-on-static-websites/</link>
       <pubDate>Thu, 26 Dec 2019 10:56:23 +0100</pubDate>
       
       <guid>https://antomor.com/blog/security-headers-on-static-websites/</guid>
-      <description>When I started this blog, I evaluated many options: - blogging platform vs static-generated website - self-hosted vs hosted solutions - costs - and many more.
-I ended up trying to build something very simple, consisting in a static website hosted on GitHub Pages. With this solution, I have been able to cut the cost on any host solution, since that, being a dev, I am quite comfortable in writing in a text editor.</description>
+      <description>When I started this blog, I evaluated many options:
+ blogging platform vs static-generated website self-hosted vs hosted solutions costs and many more.  I ended up trying to build something very simple, consisting in a static website hosted on GitHub Pages. With this solution, I have been able to cut the cost on any host solution, since that, being a dev, I am quite comfortable in writing in a text editor.</description>
     </item>
     
     <item>

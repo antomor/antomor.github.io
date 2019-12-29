@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang='en'><head>
+  <title>Mongodb query profiler | antomor</title>
+  <meta charset='utf-8'>
+  <meta name="generator" content="Hugo 0.62.0" />
+  <meta name = 'viewport' content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'>
+  <meta http-equiv = 'X-UA-Compatible' content = 'IE=edge'>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-112054652-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-112054652-1');
+</script>
+  
+<meta property = 'og:locale' content = 'en_US' />
+<meta property="og:type" content="article">
+<meta property = 'og:title' content = 'Mongodb Query Profiler' />
+<meta name="description" content="Steps involved to analyse the performance of a MongoDB query">
+<meta property = 'og:description' content = 'Steps involved to analyse the performance of a MongoDB query'>
+<meta property = 'og:url' content = 'https://antomor.com/blog/mongodb-query-profiler/' />
+<meta property = 'og:image' content = 'https://antomor.com/images/mongodb-profiling.jpg'/>
+<meta name = 'twitter:card' content = 'summary_large_image' />
+<meta name = 'twitter:creator' content = 'https://twitter.com/antomor'>
+<meta name = 'twitter:title' content = 'Mongodb Query Profiler' />
+<meta property = 'twitter:description'  content = 'Steps involved to analyse the performance of a MongoDB query'/>
+<meta name = 'twitter:image' content = 'https://antomor.com/images/mongodb-profiling.jpg' />
+  <script type = "application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "BlogPosting",
+      "mainEntityOfPage":"https:\/\/antomor.com\/blog\/mongodb-query-profiler\/",
+      "name": "antomor",
+      "headline": "Mongodb Query Profiler",
+      "description": "Steps involved to analyse the performance of a MongoDB query",
+      "url": "https:\/\/antomor.com\/blog\/mongodb-query-profiler\/",
+      "datePublished": "2019-12-28T18:06:38+01:00",
+      "dateModified": "2019-12-28T18:06:38+01:00",
+      "author": {
+        "@type": "Person",
+        "name": ""
+      },
+      "image":{
+        "@type":"ImageObject",
+        "url": "https:\/\/antomor.com\/images\/mongodb-profiling.jpg"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "logo": {
+          "@type":"ImageObject",
+          "url": "images\/%!s(\x3cnil\x3e)"
+        },
+        "name": "antomor"
+      }
+    }
+  </script>
+<link rel='apple-touch-icon' sizes='180x180' href='https://antomor.com/images/icons/apple-touch-icon.png'>
+<link rel='icon' type='image/png' sizes='32x32' href='https://antomor.com/images/icons/favicon-32x32.png'>
+<link rel='icon' type='image/png' sizes='16x16' href='https://antomor.com/images/icons/favicon-16x16.png'>
+<link rel='manifest' href='https://antomor.com/images/icons/site.webmanifest'>
+
+  <link rel='canonical' href='https://antomor.com/blog/mongodb-query-profiler/'>
+  <link rel = 'stylesheet' href = 'https://antomor.com/css/styles.51fd84ce4ec10432a867371baab54f7262f86223e74818f4d972b2d241d6dca13fe451b58c504a620bb761bb03bc8ebb7a4fdfe78829ccb3acebfb519e264b61.css' integrity = 'sha512-Uf2Ezk7BBDKoZzcbqrVPcmL4YiPnSBj02XKy0kHW3KE/5FG1jFBKYgu3YbsDvI67ek/f54gpzLOs6/tRniZLYQ=='>
+</head>
+
+  <body><div class = 'nav-drop'>
+  <div class = 'nav-body'>
+      <a href = 'https://antomor.com/about/' class = 'nav_item'>About</a>
+      <a href = 'https://antomor.com/' class = 'nav_item'>Blog</a>
+      <a href = 'https://antomor.com/tags' class = 'nav_item'>Tag</a>
+    <div class = 'nav-close'></div>
+  </div>
+</div><header class = 'nav' >
+  <nav class = 'nav-menu'>
+    <a href='https://antomor.com/' class = 'nav-brand nav_item'>antomor</a>
+    <div class = 'nav_bar-wrap'>
+      <div class = 'nav_bar'></div>
+    </div>
+  </nav>
+</header>
+
+
+    <main>
+<section class = 'post_header' style = 'background-image:url(https://antomor.com/images/mongodb-profiling.jpg);'>
+  <h1 class='post_title'>Mongodb Query Profiler</h1>
+</section>
+<div class = 'post'>
+  <article class='post_content'><p>Some months ago, I was creating a web page to show some aggregated data, but I soon noticed the API used to retrieve the data was very slow. After investigating on the possible issue, we discovered the bottleneck: the database. The solution was to re-structure the data to make it consumable from a web page.</p>
+<p>Although I had used sometimes the SQLServer profiler, I had no experience about MongoDB profiler, so here below the steps involved to analyse a MongoDB query.</p>
+<blockquote>
+<p>It doesn't apply to our case, but in many situations performance problems are related to missing or wrongly implemented <a href="https://docs.mongodb.com/manual/indexes/">MongoDB Indexes</a>.</p>
+</blockquote>
+<h2 id="enable-mongodb-profiler">Enable MongoDB profiler</h2>
+<p>By default, MongoDB doesn't profile any query. It is possible to set the profiling level executing:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Javascript" data-lang="Javascript"><span style="color:#a6e22e">db</span>.<span style="color:#a6e22e">setProfilingLevel</span>(<span style="color:#f92672">&lt;</span><span style="color:#a6e22e">profile_level</span><span style="color:#f92672">&gt;</span>)
+</code></pre></div><p>where <code>profile_level</code> can be:</p>
+<ul>
+<li><code>0</code> - the profiler is off, so it doesn't collect any data.</li>
+<li><code>1</code> - the profiler collects data only if the operation takes more than <code>slowms</code> (a configurable threshold).</li>
+<li><code>2</code> - the profiler collects data for all operations.</li>
+</ul>
+<blockquote>
+<p>IMPORTANT: At the end of the analysis, please remember to disable profiling with: <code>db.setProfilingLevel(0)</code>, since that it can affect MongoDB performance.</p>
+</blockquote>
+<h2 id="retrieve-last-query-profile">Retrieve last query profile</h2>
+<p>Once profiling is enabled, it is possible to retrieve last query <strong>profiled</strong> (meaning that the query must be executed after setting the profiling level) with the command:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Javascript" data-lang="Javascript"><span style="color:#a6e22e">db</span>.<span style="color:#a6e22e">system</span>.<span style="color:#a6e22e">profile</span>.<span style="color:#a6e22e">find</span>().<span style="color:#a6e22e">limit</span>(<span style="color:#ae81ff">1</span>).<span style="color:#a6e22e">sort</span>({<span style="color:#a6e22e">ts</span><span style="color:#f92672">:</span><span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>}).<span style="color:#a6e22e">pretty</span>()
+</code></pre></div><h2 id="explain">Explain</h2>
+<p>The <a href="https://docs.mongodb.com/manual/reference/command/explain/#dbcmd.explain">explain command</a> comes in handy, since that it provides information on many common operations such as <code>aggregate</code>, <code>count</code>, <code>distinct</code>, <code>find</code>, <code>findAndModify</code>, <code>delete</code> and <code>update</code>. Nevertheless a method with the same name, is available on <code>collection</code> and <code>cursor</code> also.</p>
+<p>So if we want to analyse the information associated with an <code>aggregate</code> operation we can execute:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Javascript" data-lang="Javascript"><span style="color:#a6e22e">db</span>.<span style="color:#f92672">&lt;</span><span style="color:#a6e22e">collection_name</span><span style="color:#f92672">&gt;</span>.<span style="color:#a6e22e">explain</span>(<span style="color:#f92672">&lt;</span><span style="color:#a6e22e">verbosity</span><span style="color:#f92672">&gt;</span>).<span style="color:#a6e22e">aggregate</span>(...)
+</code></pre></div><p>where:</p>
+<ul>
+<li><code>&lt;collection_name&gt;</code> is the name of the collection on which the aggregation is performed</li>
+<li><code>&lt;verbosity&gt;</code> is the level of verbosity we want to extract.</li>
+</ul>
+<h3 id="explain-verbosity">Explain verbosity</h3>
+<p>The <code>explain</code> command accepts one of the following verbosity levels:</p>
+<ul>
+<li><code>queryPlanner</code> - It returns the <a href="https://docs.mongodb.com/manual/reference/explain-results/#explain.queryPlanner">queryPlanner</a> information about the winning plan evaluation.</li>
+<li><code>executionStats</code> - It returns <a href="https://docs.mongodb.com/manual/reference/explain-results/#explain.queryPlanner">queryPlanner</a> and the <a href="https://docs.mongodb.com/manual/reference/explain-results/#explain.executionStats">executionStats</a> information, but rejected plans are not included in the latter.</li>
+<li><code>allPlansExecution</code> - It returns <a href="https://docs.mongodb.com/manual/reference/explain-results/#explain.queryPlanner">queryPlanner</a> and the <a href="https://docs.mongodb.com/manual/reference/explain-results/#explain.executionStats">executionStats</a> information about all the evaluated plans (including also rejected plans).</li>
+</ul>
+<h2 id="conclusion">Conclusion</h2>
+<p>Only by understanding how the query was executed by MongoDB, we were able to improve its performance.</p>
+<blockquote>
+<p>Not our case, but I would remind that performance problems are often associated to missing or wrongly implemented indexes. If so, please have a look at <a href="https://docs.mongodb.com/manual/indexes/">MongoDB Indexes</a>.</p>
+</blockquote>
+<h3 id="resources">Resources</h3>
+<ul>
+<li><a href="https://docs.mongodb.com/manual/tutorial/manage-the-database-profiler/">MongoDB database profiler</a></li>
+<li><a href="https://docs.mongodb.com/manual/reference/explain-results/">Explain results</a></li>
+<li><a href="https://docs.mongodb.com/manual/indexes/">MongoDB Indexes</a></li>
+</ul>
+
+    <div class = 'post_extra'><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
+  <svg>
+    <use xlink:href="#copy"></use>
+  </svg>  
+</div>
+
+    </div>
+  <div class = 'author'>
+    <a href = 'https://antomor.com' target = "antomor's profile" class = 'author_pic'>
+      <img src = 'https://antomor.com/images/antomor.jpg' alt = ''>
+    </a>
+    <div class = 'author_meta'>
+      <a class = 'author_name' href = 'https://antomor.com' title = "map[Count:antomor]&#39;s profile">antomor</a>
+      <p class = 'pale author_bio solo'>Software Engineer passionate about Security and Privacy. Nature and animals lover. Sports (running, yoga, boxing) practitioner.</p>
+    </div>
+  </div>
+
+  </article>
+  <aside><h3>More from antomor</h3>
+<ul class='posts aside'>
+<li class = 'post_item'>
+  <a class = 'post_card' href='/blog/security-headers-on-static-websites/' title = 'Security Headers on Static Websites' style = 'background-image: url(https://antomor.com/images/sec-headers/key.jpg);'>
+  </a>
+  <div class = 'excerpt'>
+    <div class = 'excerpt_meta'>
+      <a href = 'https://antomor.com/tags/sec' class = 'post_tag'>sec
+      </a><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
+  <svg>
+    <use xlink:href="#copy"></use>
+  </svg>  
+</div>
+
+    </div>
+    <h3 class = 'post_link'>
+      <a href='/blog/security-headers-on-static-websites/'>Security Headers on Static Websites</a>
+    </h3>
+    <p class = 'pale'>When I started this blog, I evaluated many options:
+ blogging platform vs static-generated …</p>
+  </div>
+</li>
+
+<li class = 'post_item'>
+  <a class = 'post_card' href='/blog/gitlab-cd/' title = 'SPA deployment with GitLab' style = 'background-image: url(https://antomor.com/images/gitlab-unsplash.jpg);'>
+  </a>
+  <div class = 'excerpt'>
+    <div class = 'excerpt_meta'>
+      <a href = 'https://antomor.com/tags/dev' class = 'post_tag'>dev
+      </a><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
+  <svg>
+    <use xlink:href="#copy"></use>
+  </svg>  
+</div>
+
+    </div>
+    <h3 class = 'post_link'>
+      <a href='/blog/gitlab-cd/'>SPA deployment with GitLab</a>
+    </h3>
+    <p class = 'pale'>In the last projects, I started using GitLab, not only as git repository server, but also …</p>
+  </div>
+</li>
+
+</ul>
+
+  </aside>
+</div>
+<script src = 'https://antomor.com/js/autosize.min.js'></script>
+<script src = 'https://antomor.com/js/timeago.js'></script>
+    </main><svg width="0" height="0" class="hidden">
+  <symbol viewBox="0 0 699.428 699.428" xmlns="http://www.w3.org/2000/svg" id="copy">
+    <path d="M502.714 0H240.428C194.178 0 153 42.425 153 87.429l-25.267.59c-46.228 0-84.019 41.834-84.019 86.838V612c0 45.004 41.179 87.428 87.429 87.428H459c46.249 0 87.428-42.424 87.428-87.428h21.857c46.25 0 87.429-42.424 87.429-87.428v-349.19zM459 655.715H131.143c-22.95 0-43.714-21.441-43.714-43.715V174.857c0-22.272 18.688-42.993 41.638-42.993l23.933-.721v393.429C153 569.576 194.178 612 240.428 612h262.286c0 22.273-20.765 43.715-43.714 43.715zm153-131.143c0 22.271-20.765 43.713-43.715 43.713H240.428c-22.95 0-43.714-21.441-43.714-43.713V87.429c0-22.272 20.764-43.714 43.714-43.714H459c-.351 50.337 0 87.975 0 87.975 0 45.419 40.872 86.882 87.428 86.882H612zm-65.572-349.715c-23.277 0-43.714-42.293-43.714-64.981V44.348L612 174.857zm-43.714 131.537H306c-12.065 0-21.857 9.77-21.857 21.835s9.792 21.835 21.857 21.835h196.714c12.065 0 21.857-9.771 21.857-21.835 0-12.065-9.792-21.835-21.857-21.835zm0 109.176H306c-12.065 0-21.857 9.77-21.857 21.834 0 12.066 9.792 21.836 21.857 21.836h196.714c12.065 0 21.857-9.77 21.857-21.836 0-12.064-9.792-21.834-21.857-21.834z"
+    ></path>
+  </symbol>
+  <symbol viewBox="0 0 60.015 60.015" xmlns="http://www.w3.org/2000/svg" id="reply">
+    <path d="M42.007 0h-24c-9.925 0-18 8.075-18 18v14c0 9.59 7.538 17.452 17 17.973v8.344a1.694 1.694 0 0 0 1.699 1.698c.44 0 .873-.173 1.198-.498l1.876-1.876C26.708 52.713 33.259 50 40.227 50h1.78c9.925 0 18-8.075 18-18V18c0-9.925-8.075-18-18-18zm16 32c0 8.822-7.178 16-16 16h-1.78c-7.502 0-14.556 2.921-19.86 8.226l-1.359 1.359V44a1 1 0 1 0-2 0v3.949c-8.356-.52-15-7.465-15-15.949V18c0-8.822 7.178-16 16-16h24c8.822 0 16 7.178 16 16v14z"></path>
+  </symbol>
+</svg>
+<footer class = 'footer'>
+  <div class = 'footer_inner wrap pale'>
+    <p>&copy; <span class = 'year'></span> antomor</p>
+    
+  </div>
+</footer>
+
+<script src = 'https://antomor.com/js/index.js'></script>
+
+  </body>
+</html>

@@ -2,7 +2,7 @@
 <html lang='en'><head>
   <title>Browser extension development | antomor</title>
   <meta charset='utf-8'>
-  <meta name="generator" content="Hugo 0.57.2" />
+  <meta name="generator" content="Hugo 0.62.0" />
   <meta name = 'viewport' content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'>
   <meta http-equiv = 'X-UA-Compatible' content = 'IE=edge'>
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-112054652-1"></script>
@@ -88,64 +88,56 @@
   <h1 class='post_title'>Browser Extension Development</h1>
 </section>
 <div class = 'post'>
-  <article class='post_content'>
-
-<p>Web extensions or browser plugins is a way to improve browser functionalities. The following examples summarize the different scopes they can have.</p>
-
+  <article class='post_content'><p>Web extensions or browser plugins is a way to improve browser functionalities. The following examples summarize the different scopes they can have.</p>
 <ul>
 <li><a href="https://noscript.net/">no-script</a> - to block script served from not-trusted domains</li>
 <li><a href="https://github.com/gorhill/uBlock#ublock-origin">ublock Origin</a> - it is &ldquo;a wide-spectrum blocker&rdquo;</li>
 <li><a href="https://addons.mozilla.org/it/firefox/addon/dark-mode-zen/">dark-mode</a> - it changes the appearance of web pages</li>
 <li><a href="https://addons.mozilla.org/it/firefox/addon/react-devtools/">React Developer Tools</a> - to inspect react-specific properties of a page that makes use of React.</li>
 </ul>
-
 <h2 id="anatomy-of-an-extension">Anatomy of an extension</h2>
-
 <p>The main components of a browser extension are:</p>
-
 <ul>
-<li>Manifest.json - it is the only mandatory file and it describes the extension itself. It is as an entry-point for the browser to declare what are the files/resources/permissions will be used.</li>
-<li>Background scripts - They contain the logic that are not strictly related to the single web-page. They are loaded when the extension is loaded and remain active until the extension is disabled or uninstalled.</li>
-<li>Content scripts - Unlike background scripts, they are loaded into web pages, so they can manipulates DOM exactly like normal script can do.</li>
-
-<li><p>UI components - They includes all the parts that permit a user to interact with the extension, by means of an HTML document. There are three different UI components:</p>
-
+<li>
+<p>Manifest.json - it is the only mandatory file and it describes the extension itself. It is as an entry-point for the browser to declare what are the files/resources/permissions will be used.</p>
+</li>
+<li>
+<p>Background scripts - They contain the logic that are not strictly related to the single web-page. They are loaded when the extension is loaded and remain active until the extension is disabled or uninstalled.</p>
+</li>
+<li>
+<p>Content scripts - Unlike background scripts, they are loaded into web pages, so they can manipulates DOM exactly like normal script can do.</p>
+</li>
+<li>
+<p>UI components - They includes all the parts that permit a user to interact with the extension, by means of an HTML document. There are three different UI components:</p>
 <ul>
 <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/user_interface/Sidebars">sidebar</a></li>
 <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/user_interface/Popups">popup</a></li>
 <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/user_interface/Options_pages">options page</a></li>
-</ul></li>
-
-<li><p>Web-accessible resources -  They include all the resources that are made available to the scripts (e.g. HTML, images, jss, css)</p></li>
-
-<li><p>Extension pages - They are additional pages used to handle specific user interactions.</p></li>
 </ul>
-
+</li>
+<li>
+<p>Web-accessible resources -  They include all the resources that are made available to the scripts (e.g. HTML, images, jss, css)</p>
+</li>
+<li>
+<p>Extension pages - They are additional pages used to handle specific user interactions.</p>
+</li>
+</ul>
 <h2 id="web-extension-toolbox">Web-extension toolbox</h2>
-
 <p>As for many browser APIs, also the web extension APIs can behave differently according with the browser on which they are executed. In case of cross-browser development it could be handful <a href="https://github.com/mozilla/webextension-polyfill/">web-extension polyfill</a> developed by Mozilla.</p>
-
-<p>Furthermore, to ease the development process, there is also <a href="https://github.com/webextension-toolbox/webextension-toolbox">web-extension toolbox</a> and its related <a href="https://github.com/webextension-toolbox/generator-web-extension">yeoman generator</a>. Among the others it provides the following functionalities:
- * Compiles the extension via webpack to dist/<vendor>
- * Watches all extension files and recompiles on demand
- * Reloads extension or extension page as soon something changed</p>
-
+<p>Furthermore, to ease the development process, there is also <a href="https://github.com/webextension-toolbox/webextension-toolbox">web-extension toolbox</a> and its related <a href="https://github.com/webextension-toolbox/generator-web-extension">yeoman generator</a>. Among the others it provides the following functionalities:</p>
+<ul>
+<li>Compiles the extension via webpack to dist/<!-- raw HTML omitted --></li>
+<li>Watches all extension files and recompiles on demand</li>
+<li>Reloads extension or extension page as soon something changed</li>
+</ul>
 <p>After answering to some questions, it generates a ready-to-run web extension.</p>
-
 <h2 id="development">Development</h2>
-
-<p>You only need to run <code>npm run dev &lt;vendor_name&gt;</code>, where <vendor_name> can be <code>chrome</code>, <code>firefox</code>, <code>opera</code> or <code>edge</code>; now you can load the generated extension in the browser of choice.</p>
-
+<p>You only need to run <code>npm run dev &lt;vendor_name&gt;</code>, where &lt;vendor_name&gt; can be <code>chrome</code>, <code>firefox</code>, <code>opera</code> or <code>edge</code>; now you can load the generated extension in the browser of choice.</p>
 <h2 id="build">Build</h2>
-
 <p>As easy as running <code>npm run build &lt;vendor_name&gt;</code>.</p>
-
 <h2 id="conclusions">Conclusions</h2>
-
 <p>So, what are you waiting for? Are you ready to develop your own browser plugin? I am already planning mine ;-)</p>
-
 <h3 id="resources">Resources</h3>
-
 <ul>
 <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions">MDN Browser Extensions</a></li>
 <li><a href="https://github.com/webextension-toolbox/webextension-toolbox">webextension-toolbox</a></li>
@@ -170,27 +162,28 @@
   </div>
 
   </article>
-  
-	  <div id="disqus_thread" class="no-print"></div>
-<script type="text/javascript">
-
-(function() {
-    
-    
-    if (window.location.hostname == "localhost")
-        return;
-
-    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-    var disqus_shortname = 'antomor';
-    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-
-  
   <aside><h3>More from antomor</h3>
 <ul class='posts aside'>
+<li class = 'post_item'>
+  <a class = 'post_card' href='/blog/mongodb-query-profiler/' title = 'Mongodb Query Profiler' style = 'background-image: url(https://antomor.com/images/mongodb-profiling.jpg);'>
+  </a>
+  <div class = 'excerpt'>
+    <div class = 'excerpt_meta'>
+      <a href = 'https://antomor.com/tags/dev' class = 'post_tag'>dev
+      </a><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
+  <svg>
+    <use xlink:href="#copy"></use>
+  </svg>  
+</div>
+
+    </div>
+    <h3 class = 'post_link'>
+      <a href='/blog/mongodb-query-profiler/'>Mongodb Query Profiler</a>
+    </h3>
+    <p class = 'pale'>Some months ago, I was creating a web page to show some aggregated data, but I soon …</p>
+  </div>
+</li>
+
 <li class = 'post_item'>
   <a class = 'post_card' href='/blog/security-headers-on-static-websites/' title = 'Security Headers on Static Websites' style = 'background-image: url(https://antomor.com/images/sec-headers/key.jpg);'>
   </a>
@@ -207,27 +200,8 @@
     <h3 class = 'post_link'>
       <a href='/blog/security-headers-on-static-websites/'>Security Headers on Static Websites</a>
     </h3>
-    <p class = 'pale'>When I started this blog, I evaluated many options: - blogging platform vs …</p>
-  </div>
-</li>
-
-<li class = 'post_item'>
-  <a class = 'post_card' href='/blog/gitlab-cd/' title = 'SPA deployment with GitLab' style = 'background-image: url(https://antomor.com/images/gitlab-unsplash.jpg);'>
-  </a>
-  <div class = 'excerpt'>
-    <div class = 'excerpt_meta'>
-      <a href = 'https://antomor.com/tags/dev' class = 'post_tag'>dev
-      </a><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
-  <svg>
-    <use xlink:href="#copy"></use>
-  </svg>  
-</div>
-
-    </div>
-    <h3 class = 'post_link'>
-      <a href='/blog/gitlab-cd/'>SPA deployment with GitLab</a>
-    </h3>
-    <p class = 'pale'>In the last projects, I started using GitLab, not only as git repository server, but also …</p>
+    <p class = 'pale'>When I started this blog, I evaluated many options:
+ blogging platform vs static-generated …</p>
   </div>
 </li>
 
