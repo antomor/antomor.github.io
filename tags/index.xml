@@ -67,15 +67,6 @@
     </item>
     
     <item>
-      <title>ci/cd</title>
-      <link>https://antomor.com/tags/ci/cd/</link>
-      <pubDate>Fri, 13 Dec 2019 10:53:54 +0100</pubDate>
-      
-      <guid>https://antomor.com/tags/ci/cd/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>docker</title>
       <link>https://antomor.com/tags/docker/</link>
       <pubDate>Fri, 13 Dec 2019 10:53:54 +0100</pubDate>
@@ -135,6 +126,15 @@
       <pubDate>Sun, 14 Apr 2019 21:40:25 +0200</pubDate>
       
       <guid>https://antomor.com/tags/personal/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ci/cd</title>
+      <link>https://antomor.com/tags/ci/cd/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://antomor.com/tags/ci/cd/</guid>
       <description></description>
     </item>
     

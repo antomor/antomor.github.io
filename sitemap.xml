@@ -3,11 +3,6 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://antomor.com/</loc>
-    <lastmod>2019-12-28T18:06:38+01:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://antomor.com/tags/blog/</loc>
     <lastmod>2019-12-28T18:06:38+01:00</lastmod>
   </url>
@@ -50,11 +45,6 @@
   <url>
     <loc>https://antomor.com/blog/security-headers-on-static-websites/</loc>
     <lastmod>2019-12-26T10:56:23+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://antomor.com/tags/ci/cd/</loc>
-    <lastmod>2019-12-13T10:53:54+01:00</lastmod>
   </url>
   
   <url>
@@ -120,6 +110,15 @@
   <url>
     <loc>https://antomor.com/about/</loc>
     <lastmod>2017-06-24T18:57:12+07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://antomor.com/</loc>
+    <lastmod>2017-06-24T18:57:12+07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://antomor.com/tags/ci/cd/</loc>
   </url>
   
 </urlset>
