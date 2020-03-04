@@ -2,16 +2,9 @@
 <html lang='en'><head>
   <title>Let&#39;s test | antomor</title>
   <meta charset='utf-8'>
-  <meta name="generator" content="Hugo 0.62.0" />
+  <meta name="generator" content="Hugo 0.66.0" />
   <meta name = 'viewport' content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'>
   <meta http-equiv = 'X-UA-Compatible' content = 'IE=edge'>
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-112054652-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'UA-112054652-1');
-</script>
   
 <meta property = 'og:locale' content = 'en_US' />
 <meta property="og:type" content="article">
@@ -60,7 +53,7 @@
 <link rel='manifest' href='https://antomor.com/images/icons/site.webmanifest'>
 
   <link rel='canonical' href='https://antomor.com/blog/lets-test/'>
-  <link rel = 'stylesheet' href = 'https://antomor.com/css/styles.51fd84ce4ec10432a867371baab54f7262f86223e74818f4d972b2d241d6dca13fe451b58c504a620bb761bb03bc8ebb7a4fdfe78829ccb3acebfb519e264b61.css' integrity = 'sha512-Uf2Ezk7BBDKoZzcbqrVPcmL4YiPnSBj02XKy0kHW3KE/5FG1jFBKYgu3YbsDvI67ek/f54gpzLOs6/tRniZLYQ=='>
+  <link rel = 'stylesheet' href = 'https://antomor.com/css/styles.a4fd8d7f63d2a45764433c2563d9a6b9bc32295d43b0ca3a6a3babba97c888b1c330913c39e1c79d7e8c2e45137e602a15d91fe55253e260d4a3d19a8fc190a7.css' integrity = 'sha512-pP2Nf2PSpFdkQzwlY9mmubwyKV1DsMo6ajurupfIiLHDMJE8OeHHnX6MLkUTfmAqFdkf5VJT4mDUo9Gaj8GQpw=='>
 </head>
 
   <body><div class = 'nav-drop'>
@@ -92,10 +85,10 @@
 </blockquote>
 <p>So any techniques that could be useful to identify a bug should be used, taking into account the resources available and the type of system to be implemented.</p>
 <hr>
-<p>I am going to focus to the developer point of view: what a developer can do (related to software testing) to improve the quality of the code? The first word that comes to mind is <strong>TDD</strong>. Of course, as already said, this isn't the only way to implement software testing, and it is far from me saying that it is enough, but surely it is a good starting point. I strongly believe that <em>TDD</em>/<em>BDD</em> are very supportive techniques that could help writing more robust and stable software.
-The problem is mine: I haven't ever applied it from scratch so far, so I decided to fill this defect from now on.</p>
-<p>Although I have been programming since about 5 years, I think to have very few practical experience about <em>software testing</em>. Please, don't misjudge me about that. In past I wrote some test, but usually working in an already set up environment, by writing small tests regarding the functionality I was adding to the system. Here I am speaking about establishing a test-oriented development process.</p>
-<p>I won't consider any language specific framework, but I am going to define only some of the main keywords.I am going to dive deep in details of some specific framework (hurrah, practice!) in some specific article, but not here.</p>
+<p>I am going to focus to the developer point of view: what a developer can do (related to software testing) to improve the quality of the code? The first word that comes to mind is <strong>TDD</strong>. Of course, as already said, this isn&rsquo;t the only way to implement software testing, and it is far from me saying that it is enough, but surely it is a good starting point. I strongly believe that <em>TDD</em>/<em>BDD</em> are very supportive techniques that could help writing more robust and stable software.
+The problem is mine: I haven&rsquo;t ever applied it from scratch so far, so I decided to fill this defect from now on.</p>
+<p>Although I have been programming since about 5 years, I think to have very few practical experience about <em>software testing</em>. Please, don&rsquo;t misjudge me about that. In past I wrote some test, but usually working in an already set up environment, by writing small tests regarding the functionality I was adding to the system. Here I am speaking about establishing a test-oriented development process.</p>
+<p>I won&rsquo;t consider any language specific framework, but I am going to define only some of the main keywords.I am going to dive deep in details of some specific framework (hurrah, practice!) in some specific article, but not here.</p>
 <h2 id="keywords">Keywords</h2>
 <h3 id="unit-test">Unit test</h3>
 <p>Unit test refers to a single unit of code. What actually is a unit? According with the paradigm used, a unit code can be a function or a class in case of object-oriented programming. The important thing is that, unit testing should not be performed by considering the success case only; on the contrary the unit test should take into account especially the corner case, in a <a href="https://en.wikipedia.org/wiki/Defensive_programming">defensive programming</a> manner. Why? Because as a developer, you will try the normal workflow dozens, hundreds or maybe thousands of times.</p>

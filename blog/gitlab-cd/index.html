@@ -2,16 +2,9 @@
 <html lang='en'><head>
   <title>S p a deployment with git lab | antomor</title>
   <meta charset='utf-8'>
-  <meta name="generator" content="Hugo 0.62.0" />
+  <meta name="generator" content="Hugo 0.66.0" />
   <meta name = 'viewport' content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'>
   <meta http-equiv = 'X-UA-Compatible' content = 'IE=edge'>
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-112054652-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'UA-112054652-1');
-</script>
   
 <meta property = 'og:locale' content = 'en_US' />
 <meta property="og:type" content="article">
@@ -60,7 +53,7 @@
 <link rel='manifest' href='https://antomor.com/images/icons/site.webmanifest'>
 
   <link rel='canonical' href='https://antomor.com/blog/gitlab-cd/'>
-  <link rel = 'stylesheet' href = 'https://antomor.com/css/styles.51fd84ce4ec10432a867371baab54f7262f86223e74818f4d972b2d241d6dca13fe451b58c504a620bb761bb03bc8ebb7a4fdfe78829ccb3acebfb519e264b61.css' integrity = 'sha512-Uf2Ezk7BBDKoZzcbqrVPcmL4YiPnSBj02XKy0kHW3KE/5FG1jFBKYgu3YbsDvI67ek/f54gpzLOs6/tRniZLYQ=='>
+  <link rel = 'stylesheet' href = 'https://antomor.com/css/styles.a4fd8d7f63d2a45764433c2563d9a6b9bc32295d43b0ca3a6a3babba97c888b1c330913c39e1c79d7e8c2e45137e602a15d91fe55253e260d4a3d19a8fc190a7.css' integrity = 'sha512-pP2Nf2PSpFdkQzwlY9mmubwyKV1DsMo6ajurupfIiLHDMJE8OeHHnX6MLkUTfmAqFdkf5VJT4mDUo9Gaj8GQpw=='>
 </head>
 
   <body><div class = 'nav-drop'>
@@ -87,7 +80,7 @@
 <div class = 'post'>
   <article class='post_content'><p>In the last projects, I started using <a href="https://about.gitlab.com/">GitLab</a>, not only as git repository server, but also as DevOps platform. So here I am going to describe a very simple architecture to deploy a single page application using <a href="https://www.docker.com/">Docker</a> and <a href="https://docs.docker.com/compose/">docker-compose</a>, <a href="https://www.nginx.com/">nginx</a>.
 In this specific project I used also <a href="https://docs.microsoft.com/en-us/dotnet/core/">dotnet-core</a> for the back-end API and <a href="https://vuejs.org/">VueJS</a> as front-end framework, but it is language-agnostic, meaning that you can replace whatever back-end or front-end you prefer.</p>
-<p>First of all, following the separation of concerns, let's consider each part on its own. I have created 3 repositories:</p>
+<p>First of all, following the separation of concerns, let&rsquo;s consider each part on its own. I have created 3 repositories:</p>
 <ol>
 <li>Front-end</li>
 <li>Back-end</li>
@@ -102,7 +95,7 @@ In this specific project I used also <a href="https://docs.microsoft.com/en-us/d
 </ol>
 </blockquote>
 <h2 id="front-end-static-files-generation">Front-end static files generation</h2>
-<p>I have used the <a href="https://vuejs.org/">VueJS</a> and the related <a href="https://cli.vuejs.org/">vue-cli</a> tools to generate the static files, but it doesn't really matter in the whole application; the only important thing is to generate static files.</p>
+<p>I have used the <a href="https://vuejs.org/">VueJS</a> and the related <a href="https://cli.vuejs.org/">vue-cli</a> tools to generate the static files, but it doesn&rsquo;t really matter in the whole application; the only important thing is to generate static files.</p>
 <p>In our case the <code>gitlab-ci.yml</code> file will look like:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">build site:
   image: node:latest
@@ -125,7 +118,7 @@ npm run build
 <li>It stores the artifacts created in the <code>dist</code> directory.</li>
 </ol>
 <h2 id="back-end-api-build">Back-end API build</h2>
-<p>Since that we make use of <a href="https://docs.microsoft.com/en-us/dotnet/core/">dotnet-core</a>, we need to build the project, so this step could be unnecessary if you choose some language that doesn't require to be compiled (e.g. NodeJs, Python, etc&hellip;).</p>
+<p>Since that we make use of <a href="https://docs.microsoft.com/en-us/dotnet/core/">dotnet-core</a>, we need to build the project, so this step could be unnecessary if you choose some language that doesn&rsquo;t require to be compiled (e.g. NodeJs, Python, etc&hellip;).</p>
 <p>Our <code>gitlab-ci.yml</code></p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">build:
   image: microsoft/dotnet:sdk
@@ -148,7 +141,7 @@ npm run build
 <li>It stores the artifacts created in the <code>out</code> directory.</li>
 </ol>
 <blockquote>
-<p><em>So at the moment, we have 2 projects that produces their own artifacts. It's time to let them talk!</em></p>
+<p><em>So at the moment, we have 2 projects that produces their own artifacts. It&rsquo;s time to let them talk!</em></p>
 </blockquote>
 <h2 id="deploy-project">Deploy project</h2>
 <h3 id="project-structure">Project structure</h3>
@@ -236,7 +229,7 @@ http {
 </ul>
 </blockquote>
 <p><strong>We are assuming this project is deployed by an agent running on a machine with <a href="https://docs.docker.com/compose/">docker-compose</a> installed.</strong></p>
-<p>Let's have a look at <code>gitlab-ci.yml</code>.</p>
+<p>Let&rsquo;s have a look at <code>gitlab-ci.yml</code>.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">deploy:
   stage: deploy
   only:
@@ -260,7 +253,7 @@ http {
   - unzip api.zip
   - cp -R out/* api/
   - docker-compose up --build -d
-</code></pre></div><p>So let's dive deeper in the script commands:</p>
+</code></pre></div><p>So let&rsquo;s dive deeper in the script commands:</p>
 <ol>
 <li>Retrieve the front-end artifacts by using the gitlab API (for non-enterprise users)</li>
 </ol>
@@ -276,7 +269,7 @@ http {
 <h2 id="conclusion">Conclusion</h2>
 <p>I have tried to describe only the steps necessary to deploy a single-page application using docker and GitLab, without considering the initial steps of repositories creation and GitLab runner setup.</p>
 <p>While the setup of the <em>GitLab runner</em> used to deploy the application is required, the front-end and back-end builds make use of the <em>shared runners</em> available in GitLab.</p>
-<p>For further details, please don't hesitate to get in touch!</p>
+<p>For further details, please don&rsquo;t hesitate to get in touch!</p>
 
     <div class = 'post_extra'><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
   <svg>

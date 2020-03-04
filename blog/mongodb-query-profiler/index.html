@@ -2,16 +2,9 @@
 <html lang='en'><head>
   <title>Mongodb query profiler | antomor</title>
   <meta charset='utf-8'>
-  <meta name="generator" content="Hugo 0.62.0" />
+  <meta name="generator" content="Hugo 0.66.0" />
   <meta name = 'viewport' content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'>
   <meta http-equiv = 'X-UA-Compatible' content = 'IE=edge'>
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-112054652-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'UA-112054652-1');
-</script>
   
 <meta property = 'og:locale' content = 'en_US' />
 <meta property="og:type" content="article">
@@ -60,7 +53,7 @@
 <link rel='manifest' href='https://antomor.com/images/icons/site.webmanifest'>
 
   <link rel='canonical' href='https://antomor.com/blog/mongodb-query-profiler/'>
-  <link rel = 'stylesheet' href = 'https://antomor.com/css/styles.51fd84ce4ec10432a867371baab54f7262f86223e74818f4d972b2d241d6dca13fe451b58c504a620bb761bb03bc8ebb7a4fdfe78829ccb3acebfb519e264b61.css' integrity = 'sha512-Uf2Ezk7BBDKoZzcbqrVPcmL4YiPnSBj02XKy0kHW3KE/5FG1jFBKYgu3YbsDvI67ek/f54gpzLOs6/tRniZLYQ=='>
+  <link rel = 'stylesheet' href = 'https://antomor.com/css/styles.a4fd8d7f63d2a45764433c2563d9a6b9bc32295d43b0ca3a6a3babba97c888b1c330913c39e1c79d7e8c2e45137e602a15d91fe55253e260d4a3d19a8fc190a7.css' integrity = 'sha512-pP2Nf2PSpFdkQzwlY9mmubwyKV1DsMo6ajurupfIiLHDMJE8OeHHnX6MLkUTfmAqFdkf5VJT4mDUo9Gaj8GQpw=='>
 </head>
 
   <body><div class = 'nav-drop'>
@@ -88,14 +81,14 @@
   <article class='post_content'><p>Some months ago, I was creating a web page to show some aggregated data, but I soon noticed the API used to retrieve the data was very slow. After investigating on the possible issue, we discovered the bottleneck: the database. The solution was to re-structure the data to make it consumable from a web page.</p>
 <p>Although I had used sometimes the SQLServer profiler, I had no experience about MongoDB profiler, so here below the steps involved to analyse a MongoDB query.</p>
 <blockquote>
-<p>It doesn't apply to our case, but in many situations performance problems are related to missing or wrongly implemented <a href="https://docs.mongodb.com/manual/indexes/">MongoDB Indexes</a>.</p>
+<p>It doesn&rsquo;t apply to our case, but in many situations performance problems are related to missing or wrongly implemented <a href="https://docs.mongodb.com/manual/indexes/">MongoDB Indexes</a>.</p>
 </blockquote>
 <h2 id="enable-mongodb-profiler">Enable MongoDB profiler</h2>
-<p>By default, MongoDB doesn't profile any query. It is possible to set the profiling level executing:</p>
+<p>By default, MongoDB doesn&rsquo;t profile any query. It is possible to set the profiling level executing:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Javascript" data-lang="Javascript"><span style="color:#a6e22e">db</span>.<span style="color:#a6e22e">setProfilingLevel</span>(<span style="color:#f92672">&lt;</span><span style="color:#a6e22e">profile_level</span><span style="color:#f92672">&gt;</span>)
 </code></pre></div><p>where <code>profile_level</code> can be:</p>
 <ul>
-<li><code>0</code> - the profiler is off, so it doesn't collect any data.</li>
+<li><code>0</code> - the profiler is off, so it doesn&rsquo;t collect any data.</li>
 <li><code>1</code> - the profiler collects data only if the operation takes more than <code>slowms</code> (a configurable threshold).</li>
 <li><code>2</code> - the profiler collects data for all operations.</li>
 </ul>
@@ -104,7 +97,7 @@
 </blockquote>
 <h2 id="retrieve-last-query-profile">Retrieve last query profile</h2>
 <p>Once profiling is enabled, it is possible to retrieve last query <strong>profiled</strong> (meaning that the query must be executed after setting the profiling level) with the command:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Javascript" data-lang="Javascript"><span style="color:#a6e22e">db</span>.<span style="color:#a6e22e">system</span>.<span style="color:#a6e22e">profile</span>.<span style="color:#a6e22e">find</span>().<span style="color:#a6e22e">limit</span>(<span style="color:#ae81ff">1</span>).<span style="color:#a6e22e">sort</span>({<span style="color:#a6e22e">ts</span><span style="color:#f92672">:</span><span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>}).<span style="color:#a6e22e">pretty</span>()
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Javascript" data-lang="Javascript"><span style="color:#a6e22e">db</span>.<span style="color:#a6e22e">system</span>.<span style="color:#a6e22e">profile</span>.<span style="color:#a6e22e">find</span>().<span style="color:#a6e22e">limit</span>(<span style="color:#ae81ff">1</span>).<span style="color:#a6e22e">sort</span>({<span style="color:#a6e22e">ts</span><span style="color:#f92672">:-</span><span style="color:#ae81ff">1</span>}).<span style="color:#a6e22e">pretty</span>()
 </code></pre></div><h2 id="explain">Explain</h2>
 <p>The <a href="https://docs.mongodb.com/manual/reference/command/explain/#dbcmd.explain">explain command</a> comes in handy, since that it provides information on many common operations such as <code>aggregate</code>, <code>count</code>, <code>distinct</code>, <code>find</code>, <code>findAndModify</code>, <code>delete</code> and <code>update</code>. Nevertheless a method with the same name, is available on <code>collection</code> and <code>cursor</code> also.</p>
 <p>So if we want to analyse the information associated with an <code>aggregate</code> operation we can execute:</p>
