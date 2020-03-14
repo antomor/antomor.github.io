@@ -13,6 +13,16 @@
     
     
     <item>
+      <title>Git: Move Files Retaining History</title>
+      <link>https://antomor.com/blog/git-move-file-with-history/</link>
+      <pubDate>Sat, 14 Mar 2020 12:28:03 +0100</pubDate>
+      
+      <guid>https://antomor.com/blog/git-move-file-with-history/</guid>
+      <description>Sometimes ago we need to create a new product, that shares many functionalities with the existing one. The first idea was to extract some of the code in a library, to be then imported and used independently in the two projects.
+After creating the repository for the library, the first action I would have done was copying the files from one repo to another. Well, it works like a charm, it’s fast and it doesn’t require any particular expertise, a normal drag and drop operation.</description>
+    </item>
+    
+    <item>
       <title>Mongodb Query Profiler</title>
       <link>https://antomor.com/blog/mongodb-query-profiler/</link>
       <pubDate>Sat, 28 Dec 2019 18:06:38 +0100</pubDate>

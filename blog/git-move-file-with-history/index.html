@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang='en'><head>
+  <title>Git move files retaining history | antomor</title>
+  <meta charset='utf-8'>
+  <meta name="generator" content="Hugo 0.66.0" />
+  <meta name = 'viewport' content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'>
+  <meta http-equiv = 'X-UA-Compatible' content = 'IE=edge'>
+  
+<meta property = 'og:locale' content = 'en_US' />
+<meta property="og:type" content="article">
+<meta property = 'og:title' content = 'Git: Move Files Retaining History' />
+<meta name="description" content="How to move files among git repository retaining the history">
+<meta property = 'og:description' content = 'How to move files among git repository retaining the history'>
+<meta property = 'og:url' content = 'https://antomor.com/blog/git-move-file-with-history/' />
+<meta property = 'og:image' content = 'https://antomor.com/images/git-move.jpg'/>
+<meta name = 'twitter:card' content = 'summary_large_image' />
+<meta name = 'twitter:creator' content = 'https://twitter.com/antomor'>
+<meta name = 'twitter:title' content = 'Git: Move Files Retaining History' />
+<meta property = 'twitter:description'  content = 'How to move files among git repository retaining the history'/>
+<meta name = 'twitter:image' content = 'https://antomor.com/images/git-move.jpg' />
+  <script type = "application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "BlogPosting",
+      "mainEntityOfPage":"https:\/\/antomor.com\/blog\/git-move-file-with-history\/",
+      "name": "antomor",
+      "headline": "Git: Move Files Retaining History",
+      "description": "How to move files among git repository retaining the history",
+      "url": "https:\/\/antomor.com\/blog\/git-move-file-with-history\/",
+      "datePublished": "2020-03-14T12:28:03+01:00",
+      "dateModified": "2020-03-14T12:28:03+01:00",
+      "author": {
+        "@type": "Person",
+        "name": ""
+      },
+      "image":{
+        "@type":"ImageObject",
+        "url": "https:\/\/antomor.com\/images\/git-move.jpg"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "logo": {
+          "@type":"ImageObject",
+          "url": "images\/%!s(\x3cnil\x3e)"
+        },
+        "name": "antomor"
+      }
+    }
+  </script>
+<link rel='apple-touch-icon' sizes='180x180' href='https://antomor.com/images/icons/apple-touch-icon.png'>
+<link rel='icon' type='image/png' sizes='32x32' href='https://antomor.com/images/icons/favicon-32x32.png'>
+<link rel='icon' type='image/png' sizes='16x16' href='https://antomor.com/images/icons/favicon-16x16.png'>
+<link rel='manifest' href='https://antomor.com/images/icons/site.webmanifest'>
+
+  <link rel='canonical' href='https://antomor.com/blog/git-move-file-with-history/'>
+  <link rel = 'stylesheet' href = 'https://antomor.com/css/styles.a4fd8d7f63d2a45764433c2563d9a6b9bc32295d43b0ca3a6a3babba97c888b1c330913c39e1c79d7e8c2e45137e602a15d91fe55253e260d4a3d19a8fc190a7.css' integrity = 'sha512-pP2Nf2PSpFdkQzwlY9mmubwyKV1DsMo6ajurupfIiLHDMJE8OeHHnX6MLkUTfmAqFdkf5VJT4mDUo9Gaj8GQpw=='>
+</head>
+
+  <body><div class = 'nav-drop'>
+  <div class = 'nav-body'>
+      <a href = 'https://antomor.com/about/' class = 'nav_item'>About</a>
+      <a href = 'https://antomor.com/' class = 'nav_item'>Blog</a>
+      <a href = 'https://antomor.com/tags' class = 'nav_item'>Tag</a>
+    <div class = 'nav-close'></div>
+  </div>
+</div><header class = 'nav' >
+  <nav class = 'nav-menu'>
+    <a href='https://antomor.com/' class = 'nav-brand nav_item'>antomor</a>
+    <div class = 'nav_bar-wrap'>
+      <div class = 'nav_bar'></div>
+    </div>
+  </nav>
+</header>
+
+
+    <main>
+<section class = 'post_header' style = 'background-image:url(https://antomor.com/images/git-move.jpg);'>
+  <h1 class='post_title'>Git: Move Files Retaining History</h1>
+</section>
+<div class = 'post'>
+  <article class='post_content'><p>Sometimes ago we need to create a new product, that shares many functionalities with the existing one. The first idea was to extract some of the code in a library, to be then imported and used independently in the two projects.</p>
+<p>After creating the repository for the library, the first action I would have done was copying the files from one repo to another. Well, it works like a charm, it’s fast and it doesn’t require any particular expertise, a normal drag and drop operation. What’s best? It could be a very effective approach, but &hellip;</p>
+<p>During a PR review, I learnt there was a cleaver way to perform such operation and I wasn’t even aware of such possibility before:</p>
+<blockquote>
+<p>Moving files from one git repository to another retaining the history.</p>
+</blockquote>
+<h2 id="moving-a-single-directory">Moving a single directory</h2>
+<p>From the source repository:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">git clone &lt;src_repository&gt; &lt;src_repository&gt;_clone
+<span style="color:#75715e"># clone the src repository in new folder</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">cd &lt;src_repository&gt;_clone
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">git remote rm origin
+<span style="color:#75715e"># remove the origin to avoid disasters in case of error</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">git filter-branch --subdirectory-filter &lt;directory&gt; -- --all
+<span style="color:#75715e"># the magic, rewrite the git history</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">mkdir &lt;directory&gt;
+mv * &lt;directory&gt;
+<span style="color:#75715e"># create the directory and move everything inside</span>
+</code></pre></div><p>In the destination repository:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">git remote add &lt;src_repository&gt; &lt;git repository A directory&gt;
+<span style="color:#75715e"># clone clone the repository, if not previously done</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">git pull repo-A master --allow-unrelated-histories
+<span style="color:#75715e"># Import the src repository code into the dst repository</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">git mv &lt;directory_1&gt; &lt;desired_position&gt;
+<span style="color:#75715e"># Optionally, move the just imported files, into the desired position in the new repository</span>
+</code></pre></div><h2 id="moving-code-file-by-file">Moving code file-by-file</h2>
+<p>The operations required to move many files at once are conceptually the same.
+The extraction of the files to be moved will be performed by means of the following script (from Tom Hacohen blog article):</p>
+<script type="application/javascript" src="https://gist.github.com/antomor/ac3c0626bb3aa8ab8689449ad6fc4be3.js?file=git-move.sh"></script>
+
+<p>After changing the script to include the files to be imported, it must be executed just before the <code>git filter-branch ...</code> command; this will create a single folder into the repository. So, to recap:</p>
+<p>Download the script, and change it according with the files to be copied.</p>
+<p>From the source repository:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">git clone &lt;src_repository&gt; &lt;src_repository&gt;_clone
+<span style="color:#75715e"># clone the src repository in new folder</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">cd &lt;src_repository&gt;_clone
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">git remote rm origin
+<span style="color:#75715e"># remove the origin to avoid disasters in case of error</span>
+</code></pre></div><blockquote>
+<p><strong>Execute the script previously modified here, so assuming the script has been saved in the parent folder:</strong></p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">bash <span style="color:#66d9ef">$(</span>pwd<span style="color:#66d9ef">)</span>/../git-move.sh
+</code></pre></div><p>At this point, the repository contains only the folder and the files specified in the script.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">git filter-branch --subdirectory-filter &lt;directory&gt; -- --all
+<span style="color:#75715e"># the magic, rewrite the git history</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">mkdir &lt;directory&gt;
+mv * &lt;directory&gt;
+<span style="color:#75715e"># create the directory and move everything inside</span>
+</code></pre></div><p>In the destination repository:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">git remote add &lt;src_repository&gt; &lt;git repository A directory&gt;
+<span style="color:#75715e"># clone clone the repository, if not previously done</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">git pull repo-A master --allow-unrelated-histories
+<span style="color:#75715e"># Import the src repository code into the dst repository</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">git mv &lt;directory_1&gt; &lt;desired_position&gt;
+<span style="color:#75715e"># Optionally, move the just imported files, into the desired position in the new repository</span>
+</code></pre></div><h2 id="conclusions">Conclusions</h2>
+<p>That easy? Yep. Despite the many commands to be run, the advantage of maintaining the history is priceless, especially when we need to investigate some issue, file history could be very useful.</p>
+<blockquote>
+<p><strong>Tip:</strong> The process could seem counterintuitive, so I suggest to give it a try with some test repository. After the first time, everything will be much clearer.</p>
+</blockquote>
+<h3 id="resources">Resources</h3>
+<ul>
+<li><a href="https://medium.com/@ayushya/move-directory-from-one-repository-to-another-preserving-git-history-d210fa049d4b">A useful guide from @ayushya on Medium</a></li>
+<li><a href="https://stosb.com/blog/retaining-history-when-moving-files-across-repositories-in-git/">Tom Hacohen explains how to git move single files</a></li>
+</ul>
+
+    <div class = 'post_extra'><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
+  <svg>
+    <use xlink:href="#copy"></use>
+  </svg>  
+</div>
+
+    </div>
+  <div class = 'author'>
+    <a href = 'https://antomor.com' target = "antomor's profile" class = 'author_pic'>
+      <img src = 'https://antomor.com/images/antomor.jpg' alt = ''>
+    </a>
+    <div class = 'author_meta'>
+      <a class = 'author_name' href = 'https://antomor.com' title = "map[Count:antomor]&#39;s profile">antomor</a>
+      <p class = 'pale author_bio solo'>Software Engineer passionate about Security and Privacy. Nature and animals lover. Sports (running, yoga, boxing) practitioner.</p>
+    </div>
+  </div>
+
+  </article>
+  <aside><h3>More from antomor</h3>
+<ul class='posts aside'>
+<li class = 'post_item'>
+  <a class = 'post_card' href='/blog/mongodb-query-profiler/' title = 'Mongodb Query Profiler' style = 'background-image: url(https://antomor.com/images/mongodb-profiling.jpg);'>
+  </a>
+  <div class = 'excerpt'>
+    <div class = 'excerpt_meta'>
+      <a href = 'https://antomor.com/tags/dev' class = 'post_tag'>dev
+      </a><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
+  <svg>
+    <use xlink:href="#copy"></use>
+  </svg>  
+</div>
+
+    </div>
+    <h3 class = 'post_link'>
+      <a href='/blog/mongodb-query-profiler/'>Mongodb Query Profiler</a>
+    </h3>
+    <p class = 'pale'>Some months ago, I was creating a web page to show some aggregated data, but I soon …</p>
+  </div>
+</li>
+
+<li class = 'post_item'>
+  <a class = 'post_card' href='/blog/security-headers-on-static-websites/' title = 'Security Headers on Static Websites' style = 'background-image: url(https://antomor.com/images/sec-headers/key.jpg);'>
+  </a>
+  <div class = 'excerpt'>
+    <div class = 'excerpt_meta'>
+      <a href = 'https://antomor.com/tags/sec' class = 'post_tag'>sec
+      </a><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
+  <svg>
+    <use xlink:href="#copy"></use>
+  </svg>  
+</div>
+
+    </div>
+    <h3 class = 'post_link'>
+      <a href='/blog/security-headers-on-static-websites/'>Security Headers on Static Websites</a>
+    </h3>
+    <p class = 'pale'>When I started this blog, I evaluated many options:
+ blogging platform vs static-generated …</p>
+  </div>
+</li>
+
+</ul>
+
+  </aside>
+</div>
+<script src = 'https://antomor.com/js/autosize.min.js'></script>
+<script src = 'https://antomor.com/js/timeago.js'></script>
+    </main><svg width="0" height="0" class="hidden">
+  <symbol viewBox="0 0 699.428 699.428" xmlns="http://www.w3.org/2000/svg" id="copy">
+    <path d="M502.714 0H240.428C194.178 0 153 42.425 153 87.429l-25.267.59c-46.228 0-84.019 41.834-84.019 86.838V612c0 45.004 41.179 87.428 87.429 87.428H459c46.249 0 87.428-42.424 87.428-87.428h21.857c46.25 0 87.429-42.424 87.429-87.428v-349.19zM459 655.715H131.143c-22.95 0-43.714-21.441-43.714-43.715V174.857c0-22.272 18.688-42.993 41.638-42.993l23.933-.721v393.429C153 569.576 194.178 612 240.428 612h262.286c0 22.273-20.765 43.715-43.714 43.715zm153-131.143c0 22.271-20.765 43.713-43.715 43.713H240.428c-22.95 0-43.714-21.441-43.714-43.713V87.429c0-22.272 20.764-43.714 43.714-43.714H459c-.351 50.337 0 87.975 0 87.975 0 45.419 40.872 86.882 87.428 86.882H612zm-65.572-349.715c-23.277 0-43.714-42.293-43.714-64.981V44.348L612 174.857zm-43.714 131.537H306c-12.065 0-21.857 9.77-21.857 21.835s9.792 21.835 21.857 21.835h196.714c12.065 0 21.857-9.771 21.857-21.835 0-12.065-9.792-21.835-21.857-21.835zm0 109.176H306c-12.065 0-21.857 9.77-21.857 21.834 0 12.066 9.792 21.836 21.857 21.836h196.714c12.065 0 21.857-9.77 21.857-21.836 0-12.064-9.792-21.834-21.857-21.834z"
+    ></path>
+  </symbol>
+  <symbol viewBox="0 0 60.015 60.015" xmlns="http://www.w3.org/2000/svg" id="reply">
+    <path d="M42.007 0h-24c-9.925 0-18 8.075-18 18v14c0 9.59 7.538 17.452 17 17.973v8.344a1.694 1.694 0 0 0 1.699 1.698c.44 0 .873-.173 1.198-.498l1.876-1.876C26.708 52.713 33.259 50 40.227 50h1.78c9.925 0 18-8.075 18-18V18c0-9.925-8.075-18-18-18zm16 32c0 8.822-7.178 16-16 16h-1.78c-7.502 0-14.556 2.921-19.86 8.226l-1.359 1.359V44a1 1 0 1 0-2 0v3.949c-8.356-.52-15-7.465-15-15.949V18c0-8.822 7.178-16 16-16h24c8.822 0 16 7.178 16 16v14z"></path>
+  </symbol>
+</svg>
+<footer class = 'footer'>
+  <div class = 'footer_inner wrap pale'>
+    <p>&copy; <span class = 'year'></span> antomor</p>
+    
+  </div>
+</footer>
+
+<script src = 'https://antomor.com/js/index.js'></script>
+
+  </body>
+</html>

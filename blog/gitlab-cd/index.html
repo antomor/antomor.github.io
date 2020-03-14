@@ -97,14 +97,14 @@ In this specific project I used also <a href="https://docs.microsoft.com/en-us/d
 <h2 id="front-end-static-files-generation">Front-end static files generation</h2>
 <p>I have used the <a href="https://vuejs.org/">VueJS</a> and the related <a href="https://cli.vuejs.org/">vue-cli</a> tools to generate the static files, but it doesn&rsquo;t really matter in the whole application; the only important thing is to generate static files.</p>
 <p>In our case the <code>gitlab-ci.yml</code> file will look like:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">build site:
-  image: node:latest
-  stage: build
-  script:
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="color:#66d9ef">build site</span>:
+  <span style="color:#66d9ef">image</span>: node:latest
+  <span style="color:#66d9ef">stage</span>: build
+  <span style="color:#66d9ef">script</span>:
     - npm ci
     - npm run build
-  artifacts:
-    paths:
+  <span style="color:#66d9ef">artifacts</span>:
+    <span style="color:#66d9ef">paths</span>:
       - dist
 </code></pre></div><p>Description:</p>
 <ol>
@@ -112,22 +112,22 @@ In this specific project I used also <a href="https://docs.microsoft.com/en-us/d
 <li>It executes the script in a docker image <code>node:latest</code></li>
 <li>It creates a <code>build</code> stage to execute the following script in the image aforementioned:</li>
 </ol>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">npm ci
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">npm ci
 npm run build
 </code></pre></div><ol start="4">
 <li>It stores the artifacts created in the <code>dist</code> directory.</li>
 </ol>
 <h2 id="back-end-api-build">Back-end API build</h2>
 <p>Since that we make use of <a href="https://docs.microsoft.com/en-us/dotnet/core/">dotnet-core</a>, we need to build the project, so this step could be unnecessary if you choose some language that doesn&rsquo;t require to be compiled (e.g. NodeJs, Python, etc&hellip;).</p>
-<p>Our <code>gitlab-ci.yml</code></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">build:
-  image: microsoft/dotnet:sdk
-  stage: build
-  script:
+<p>Our <code>gitlab-ci.yml</code>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="color:#66d9ef">build</span>:
+  <span style="color:#66d9ef">image</span>: microsoft/dotnet:sdk
+  <span style="color:#66d9ef">stage</span>: build
+  <span style="color:#66d9ef">script</span>:
     - dotnet restore
     - dotnet publish -c Release -o out
-  artifacts:
-    paths:
+  <span style="color:#66d9ef">artifacts</span>:
+    <span style="color:#66d9ef">paths</span>:
       - out
 </code></pre></div><p>As you can see, the file looks very similar to the previous one.</p>
 <ol>
@@ -135,8 +135,8 @@ npm run build
 <li>It uses a different docker image to build the project <code>microsoft/dotnet:sdk</code></li>
 <li>It creates a <code>build</code> stage to execute the following scripts:</li>
 </ol>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">- dotnet restore  # it restores the dependencies
-- dotnet publish -c Release -o out # it builds the project
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml">- dotnet restore  <span style="color:#75715e"># it restores the dependencies</span>
+- dotnet publish -c Release -o out <span style="color:#75715e"># it builds the project</span>
 </code></pre></div><ol start="4">
 <li>It stores the artifacts created in the <code>out</code> directory.</li>
 </ol>
@@ -145,10 +145,10 @@ npm run build
 </blockquote>
 <h2 id="deploy-project">Deploy project</h2>
 <h3 id="project-structure">Project structure</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">|__ api
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">|__ api
 |     |__ Dockerfile
 |__ nginx
-|     |__ nginx.conf    
+|     |__ nginx.conf
 |__ gitlab-ci.yml
 |__ docker-compose.yml
 </code></pre></div><p>This project performs the following steps:</p>
@@ -157,67 +157,67 @@ npm run build
 <li>Retrieve files generated from the back-end</li>
 <li>Set-up <em>nginx</em></li>
 </ol>
-<p><strong>docker-compose.yml</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">version: &#39;3&#39;
-services:
-  nginx: 
-    image: nginx:latest
-    volumes:
+<p><strong>docker-compose.yml:</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="color:#66d9ef">version</span>: <span style="color:#e6db74">&#39;3&#39;</span>
+<span style="color:#66d9ef">services</span>:
+  <span style="color:#66d9ef">nginx</span>: 
+    <span style="color:#66d9ef">image</span>: nginx:latest
+    <span style="color:#66d9ef">volumes</span>:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf
       - ./dist/:/var/www/html/
-    ports:
-      - 80:80
-      - 443:443
-    networks:
+    <span style="color:#66d9ef">ports</span>:
+      - <span style="color:#ae81ff">80</span>:<span style="color:#ae81ff">80</span>
+      - <span style="color:#ae81ff">443</span>:<span style="color:#ae81ff">443</span>
+    <span style="color:#66d9ef">networks</span>:
       - proxy-net
 
-  web:
-    build: ./api/
-    networks:
+  <span style="color:#66d9ef">web</span>:
+    <span style="color:#66d9ef">build</span>: ./api/
+    <span style="color:#66d9ef">networks</span>:
       - proxy-net
-networks:
-  proxy-net:
+<span style="color:#66d9ef">networks</span>:
+  <span style="color:#66d9ef">proxy-net</span>:
 </code></pre></div><p>From the docker-compose file it is important to notice two folders:</p>
 <ul>
 <li><code>./dist/</code> used to map the static file folders the nginx container</li>
 <li><code>./api/</code> the folder containing the <code>Dockerfile</code> used to setup the dotnet APIs container.</li>
 </ul>
 <p>For completeness here the content of the <code>Dockerfile</code> used to run the dotnet APIs.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"># Build runtime image
-FROM microsoft/dotnet:aspnetcore-runtime
-WORKDIR /app
-COPY . .
-ENTRYPOINT [&#34;dotnet&#34;, &#34;Api.dll&#34;] 
-</code></pre></div><p>Where <em>Api</em> is the name of the dotnet API project.</p>
-<p><strong>nginx.conf</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">events {
-    worker_connections  1024;
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dockerfile" data-lang="dockerfile"><span style="color:#75715e"># Build runtime image</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">FROM</span><span style="color:#e6db74"> microsoft/dotnet:aspnetcore-runtime</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">WORKDIR</span><span style="color:#e6db74"> /app</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">COPY</span> . .<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ENTRYPOINT</span> [<span style="color:#e6db74">&#34;dotnet&#34;</span>, <span style="color:#e6db74">&#34;Api.dll&#34;</span>]<span style="color:#960050;background-color:#1e0010">
+</span></code></pre></div><p>Where <em>Api</em> is the name of the dotnet API project.</p>
+<p><strong>nginx.conf:</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-nginx" data-lang="nginx"><span style="color:#66d9ef">events</span> {
+    <span style="color:#f92672">worker_connections</span>  <span style="color:#ae81ff">1024</span>;
 }
 
-http {
+<span style="color:#66d9ef">http</span> {
 
-    include       /etc/nginx/mime.types;
-    default_type  application/octet-stream;
-    server {
-        server_name &lt;name_of_the_server&gt;; # TODO: to be replaced
-
-        location / {
-            # This would be the directory where your SPA static files are stored at
-            root /var/www/html/;
-            try_files $uri $uri/ /index.html;
+    <span style="color:#f92672">include</span>       <span style="color:#e6db74">/etc/nginx/mime.types</span>;
+    <span style="color:#f92672">default_type</span>  <span style="color:#e6db74">application/octet-stream</span>;
+    <span style="color:#f92672">server</span> {
+        <span style="color:#f92672">server_name</span> <span style="color:#e6db74">&lt;name_of_the_server&gt;</span>; <span style="color:#75715e"># TODO: to be replaced
+</span><span style="color:#75715e"></span>
+        <span style="color:#f92672">location</span> <span style="color:#e6db74">/</span> {
+            <span style="color:#75715e"># This would be the directory where your SPA static files are stored at
+</span><span style="color:#75715e"></span>            <span style="color:#f92672">root</span> <span style="color:#e6db74">/var/www/html/</span>;
+            <span style="color:#f92672">try_files</span> $uri $uri/ <span style="color:#e6db74">/index.html</span>;
         }
 
-        location /api {
-            proxy_set_header X-Real-IP $remote_addr;
-            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-            proxy_set_header X-Forwarded-Proto $scheme;
-            proxy_pass http://web;
-            proxy_ssl_session_reuse off;
-            proxy_set_header Host $http_host;
-            proxy_cache_bypass $http_upgrade;
-            proxy_redirect off;
-            proxy_set_header   Upgrade $http_upgrade;
-            proxy_set_header   Connection keep-alive;
+        <span style="color:#f92672">location</span> <span style="color:#e6db74">/api</span> {
+            <span style="color:#f92672">proxy_set_header</span> <span style="color:#e6db74">X-Real-IP</span> $remote_addr;
+            <span style="color:#f92672">proxy_set_header</span> <span style="color:#e6db74">X-Forwarded-For</span> $proxy_add_x_forwarded_for;
+            <span style="color:#f92672">proxy_set_header</span> <span style="color:#e6db74">X-Forwarded-Proto</span> $scheme;
+            <span style="color:#f92672">proxy_pass</span> <span style="color:#e6db74">http://web</span>;
+            <span style="color:#f92672">proxy_ssl_session_reuse</span> <span style="color:#66d9ef">off</span>;
+            <span style="color:#f92672">proxy_set_header</span> <span style="color:#e6db74">Host</span> $http_host;
+            <span style="color:#f92672">proxy_cache_bypass</span> $http_upgrade;
+            <span style="color:#f92672">proxy_redirect</span> <span style="color:#66d9ef">off</span>;
+            <span style="color:#f92672">proxy_set_header</span>   <span style="color:#e6db74">Upgrade</span> $http_upgrade;
+            <span style="color:#f92672">proxy_set_header</span>   <span style="color:#e6db74">Connection</span> <span style="color:#e6db74">keep-alive</span>;
         }
     }
 }
@@ -230,15 +230,15 @@ http {
 </blockquote>
 <p><strong>We are assuming this project is deployed by an agent running on a machine with <a href="https://docs.docker.com/compose/">docker-compose</a> installed.</strong></p>
 <p>Let&rsquo;s have a look at <code>gitlab-ci.yml</code>.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">deploy:
-  stage: deploy
-  only:
-    - &#34;master&#34;
-  environment: production
-  script:
-    - &#34;curl -L --header \&#34;PRIVATE-TOKEN: $TOKEN\&#34; \&#34;https://gitlab.com/api/v4/projects/14072554/jobs/artifacts/master/download?job=build+site\&#34; --output artifacts.zip&#34;
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="color:#66d9ef">deploy</span>:
+  <span style="color:#66d9ef">stage</span>: deploy
+  <span style="color:#66d9ef">only</span>:
+    - <span style="color:#e6db74">&#34;master&#34;</span>
+  <span style="color:#66d9ef">environment</span>: production
+  <span style="color:#66d9ef">script</span>:
+    - <span style="color:#e6db74">&#34;curl -L --header \&#34;PRIVATE-TOKEN: $TOKEN\&#34; \&#34;https://gitlab.com/api/v4/projects/14072554/jobs/artifacts/master/download?job=build+site\&#34; --output artifacts.zip&#34;</span>
     - unzip artifacts.zip
-    - &#34;curl -L --header \&#34;PRIVATE-TOKEN: $TOKEN\&#34; \&#34;https://gitlab.com/api/v4/projects/10080203/jobs/artifacts/master/download?job=build\&#34; --output api.zip&#34;
+    - <span style="color:#e6db74">&#34;curl -L --header \&#34;PRIVATE-TOKEN: $TOKEN\&#34; \&#34;https://gitlab.com/api/v4/projects/10080203/jobs/artifacts/master/download?job=build\&#34; --output api.zip&#34;</span>
     - unzip api.zip
     - cp -R out/* api/
     - sh down.sh
@@ -247,9 +247,9 @@ http {
 <li>It creates a <code>deploy</code> job</li>
 <li>It creates a <code>deploy</code> stage with the following script section:</li>
 </ol>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">  - &#34;curl -L --header \&#34;PRIVATE-TOKEN: $TOKEN\&#34; \&#34;https://gitlab.com/api/v4/projects/14072554/jobs/artifacts/master/download?job=build+site\&#34; --output artifacts.zip&#34;
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">  - <span style="color:#e6db74">&#34;curl -L --header \&#34;PRIVATE-TOKEN: </span>$TOKEN<span style="color:#e6db74">\&#34; \&#34;https://gitlab.com/api/v4/projects/14072554/jobs/artifacts/master/download?job=build+site\&#34; --output artifacts.zip&#34;</span>
   - unzip artifacts.zip
-  - &#34;curl -L --header \&#34;PRIVATE-TOKEN: $TOKEN\&#34; \&#34;https://gitlab.com/api/v4/projects/10080203/jobs/artifacts/master/download?job=build\&#34; --output api.zip&#34;
+  - <span style="color:#e6db74">&#34;curl -L --header \&#34;PRIVATE-TOKEN: </span>$TOKEN<span style="color:#e6db74">\&#34; \&#34;https://gitlab.com/api/v4/projects/10080203/jobs/artifacts/master/download?job=build\&#34; --output api.zip&#34;</span>
   - unzip api.zip
   - cp -R out/* api/
   - docker-compose up --build -d
@@ -292,6 +292,26 @@ http {
   <aside><h3>More from antomor</h3>
 <ul class='posts aside'>
 <li class = 'post_item'>
+  <a class = 'post_card' href='/blog/git-move-file-with-history/' title = 'Git: Move Files Retaining History' style = 'background-image: url(https://antomor.com/images/git-move.jpg);'>
+  </a>
+  <div class = 'excerpt'>
+    <div class = 'excerpt_meta'>
+      <a href = 'https://antomor.com/tags/blog' class = 'post_tag'>blog
+      </a><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
+  <svg>
+    <use xlink:href="#copy"></use>
+  </svg>  
+</div>
+
+    </div>
+    <h3 class = 'post_link'>
+      <a href='/blog/git-move-file-with-history/'>Git: Move Files Retaining History</a>
+    </h3>
+    <p class = 'pale'>Sometimes ago we need to create a new product, that shares many functionalities with the …</p>
+  </div>
+</li>
+
+<li class = 'post_item'>
   <a class = 'post_card' href='/blog/mongodb-query-profiler/' title = 'Mongodb Query Profiler' style = 'background-image: url(https://antomor.com/images/mongodb-profiling.jpg);'>
   </a>
   <div class = 'excerpt'>
@@ -308,26 +328,6 @@ http {
       <a href='/blog/mongodb-query-profiler/'>Mongodb Query Profiler</a>
     </h3>
     <p class = 'pale'>Some months ago, I was creating a web page to show some aggregated data, but I soon …</p>
-  </div>
-</li>
-
-<li class = 'post_item'>
-  <a class = 'post_card' href='/blog/browser-extension/' title = 'Browser Extension Development' style = 'background-image: url(https://antomor.com/images/web-ext.jpg);'>
-  </a>
-  <div class = 'excerpt'>
-    <div class = 'excerpt_meta'>
-      <a href = 'https://antomor.com/tags/dev' class = 'post_tag'>dev
-      </a><div class = 'copy' data-share = 'Share Story' data-copied = 'Link Copied'>
-  <svg>
-    <use xlink:href="#copy"></use>
-  </svg>  
-</div>
-
-    </div>
-    <h3 class = 'post_link'>
-      <a href='/blog/browser-extension/'>Browser Extension Development</a>
-    </h3>
-    <p class = 'pale'>Web extensions or browser plugins is a way to improve browser functionalities. The …</p>
   </div>
 </li>
 
