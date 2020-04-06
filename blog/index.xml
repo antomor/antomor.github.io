@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on antomor</title>
+    <title>Blog on Antomor</title>
     <link>https://antomor.com/blog/</link>
-    <description>Recent content in Posts on antomor</description>
+    <description>Recent content in Blog on Antomor</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <copyright>&amp;copy; 2019 Antonio Morrone</copyright>
-    <lastBuildDate>Sun, 02 Jul 2017 08:14:51 +0700</lastBuildDate>
+    <language>en</language>
+    <lastBuildDate>Sat, 14 Mar 2020 12:28:03 +0100</lastBuildDate>
     
 	<atom:link href="https://antomor.com/blog/index.xml" rel="self" type="application/rss+xml" />
     

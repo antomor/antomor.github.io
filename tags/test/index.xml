@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>test on antomor</title>
+    <title>test on Antomor</title>
     <link>https://antomor.com/tags/test/</link>
-    <description>Recent content in test on antomor</description>
+    <description>Recent content in test on Antomor</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <copyright>&amp;copy; 2019 Antonio Morrone</copyright>
+    <language>en</language>
     <lastBuildDate>Sun, 25 Aug 2019 10:48:40 +0200</lastBuildDate>
     
 	<atom:link href="https://antomor.com/tags/test/index.xml" rel="self" type="application/rss+xml" />

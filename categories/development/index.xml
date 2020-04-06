@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Development on Antomor</title>
+    <link>https://antomor.com/categories/development/</link>
+    <description>Recent content in Development on Antomor</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 14 Mar 2020 12:28:03 +0100</lastBuildDate>
+    
+	<atom:link href="https://antomor.com/categories/development/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Git: Move Files Retaining History</title>
+      <link>https://antomor.com/blog/git-move-file-with-history/</link>
+      <pubDate>Sat, 14 Mar 2020 12:28:03 +0100</pubDate>
+      
+      <guid>https://antomor.com/blog/git-move-file-with-history/</guid>
+      <description>Sometimes ago we need to create a new product, that shares many functionalities with the existing one. The first idea was to extract some of the code in a library, to be then imported and used independently in the two projects.
+After creating the repository for the library, the first action I would have done was copying the files from one repo to another. Well, it works like a charm, it’s fast and it doesn’t require any particular expertise, a normal drag and drop operation.</description>
+    </item>
+    
+    <item>
+      <title>Mongodb Query Profiler</title>
+      <link>https://antomor.com/blog/mongodb-query-profiler/</link>
+      <pubDate>Sat, 28 Dec 2019 18:06:38 +0100</pubDate>
+      
+      <guid>https://antomor.com/blog/mongodb-query-profiler/</guid>
+      <description>Some months ago, I was creating a web page to show some aggregated data, but I soon noticed the API used to retrieve the data was very slow. After investigating on the possible issue, we discovered the bottleneck: the database. The solution was to re-structure the data to make it consumable from a web page.
+Although I had used sometimes the SQLServer profiler, I had no experience about MongoDB profiler, so here below the steps involved to analyse a MongoDB query.</description>
+    </item>
+    
+    <item>
+      <title>SPA deployment with GitLab</title>
+      <link>https://antomor.com/blog/gitlab-cd/</link>
+      <pubDate>Fri, 13 Dec 2019 10:53:54 +0100</pubDate>
+      
+      <guid>https://antomor.com/blog/gitlab-cd/</guid>
+      <description>In the last projects, I started using GitLab, not only as git repository server, but also as DevOps platform. So here I am going to describe a very simple architecture to deploy a single page application using Docker and docker-compose, nginx. In this specific project I used also dotnet-core for the back-end API and VueJS as front-end framework, but it is language-agnostic, meaning that you can replace whatever back-end or front-end you prefer.</description>
+    </item>
+    
+    <item>
+      <title>Browser Extension Development</title>
+      <link>https://antomor.com/blog/browser-extension/</link>
+      <pubDate>Wed, 20 Nov 2019 17:15:01 +0100</pubDate>
+      
+      <guid>https://antomor.com/blog/browser-extension/</guid>
+      <description>Web extensions or browser plugins is a way to improve browser functionalities. The following examples summarize the different scopes they can have.
+ no-script - to block script served from not-trusted domains ublock Origin - it is &amp;ldquo;a wide-spectrum blocker&amp;rdquo; dark-mode - it changes the appearance of web pages React Developer Tools - to inspect react-specific properties of a page that makes use of React.  Anatomy of an extension The main components of a browser extension are:</description>
+    </item>
+    
+    <item>
+      <title>Let&#39;s Test</title>
+      <link>https://antomor.com/blog/lets-test/</link>
+      <pubDate>Sun, 25 Aug 2019 10:48:40 +0200</pubDate>
+      
+      <guid>https://antomor.com/blog/lets-test/</guid>
+      <description>Preamble This article is not intended to cover the whole testing process due to its vastness. Having a glance at its Wikipedia page could give an idea of it. I am going to cover only the tip of the iceberg, but it is important to remind that bugs cannot be eliminated from the software, but in contrast, they must be discovered as soon as possible.
+ The higher is the time passed since the bug come into the system, the higher is the cost to fix it.</description>
+    </item>
+    
+  </channel>
+</rss>

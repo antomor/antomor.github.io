@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>antomor</title>
+    <title>Antomor</title>
     <link>https://antomor.com/</link>
-    <description>Recent content on antomor</description>
+    <description>Recent content on Antomor</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <copyright>&amp;copy; 2019 Antonio Morrone</copyright>
+    <language>en</language>
     <lastBuildDate>Sat, 24 Jun 2017 18:57:12 +0700</lastBuildDate>
     
 	<atom:link href="https://antomor.com/index.xml" rel="self" type="application/rss+xml" />

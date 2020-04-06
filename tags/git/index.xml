@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>git on antomor</title>
+    <title>git on Antomor</title>
     <link>https://antomor.com/tags/git/</link>
-    <description>Recent content in git on antomor</description>
+    <description>Recent content in git on Antomor</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <copyright>&amp;copy; 2019 Antonio Morrone</copyright>
+    <language>en</language>
     <lastBuildDate>Sat, 14 Mar 2020 12:28:03 +0100</lastBuildDate>
     
 	<atom:link href="https://antomor.com/tags/git/index.xml" rel="self" type="application/rss+xml" />
