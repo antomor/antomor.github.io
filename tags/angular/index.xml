@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Angular on Antomor</title>
+    <link>https://antomor.com/tags/angular/</link>
+    <description>Recent content in Angular on Antomor</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 09 Apr 2020 19:40:48 +0200</lastBuildDate>
+    
+	<atom:link href="https://antomor.com/tags/angular/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Angular and Rxjs Http Requests: Common scenarios</title>
+      <link>https://antomor.com/blog/angular-rxjs-http-requests/</link>
+      <pubDate>Thu, 09 Apr 2020 19:40:48 +0200</pubDate>
+      
+      <guid>https://antomor.com/blog/angular-rxjs-http-requests/</guid>
+      <description>Any modern web application needs soon or later to perform some http request to retrieve data. Here below I&amp;rsquo;ll describe some common scenario and how to perform such requests using RxJS.
+Single request The most common scenario, no special rxjs handling, since that Angular provides an Http service that returns an Observable.
+services.getItems().subscribe();  Is that easy? Yes. In the particular example, I assumed the http service call was inside the service.</description>
+    </item>
+    
+  </channel>
+</rss>
