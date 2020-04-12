@@ -6,10 +6,22 @@
     <description>Recent content in dev on Antomor</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 14 Mar 2020 12:28:03 +0100</lastBuildDate>
+    <lastBuildDate>Sat, 11 Apr 2020 10:51:20 +0200</lastBuildDate>
     
 	<atom:link href="https://antomor.com/tags/dev/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>CSP and CORS</title>
+      <link>https://antomor.com/blog/csp-and-cors/</link>
+      <pubDate>Sat, 11 Apr 2020 10:51:20 +0200</pubDate>
+      
+      <guid>https://antomor.com/blog/csp-and-cors/</guid>
+      <description>What is CSP CSP stands for Content Security Policy and it is a security mechanism that helps to protect or mitigate some common attacks such as XSS (Cross-site scripting). It can be set by means of Content-Security-Policy HTTP header or using HTML meta tag.
+HTTP header:
+Content-Security-Policy: policy HTML Meta tag:
+&amp;lt;meta http-equiv=&amp;#34;Content-Security-Policy&amp;#34; content=&amp;#34;policy&amp;#34;&amp;gt; A policy describes a set of directives composed by the area in which the rule is applied and the rule itself.</description>
+    </item>
     
     <item>
       <title>Git: Move Files Retaining History</title>
@@ -29,6 +41,16 @@ After creating the repository for the library, the first action I would have don
       <guid>https://antomor.com/blog/mongodb-query-profiler/</guid>
       <description>Some months ago, I was creating a web page to show some aggregated data, but I soon noticed the API used to retrieve the data was very slow. After investigating on the possible issue, we discovered the bottleneck: the database. The solution was to re-structure the data to make it consumable from a web page.
 Although I had used sometimes the SQLServer profiler, I had no experience about MongoDB profiler, so here below the steps involved to analyse a MongoDB query.</description>
+    </item>
+    
+    <item>
+      <title>Security Headers on Static Websites</title>
+      <link>https://antomor.com/blog/security-headers-on-static-websites/</link>
+      <pubDate>Thu, 26 Dec 2019 10:56:23 +0100</pubDate>
+      
+      <guid>https://antomor.com/blog/security-headers-on-static-websites/</guid>
+      <description>When I started this blog, I evaluated many options:
+ blogging platform vs static-generated website self-hosted vs hosted solutions costs and many more.  I ended up trying to build something very simple, consisting in a static website hosted on GitHub Pages. With this solution, I have been able to cut the cost on any host solution, since that, being a dev, I am quite comfortable in writing in a text editor.</description>
     </item>
     
     <item>

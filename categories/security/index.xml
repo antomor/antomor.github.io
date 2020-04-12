@@ -6,10 +6,22 @@
     <description>Recent content in Security on Antomor</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 26 Dec 2019 10:56:23 +0100</lastBuildDate>
+    <lastBuildDate>Sat, 11 Apr 2020 10:51:20 +0200</lastBuildDate>
     
 	<atom:link href="https://antomor.com/categories/security/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>CSP and CORS</title>
+      <link>https://antomor.com/blog/csp-and-cors/</link>
+      <pubDate>Sat, 11 Apr 2020 10:51:20 +0200</pubDate>
+      
+      <guid>https://antomor.com/blog/csp-and-cors/</guid>
+      <description>What is CSP CSP stands for Content Security Policy and it is a security mechanism that helps to protect or mitigate some common attacks such as XSS (Cross-site scripting). It can be set by means of Content-Security-Policy HTTP header or using HTML meta tag.
+HTTP header:
+Content-Security-Policy: policy HTML Meta tag:
+&amp;lt;meta http-equiv=&amp;#34;Content-Security-Policy&amp;#34; content=&amp;#34;policy&amp;#34;&amp;gt; A policy describes a set of directives composed by the area in which the rule is applied and the rule itself.</description>
+    </item>
     
     <item>
       <title>Security Headers on Static Websites</title>
