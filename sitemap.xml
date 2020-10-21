@@ -1,51 +1,51 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-	
-	<sitemap>
-	   	<loc>https://antomor.com/en/sitemap.xml</loc>
-		
-	   	<lastmod>2020-04-11T10:51:42+02:00</lastmod>
-		
-	</sitemap>
-	
-	<sitemap>
-	   	<loc>https://antomor.com/fr/sitemap.xml</loc>
-		
-	</sitemap>
-	
-	<sitemap>
-	   	<loc>https://antomor.com/pl/sitemap.xml</loc>
-		
-	</sitemap>
-	
-	<sitemap>
-	   	<loc>https://antomor.com/pt/sitemap.xml</loc>
-		
-	</sitemap>
-	
-	<sitemap>
-	   	<loc>https://antomor.com/de/sitemap.xml</loc>
-		
-	</sitemap>
-	
-	<sitemap>
-	   	<loc>https://antomor.com/es/sitemap.xml</loc>
-		
-	</sitemap>
-	
-	<sitemap>
-	   	<loc>https://antomor.com/zh-cn/sitemap.xml</loc>
-		
-	</sitemap>
-	
-	<sitemap>
-	   	<loc>https://antomor.com/zh-tw/sitemap.xml</loc>
-		
-	</sitemap>
-	
-	<sitemap>
-	   	<loc>https://antomor.com/ja/sitemap.xml</loc>
-		
-	</sitemap>
-	
+  
+  <sitemap>
+    <loc>https://antomor.com/en/sitemap.xml</loc>
+    
+      <lastmod>2020-04-11T10:51:42+02:00</lastmod>
+    
+  </sitemap>
+  
+  <sitemap>
+    <loc>https://antomor.com/fr/sitemap.xml</loc>
+    
+  </sitemap>
+  
+  <sitemap>
+    <loc>https://antomor.com/pl/sitemap.xml</loc>
+    
+  </sitemap>
+  
+  <sitemap>
+    <loc>https://antomor.com/pt/sitemap.xml</loc>
+    
+  </sitemap>
+  
+  <sitemap>
+    <loc>https://antomor.com/de/sitemap.xml</loc>
+    
+  </sitemap>
+  
+  <sitemap>
+    <loc>https://antomor.com/es/sitemap.xml</loc>
+    
+  </sitemap>
+  
+  <sitemap>
+    <loc>https://antomor.com/zh-cn/sitemap.xml</loc>
+    
+  </sitemap>
+  
+  <sitemap>
+    <loc>https://antomor.com/zh-tw/sitemap.xml</loc>
+    
+  </sitemap>
+  
+  <sitemap>
+    <loc>https://antomor.com/ja/sitemap.xml</loc>
+    
+  </sitemap>
+  
 </sitemapindex>

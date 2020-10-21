@@ -6,8 +6,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<meta name="generator" content="Hugo 0.66.0" /><meta itemprop="name" content="Antomor">
-<meta itemprop="description" content=""><meta property="og:title" content="Antomor" />
+<meta name="generator" content="Hugo 0.76.5" /><meta itemprop="name" content="Antomor">
+<meta itemprop="description" content="">
+<meta property="og:title" content="Antomor" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://antomor.com/ja/" />
@@ -16,71 +17,98 @@
 <meta name="twitter:title" content="Antomor"/>
 <meta name="twitter:description" content=""/>
 <meta name="twitter:site" content="@antomor_dev"/>
-<link rel="stylesheet" href="/css/bundle.min.890f30b8b199a3d390afae9cf9f69d7a932a6a7d91fc3a3b9e5b9d780c334432.css" integrity="sha256-iQ8wuLGZo9OQr66c&#43;fadepMqan2R/Do7nludeAwzRDI=">
-        <link rel="stylesheet" href="/css/add-on.css">
+
+            <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/styles/github.min.css">
+          <link rel="stylesheet" href="/css/bundle.min.307f33cd8015e5bab28d6ebda9b400f8d3059bc248b4e60adf4d23469fab5a2b.css" integrity="sha256-MH8zzYAV5bqyjW69qbQA&#43;NMFm8JItOYK300jRp&#43;rWis="><link rel="stylesheet" href="/css/add-on.css">
 </head>
 
   <body>
     
+
+  <div id="theme-message" style="background-color:#3c3b3b;color:#f4f4f4;margin:auto auto;padding:.25em 2em;width:75%;">
+    <p style="text-align:center;">This message, related to the development of the theme, only displays on the
+      <code>localhost</code> homepage to notify you of any important theme changes.</p>
+      <hr>
+      <h5 style="color:#f4f4f4;text-align:center;"><i class="fas fa-exclamation-triangle"></i>Version 2.0.0 - July 20, 2020<i class="fas fa-exclamation-triangle"></i></h5>
+    <p>Below are the following changes that <em>could</em> be breaking changes for your site. For more details on any change, please refer to <a href="https://github.com/pacollins/hugo-future-imperfect-slim/pull/154">PR #154</a>.</p>
+<p>The major breaking change is:</p>
+<ol>
+<li>Users that have front matter that utilize <code>images</code> (backwards compatibility for <code>featured</code> and associated parameters still remains) <em>will</em> need to adjust from <code>[images]=&quot;SRC&quot;</code> to the new format.</li>
+</ol>
+<pre><code>[[images]]
+    src = &quot;&quot; // Link to image
+    alt = &quot;&quot; // Alt text for image
+    stretch = // Optional: See screenshots for referenced values and outcomes
+</code></pre><p>If you utilize any of the following, there <em>might</em> be a breaking:</p>
+<ol>
+<li>User custom templates <em>may</em> require adjustment.</li>
+<li>User custom i18n languages, or custom templates referencing i18n translations <em>may</em> require adjustment.</li>
+<li>User custom template for comments <em>will</em> require adjustment <em>if</em> it uses the theme&rsquo;s CSS and/or JS.</li>
+<li>User custom CSS <em>may</em> need to adjust due to a variety of class name changes and specificity changes.</li>
+</ol>
+<p>While I realize this is inconvenient, I hope that it is worth it to you in the long run. Thanks for using the theme, and feel free to submit issues as needed.</p>
+
+    <div style="text-align:center;">
+      <button onclick="removeBox()" class="button" style="color:#f4f4f4;margin-bottom:1em;">Close Notification Until Next Update</button>
+    </div>
+    <script>
+      if (window.location.href.indexOf('localhost:') < 1 || window.localStorage.getItem('HFIS-version') == '2.0.0') {
+        document.getElementsByTagName("body")[0].removeChild(document.getElementById("theme-message"));
+      }
+      function removeBox() {
+        window.localStorage.setItem('HFIS-version', '2.0.0');
+        document.getElementsByTagName("body")[0].removeChild(document.getElementById("theme-message"));
+      }
+    </script>
+  </div>
 <header id="site-header">
   <nav id="site-nav">
     <h1 class="nav-title">
-      <a href="/ja/">
+      <a href="/ja/" class="nav">
         
           Antomor
         
       </a>
     </h1>
-    <menu id="site-nav-menu" class="flyout-menu">
+    <menu id="site-nav-menu" class="flyout-menu menu">
       
         
           
-          
-            <a href="/ja/" class="link"><i class='fa fa-home'></i> Home</a>
-          
-        
-      
-        
-          
-          
-            <a href="/ja/about/" class="link"><i class='far fa-id-card'></i> About</a>
-          
+          <a href="/ja/" class="nav link"><i class='fa fa-home'></i> Home</a>
         
       
         
           
-          
-            <a href="/ja/blog/" class="link"><i class='far fa-newspaper'></i> Blog</a>
-          
+          <a href="/ja/about/" class="nav link"><i class='far fa-id-card'></i> About</a>
         
       
         
           
-          
-            <a href="/ja/categories/" class="link"><i class='fas fa-sitemap'></i> Categories</a>
-          
+          <a href="/ja/blog/" class="nav link"><i class='far fa-newspaper'></i> Blog</a>
         
       
         
           
-          
-            <a href="/ja/contact/" class="link"><i class='far fa-envelope'></i> Contact</a>
-          
+          <a href="/ja/categories/" class="nav link"><i class='fas fa-sitemap'></i> Categories</a>
         
       
-      <a href="#share-menu" class="share-toggle"><i class="fas fa-share-alt">&nbsp;</i>Share</a>
+        
+          
+          <a href="/ja/contact/" class="nav link"><i class='far fa-envelope'></i> Contact</a>
+        
       
-
+      <a href="#share-menu" class="nav link share-toggle"><i class="fas fa-share-alt">&nbsp;</i>Share</a>
+      <a href="#search-input" class="nav link search-toggle"><i class="fas fa-search">&nbsp;</i>Search</a>
     </menu>
+    <a href="#search-input" class="nav search-toggle"><i class="fas fa-search fa-2x">&nbsp;</i></a>
+    <a href="#share-menu" class="nav share-toggle"><i class="fas fa-share-alt fa-2x">&nbsp;</i></a>
     
-
-    <a href="#share-menu" class="share-toggle"><i class="fas fa-share-alt fa-2x">&nbsp;</i></a>
-    
-    <a href="#site-nav" class="nav-toggle"><i class="fas fa-bars fa-2x"></i></a>
+    <a href="#site-nav" class="nav nav-toggle"><i class="fas fa-bars fa-2x"></i></a>
   </nav>
+  <menu id="search" class="menu"><input id="search-input" class="search-input menu"></input><div id="search-results" class="search-results menu"></div></menu>
   
   
-    <menu id="share-menu" class="flyout-menu">
+    <menu id="share-menu" class="flyout-menu menu">
       <h1>Share Post</h1>
       
 
@@ -89,20 +117,20 @@
 
   
     
-    <a href="//twitter.com/share?text=Antomor&amp;url=https%3a%2f%2fantomor.com%2fja%2f" target="_blank" rel="noopener" class="share-btn twitter">
-        <i class="fab fa-twitter"></i><p>&nbsp;Twitter</p>
+    <a href="//twitter.com/share?text=Antomor&amp;url=https%3a%2f%2fantomor.com%2fja%2f" target="_blank" rel="noopener" class="nav share-btn twitter">
+        <p>Twitter</p>
       </a>
   
 
   
-        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fantomor.com%2fja%2f&amp;title=Antomor" target="_blank" rel="noopener" class="share-btn linkedin">
-            <i class="fab fa-linkedin"></i><p>&nbsp;LinkedIn</p>
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fantomor.com%2fja%2f&amp;title=Antomor" target="_blank" rel="noopener" class="nav share-btn linkedin">
+            <p>LinkedIn</p>
           </a>
   
 
   
-        <a href="mailto:?subject=%e3%81%93%e3%81%ae%e6%8a%95%e7%a8%bf%e3%82%92%e3%83%81%e3%82%a7%e3%83%83%e3%82%af%e3%81%99%e3%82%8b %7b%20%20%20%20%20%20%20%20map%5b%5d%7d&amp;body=https%3a%2f%2fantomor.com%2fja%2f" target="_blank" class="share-btn email" data-proofer-ignore>
-          <i class="fas fa-envelope"></i><p>&nbsp;Email</p>
+        <a href="mailto:?subject=%e3%81%93%e3%81%ae%e6%8a%95%e7%a8%bf%e3%82%92%e3%83%81%e3%82%a7%e3%83%83%e3%82%af%e3%81%99%e3%82%8b %7b%20%20%20%20%20%20%20%20map%5b%5d%7d&amp;body=https%3a%2f%2fantomor.com%2fja%2f" target="_blank" class="nav share-btn email" data-proofer-ignore>
+          <p>Email</p>
         </a>
   
 
@@ -113,7 +141,7 @@
 
     <div id="wrapper">
       <section id="site-intro" >
-  <a href="/ja/"><img src="/images/antomor.jpg" class="hexagon" width="150" alt="Antomor logo" /></a>
+  <a href="/ja/"><img src="https://antomor.com/images/antomor.jpg" class="hexagon" width="150" alt="Antomor logo" /></a>
   <header>
     <h1>Antomor's personal website.</h1>
   </header>
@@ -166,6 +194,7 @@
 
 
 
+
 <li><a href="mailto:dev@antomor.com" target="_blank" title="Email" class="far fa-envelope"></a></li>
 
       </ul>
@@ -175,16 +204,12 @@
 
       <main id="site-main">
         
-        
-        
-<div class="pagination">
-  
-    <a href="#" class="disabled button big previous"><i class="fas fa-angle-left"></i></a>
   
   
-    <a href="#" class="disabled button big next"><i class="fas fa-angle-right"></i></a>
-  
-</div>
+  <div class="pagination">
+    
+    
+  </div>
 
       </main>
       <section id="site-sidebar">
@@ -200,13 +225,12 @@
 
   
     
+
       <section id="categories">
         <header>
           <h1><a href="/ja/categories">カテゴリー</a></h1>
         </header>
         <ul>
-          
-            
           
           
           </li>
@@ -218,11 +242,11 @@
   
     <section id="mini-bio">
       <header>
-        <h1>About</h1>
+        <h1>約</h1>
       </header>
       <p>Software Engineer passionate about Security and Privacy. Nature and animals lover. Sports (running, yoga, boxing) practitioner.</p>
       <footer>
-        <a href="/ja/about" class="button">もっと知る</a>
+        <a href="/ja/about" class="button">もっと詳しく知る</a>
       </footer>
     </section>
   
@@ -274,24 +298,22 @@
 
 
 
+
 <li><a href="mailto:dev@antomor.com" target="_blank" title="Email" class="far fa-envelope"></a></li>
 
       </ul>
   
   <p class="copyright">
-    
-      &copy; 1
-      
-        Antomor
-      
-    . <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.66.0' target='_blank' rel='noopener'>Hugo</a>
+    © 1 Antomor
+      <br>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.76.5' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
 
-      <script src="/js/highlight.pack.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script><script src="/js/bundle.min.e0c399b948d3cf5c3a5e3badb94023d0b064a19ac39fd8cd79fb9f57fa4d1091.js" integrity="sha256-4MOZuUjTz1w6XjutuUAj0LBkoZrDn9jNefufV/pNEJE="></script>
+      <script src="/js/highlight.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/languages/html.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/languages/css.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/languages/js.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/languages/toml.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script><script src="/js/bundle.min.b4e669fa428a81defb8af0916c53f39cd1b8e0bbab22199c06f0b182907ba474.js" integrity="sha256-tOZp&#43;kKKgd77ivCRbFPznNG44LurIhmcBvCxgpB7pHQ="></script>
     <script src="/js/add-on.js"></script>
     </div>
   </body>

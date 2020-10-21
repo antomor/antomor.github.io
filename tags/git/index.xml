@@ -6,11 +6,7 @@
     <description>Recent content in git on Antomor</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 14 Mar 2020 12:28:03 +0100</lastBuildDate>
-    
-	<atom:link href="https://antomor.com/tags/git/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sat, 14 Mar 2020 12:28:03 +0100</lastBuildDate><atom:link href="https://antomor.com/tags/git/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Git: Move Files Retaining History</title>
       <link>https://antomor.com/blog/git-move-file-with-history/</link>

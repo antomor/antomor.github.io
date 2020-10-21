@@ -5,10 +5,6 @@
     <link>https://antomor.com/es/tags/</link>
     <description>Recent content in Tags on Antomor</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>es</language>
-    
-	<atom:link href="https://antomor.com/es/tags/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <language>es</language><atom:link href="https://antomor.com/es/tags/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

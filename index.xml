@@ -6,11 +6,7 @@
     <description>Recent content on Antomor</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 24 Jun 2017 18:57:12 +0700</lastBuildDate>
-    
-	<atom:link href="https://antomor.com/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sat, 11 Apr 2020 10:51:42 +0200</lastBuildDate><atom:link href="https://antomor.com/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Angular Dynamic Content</title>
       <link>https://antomor.com/blog/angular-dynamic-content/</link>
@@ -121,7 +117,7 @@ Although I had used sometimes the SQLServer profiler, I had no experience about 
       <description>Hi, I am Antonio, a polyglot Software Engineer.
 I like facing code challenges, learning programming languages and exploring software security, which is my secret hobby.
 I try to practice any kind of sport, from running to swimming, from soccer to yoga, and I have recently added boxe to the list :-).
-I would like to spend most of my time traveling, exploring the world. Next places I plan to visit: Norway, Spain, Portugal, Greece.</description>
+I would like to spend most of my time travelling, exploring the world. Next places I plan to visit: Norway, Spain, Portugal, Greece.</description>
     </item>
     
   </channel>

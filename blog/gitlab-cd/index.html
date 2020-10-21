@@ -6,95 +6,85 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<meta name="generator" content="Hugo 0.66.0" /><meta itemprop="name" content="SPA deployment with GitLab">
+<meta name="generator" content="Hugo 0.76.5" /><meta itemprop="name" content="SPA deployment with GitLab">
 <meta itemprop="description" content="A small example of a single-page application deployment using GitLab, docker and nginx">
-<meta itemprop="datePublished" content="2019-12-13T10:53:54&#43;01:00" />
-<meta itemprop="dateModified" content="2019-12-13T10:53:54&#43;01:00" />
-<meta itemprop="wordCount" content="906">
-<meta itemprop="image" content="https://antomor.com/images/gitlab-unsplash.jpg">
+<meta itemprop="datePublished" content="2019-12-13T10:53:54+01:00" />
+<meta itemprop="dateModified" content="2019-12-13T10:53:54+01:00" />
+<meta itemprop="wordCount" content="907">
+<meta itemprop="image" content="">
 
 
 
-<meta itemprop="keywords" content="dev,ci/cd,gitlab,nginx,docker," /><meta property="og:title" content="SPA deployment with GitLab" />
+<meta itemprop="keywords" content="dev,ci/cd,gitlab,nginx,docker," />
+<meta property="og:title" content="SPA deployment with GitLab" />
 <meta property="og:description" content="A small example of a single-page application deployment using GitLab, docker and nginx" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://antomor.com/blog/gitlab-cd/" />
-<meta property="og:image" content="https://antomor.com/images/gitlab-unsplash.jpg" />
+<meta property="og:image" content="" />
 <meta property="article:published_time" content="2019-12-13T10:53:54+01:00" />
 <meta property="article:modified_time" content="2019-12-13T10:53:54+01:00" />
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://antomor.com/images/gitlab-unsplash.jpg"/>
+<meta name="twitter:image" content=""/>
 
 <meta name="twitter:title" content="SPA deployment with GitLab"/>
 <meta name="twitter:description" content="A small example of a single-page application deployment using GitLab, docker and nginx"/>
 <meta name="twitter:site" content="@antomor_dev"/>
-<link rel="stylesheet" href="/css/bundle.min.890f30b8b199a3d390afae9cf9f69d7a932a6a7d91fc3a3b9e5b9d780c334432.css" integrity="sha256-iQ8wuLGZo9OQr66c&#43;fadepMqan2R/Do7nludeAwzRDI=">
-        <link rel="stylesheet" href="/css/add-on.css">
+
+            <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/styles/github.min.css">
+          <link rel="stylesheet" href="/css/bundle.min.307f33cd8015e5bab28d6ebda9b400f8d3059bc248b4e60adf4d23469fab5a2b.css" integrity="sha256-MH8zzYAV5bqyjW69qbQA&#43;NMFm8JItOYK300jRp&#43;rWis="><link rel="stylesheet" href="/css/add-on.css">
 </head>
 
   <body>
     
+
 <header id="site-header">
   <nav id="site-nav">
     <h1 class="nav-title">
-      <a href="/">
+      <a href="/" class="nav">
         
-          
-            Blog
-          
+          Blog
         
       </a>
     </h1>
-    <menu id="site-nav-menu" class="flyout-menu">
+    <menu id="site-nav-menu" class="flyout-menu menu">
       
         
           
-          
-            <a href="/" class="link"><i class='fa fa-home'></i> Home</a>
-          
-        
-      
-        
-          
-          
-            <a href="/about/" class="link"><i class='far fa-id-card'></i> About</a>
-          
+          <a href="/" class="nav link"><i class='fa fa-home'></i> Home</a>
         
       
         
           
-          
-            <a href="/blog/" class="link"><i class='far fa-newspaper'></i> Blog</a>
-          
+          <a href="/about/" class="nav link"><i class='far fa-id-card'></i> About</a>
         
       
         
           
-          
-            <a href="/categories/" class="link"><i class='fas fa-sitemap'></i> Categories</a>
-          
+          <a href="/blog/" class="nav link"><i class='far fa-newspaper'></i> Blog</a>
         
       
         
           
-          
-            <a href="/contact/" class="link"><i class='far fa-envelope'></i> Contact</a>
-          
+          <a href="/categories/" class="nav link"><i class='fas fa-sitemap'></i> Categories</a>
         
       
-      <a href="#share-menu" class="share-toggle"><i class="fas fa-share-alt">&nbsp;</i>Share</a>
+        
+          
+          <a href="/contact/" class="nav link"><i class='far fa-envelope'></i> Contact</a>
+        
       
-
+      <a href="#share-menu" class="nav link share-toggle"><i class="fas fa-share-alt">&nbsp;</i>Share</a>
+      <a href="#search-input" class="nav link search-toggle"><i class="fas fa-search">&nbsp;</i>Search</a>
     </menu>
+    <a href="#search-input" class="nav search-toggle"><i class="fas fa-search fa-2x">&nbsp;</i></a>
+    <a href="#share-menu" class="nav share-toggle"><i class="fas fa-share-alt fa-2x">&nbsp;</i></a>
     
-
-    <a href="#share-menu" class="share-toggle"><i class="fas fa-share-alt fa-2x">&nbsp;</i></a>
-    
-    <a href="#site-nav" class="nav-toggle"><i class="fas fa-bars fa-2x"></i></a>
+    <a href="#site-nav" class="nav nav-toggle"><i class="fas fa-bars fa-2x"></i></a>
   </nav>
+  <menu id="search" class="menu"><input id="search-input" class="search-input menu"></input><div id="search-results" class="search-results menu"></div></menu>
   
   
-    <menu id="share-menu" class="flyout-menu">
+    <menu id="share-menu" class="flyout-menu menu">
       <h1>Share Post</h1>
       
 
@@ -103,20 +93,20 @@
 
   
     
-    <a href="//twitter.com/share?text=SPA%20deployment%20with%20GitLab&amp;url=https%3a%2f%2fantomor.com%2fblog%2fgitlab-cd%2f" target="_blank" rel="noopener" class="share-btn twitter">
-        <i class="fab fa-twitter"></i><p>&nbsp;Twitter</p>
+    <a href="//twitter.com/share?text=SPA%20deployment%20with%20GitLab&amp;url=https%3a%2f%2fantomor.com%2fblog%2fgitlab-cd%2f" target="_blank" rel="noopener" class="nav share-btn twitter">
+        <p>Twitter</p>
       </a>
   
 
   
-        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fantomor.com%2fblog%2fgitlab-cd%2f&amp;title=SPA%20deployment%20with%20GitLab" target="_blank" rel="noopener" class="share-btn linkedin">
-            <i class="fab fa-linkedin"></i><p>&nbsp;LinkedIn</p>
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fantomor.com%2fblog%2fgitlab-cd%2f&amp;title=SPA%20deployment%20with%20GitLab" target="_blank" rel="noopener" class="nav share-btn linkedin">
+            <p>LinkedIn</p>
           </a>
   
 
   
-        <a href="mailto:?subject=Check%20out%20this%20post%20by antomor&amp;body=https%3a%2f%2fantomor.com%2fblog%2fgitlab-cd%2f" target="_blank" class="share-btn email" data-proofer-ignore>
-          <i class="fas fa-envelope"></i><p>&nbsp;Email</p>
+        <a href="mailto:?subject=Check%20out%20this%20post%20by antomor&amp;body=https%3a%2f%2fantomor.com%2fblog%2fgitlab-cd%2f" target="_blank" class="nav share-btn email" data-proofer-ignore>
+          <p>Email</p>
         </a>
   
 
@@ -127,7 +117,7 @@
 
     <div id="wrapper">
       <section id="site-intro" >
-  <a href="/"><img src="/images/antomor.jpg" class="hexagon" width="150" alt="Antomor logo" /></a>
+  <a href="/"><img src="https://antomor.com/images/antomor.jpg" class="hexagon" width="150" alt="Antomor logo" /></a>
   <header>
     <h1>Antomor's personal website.</h1>
   </header>
@@ -178,6 +168,7 @@
 
 
 
+
 <li><a href="mailto:dev@antomor.com" target="_blank" title="Email" class="far fa-envelope"></a></li>
 
       </ul>
@@ -186,8 +177,9 @@
 </section>
 
       <main id="site-main">
-        <article class="post">
-  <header>
+        
+  <article class="post">
+    <header>
   <div class="title">
     
       <h2><a href="/blog/gitlab-cd/">SPA deployment with GitLab</a></h2>
@@ -197,53 +189,44 @@
     
   </div>
   <div class="meta">
-    <time class="published" datetime="2019-12-13 10:53:54 &#43;0100 CET">
-      December 13, 2019
-    </time>
-    <span class="author">antomor</span>
-    
-      <p>5 minutes read</p>
-    
+    <time datetime="2019-12-13 10:53:54 &#43;0100 CET">December 13, 2019</time>
+    <p>antomor</p>
+    <p>5-Minute Read</p>
   </div>
 </header>
 
-  <section id="socnet-share">
-    
+    <div id="socnet-share">
+      
 
 
 
 
   
     
-    <a href="//twitter.com/share?text=SPA%20deployment%20with%20GitLab&amp;url=https%3a%2f%2fantomor.com%2fblog%2fgitlab-cd%2f" target="_blank" rel="noopener" class="share-btn twitter">
-        <i class="fab fa-twitter"></i><p>&nbsp;Twitter</p>
+    <a href="//twitter.com/share?text=SPA%20deployment%20with%20GitLab&amp;url=https%3a%2f%2fantomor.com%2fblog%2fgitlab-cd%2f" target="_blank" rel="noopener" class="nav share-btn twitter">
+        <p>Twitter</p>
       </a>
   
 
   
-        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fantomor.com%2fblog%2fgitlab-cd%2f&amp;title=SPA%20deployment%20with%20GitLab" target="_blank" rel="noopener" class="share-btn linkedin">
-            <i class="fab fa-linkedin"></i><p>&nbsp;LinkedIn</p>
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fantomor.com%2fblog%2fgitlab-cd%2f&amp;title=SPA%20deployment%20with%20GitLab" target="_blank" rel="noopener" class="nav share-btn linkedin">
+            <p>LinkedIn</p>
           </a>
   
 
   
-        <a href="mailto:?subject=Check%20out%20this%20post%20by antomor&amp;body=https%3a%2f%2fantomor.com%2fblog%2fgitlab-cd%2f" target="_blank" class="share-btn email" data-proofer-ignore>
-          <i class="fas fa-envelope"></i><p>&nbsp;Email</p>
+        <a href="mailto:?subject=Check%20out%20this%20post%20by antomor&amp;body=https%3a%2f%2fantomor.com%2fblog%2fgitlab-cd%2f" target="_blank" class="nav share-btn email" data-proofer-ignore>
+          <p>Email</p>
         </a>
   
 
 
-  </section>
-  
-  <a href="/blog/gitlab-cd/" class="image featured">
-    
-      <img src="/images/gitlab-unsplash.jpg" alt="">
-    
+    </div>
+    <div class="content">
+      <a href="/blog/gitlab-cd/" class="image" style="--bg-image: url('https://antomor.com/images/gitlab-unsplash.jpg');">
+    <img src="https://antomor.com/images/gitlab-unsplash.jpg" alt="Gitlab logo">
   </a>
-
-
-  <div class="content">
-    <p>In the last projects, I started using <a href="https://about.gitlab.com/">GitLab</a>, not only as git repository server, but also as DevOps platform. So here I am going to describe a very simple architecture to deploy a single page application using <a href="https://www.docker.com/">Docker</a> and <a href="https://docs.docker.com/compose/">docker-compose</a>, <a href="https://www.nginx.com/">nginx</a>.
+      <p>In the last projects, I started using <a href="https://about.gitlab.com/">GitLab</a>, not only as git repository server, but also as DevOps platform. So here I am going to describe a very simple architecture to deploy a single page application using <a href="https://www.docker.com/">Docker</a> and <a href="https://docs.docker.com/compose/">docker-compose</a>, <a href="https://www.nginx.com/">nginx</a>.
 In this specific project I used also <a href="https://docs.microsoft.com/en-us/dotnet/core/">dotnet-core</a> for the back-end API and <a href="https://vuejs.org/">VueJS</a> as front-end framework, but it is language-agnostic, meaning that you can replace whatever back-end or front-end you prefer.</p>
 <p>First of all, following the separation of concerns, let&rsquo;s consider each part on its own. I have created 3 repositories:</p>
 <ol>
@@ -262,16 +245,16 @@ In this specific project I used also <a href="https://docs.microsoft.com/en-us/d
 <h2 id="front-end-static-files-generation">Front-end static files generation</h2>
 <p>I have used the <a href="https://vuejs.org/">VueJS</a> and the related <a href="https://cli.vuejs.org/">vue-cli</a> tools to generate the static files, but it doesn&rsquo;t really matter in the whole application; the only important thing is to generate static files.</p>
 <p>In our case the <code>gitlab-ci.yml</code> file will look like:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="color:#66d9ef">build site</span>:
-  <span style="color:#66d9ef">image</span>: node:latest
-  <span style="color:#66d9ef">stage</span>: build
-  <span style="color:#66d9ef">script</span>:
-    - npm ci
-    - npm run build
-  <span style="color:#66d9ef">artifacts</span>:
-    <span style="color:#66d9ef">paths</span>:
-      - dist
-</code></pre></div><p>Description:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="color:#f92672">build site</span>:
+  <span style="color:#f92672">image</span>: <span style="color:#ae81ff">node:latest</span>
+  <span style="color:#f92672">stage</span>: <span style="color:#ae81ff">build</span>
+  <span style="color:#f92672">script</span>:
+    - <span style="color:#ae81ff">npm ci</span>
+    - <span style="color:#ae81ff">npm run build</span>
+  <span style="color:#f92672">artifacts</span>:
+    <span style="color:#f92672">paths</span>:
+      - <span style="color:#ae81ff">dist</span>
+</code></pre></div><p>description =</p>
 <ol>
 <li>It creates a job named <code>build site</code></li>
 <li>It executes the script in a docker image <code>node:latest</code></li>
@@ -285,23 +268,23 @@ npm run build
 <h2 id="back-end-api-build">Back-end API build</h2>
 <p>Since that we make use of <a href="https://docs.microsoft.com/en-us/dotnet/core/">dotnet-core</a>, we need to build the project, so this step could be unnecessary if you choose some language that doesn&rsquo;t require to be compiled (e.g. NodeJs, Python, etc&hellip;).</p>
 <p>Our <code>gitlab-ci.yml</code>:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="color:#66d9ef">build</span>:
-  <span style="color:#66d9ef">image</span>: microsoft/dotnet:sdk
-  <span style="color:#66d9ef">stage</span>: build
-  <span style="color:#66d9ef">script</span>:
-    - dotnet restore
-    - dotnet publish -c Release -o out
-  <span style="color:#66d9ef">artifacts</span>:
-    <span style="color:#66d9ef">paths</span>:
-      - out
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="color:#f92672">build</span>:
+  <span style="color:#f92672">image</span>: <span style="color:#ae81ff">microsoft/dotnet:sdk</span>
+  <span style="color:#f92672">stage</span>: <span style="color:#ae81ff">build</span>
+  <span style="color:#f92672">script</span>:
+    - <span style="color:#ae81ff">dotnet restore</span>
+    - <span style="color:#ae81ff">dotnet publish -c Release -o out</span>
+  <span style="color:#f92672">artifacts</span>:
+    <span style="color:#f92672">paths</span>:
+      - <span style="color:#ae81ff">out</span>
 </code></pre></div><p>As you can see, the file looks very similar to the previous one.</p>
 <ol>
 <li>It creates a <code>build</code> job</li>
 <li>It uses a different docker image to build the project <code>microsoft/dotnet:sdk</code></li>
 <li>It creates a <code>build</code> stage to execute the following scripts:</li>
 </ol>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml">- dotnet restore  <span style="color:#75715e"># it restores the dependencies</span>
-- dotnet publish -c Release -o out <span style="color:#75715e"># it builds the project</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml">- <span style="color:#ae81ff">dotnet restore </span> <span style="color:#75715e"># it restores the dependencies</span>
+- <span style="color:#ae81ff">dotnet publish -c Release -o out</span> <span style="color:#75715e"># it builds the project</span>
 </code></pre></div><ol start="4">
 <li>It stores the artifacts created in the <code>out</code> directory.</li>
 </ol>
@@ -323,25 +306,25 @@ npm run build
 <li>Set-up <em>nginx</em></li>
 </ol>
 <p><strong>docker-compose.yml:</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="color:#66d9ef">version</span>: <span style="color:#e6db74">&#39;3&#39;</span>
-<span style="color:#66d9ef">services</span>:
-  <span style="color:#66d9ef">nginx</span>: 
-    <span style="color:#66d9ef">image</span>: nginx:latest
-    <span style="color:#66d9ef">volumes</span>:
-      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
-      - ./dist/:/var/www/html/
-    <span style="color:#66d9ef">ports</span>:
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="color:#f92672">version</span>: <span style="color:#e6db74">&#39;3&#39;</span>
+<span style="color:#f92672">services</span>:
+  <span style="color:#f92672">nginx</span>: 
+    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">nginx:latest</span>
+    <span style="color:#f92672">volumes</span>:
+      - <span style="color:#ae81ff">./nginx/nginx.conf:/etc/nginx/nginx.conf</span>
+      - <span style="color:#ae81ff">./dist/:/var/www/html/</span>
+    <span style="color:#f92672">ports</span>:
       - <span style="color:#ae81ff">80</span>:<span style="color:#ae81ff">80</span>
       - <span style="color:#ae81ff">443</span>:<span style="color:#ae81ff">443</span>
-    <span style="color:#66d9ef">networks</span>:
-      - proxy-net
+    <span style="color:#f92672">networks</span>:
+      - <span style="color:#ae81ff">proxy-net</span>
 
-  <span style="color:#66d9ef">web</span>:
-    <span style="color:#66d9ef">build</span>: ./api/
-    <span style="color:#66d9ef">networks</span>:
-      - proxy-net
-<span style="color:#66d9ef">networks</span>:
-  <span style="color:#66d9ef">proxy-net</span>:
+  <span style="color:#f92672">web</span>:
+    <span style="color:#f92672">build</span>: <span style="color:#ae81ff">./api/</span>
+    <span style="color:#f92672">networks</span>:
+      - <span style="color:#ae81ff">proxy-net</span>
+<span style="color:#f92672">networks</span>:
+  <span style="color:#f92672">proxy-net</span>:
 </code></pre></div><p>From the docker-compose file it is important to notice two folders:</p>
 <ul>
 <li><code>./dist/</code> used to map the static file folders the nginx container</li>
@@ -395,19 +378,19 @@ npm run build
 </blockquote>
 <p><strong>We are assuming this project is deployed by an agent running on a machine with <a href="https://docs.docker.com/compose/">docker-compose</a> installed.</strong></p>
 <p>Let&rsquo;s have a look at <code>gitlab-ci.yml</code>.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="color:#66d9ef">deploy</span>:
-  <span style="color:#66d9ef">stage</span>: deploy
-  <span style="color:#66d9ef">only</span>:
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="color:#f92672">deploy</span>:
+  <span style="color:#f92672">stage</span>: <span style="color:#ae81ff">deploy</span>
+  <span style="color:#f92672">only</span>:
     - <span style="color:#e6db74">&#34;master&#34;</span>
-  <span style="color:#66d9ef">environment</span>: production
-  <span style="color:#66d9ef">script</span>:
+  <span style="color:#f92672">environment</span>: <span style="color:#ae81ff">production</span>
+  <span style="color:#f92672">script</span>:
     - <span style="color:#e6db74">&#34;curl -L --header \&#34;PRIVATE-TOKEN: $TOKEN\&#34; \&#34;https://gitlab.com/api/v4/projects/14072554/jobs/artifacts/master/download?job=build+site\&#34; --output artifacts.zip&#34;</span>
-    - unzip artifacts.zip
+    - <span style="color:#ae81ff">unzip artifacts.zip</span>
     - <span style="color:#e6db74">&#34;curl -L --header \&#34;PRIVATE-TOKEN: $TOKEN\&#34; \&#34;https://gitlab.com/api/v4/projects/10080203/jobs/artifacts/master/download?job=build\&#34; --output api.zip&#34;</span>
-    - unzip api.zip
-    - cp -R out/* api/
-    - sh down.sh
-    - sh up.sh
+    - <span style="color:#ae81ff">unzip api.zip</span>
+    - <span style="color:#ae81ff">cp -R out/* api/</span>
+    - <span style="color:#ae81ff">sh down.sh</span>
+    - <span style="color:#ae81ff">sh up.sh</span>
 </code></pre></div><ol>
 <li>It creates a <code>deploy</code> job</li>
 <li>It creates a <code>deploy</code> stage with the following script section:</li>
@@ -436,54 +419,43 @@ npm run build
 <p>While the setup of the <em>GitLab runner</em> used to deploy the application is required, the front-end and back-end builds make use of the <em>shared runners</em> available in GitLab.</p>
 <p>For further details, please don&rsquo;t hesitate to get in touch!</p>
 
-  </div>
-  <footer>
-    <ul class="stats">
+    </div>
+    <footer>
+      <div class="stats">
   
-    
-    
-      <li class="categories">
-        <ul>
-          
-            
-            <li><a class="article-category-link" href="https://antomor.com/categories/development">Development</a></li>
-          
-        </ul>
-      </li>
-    
+    <ul class="categories">
+      
+        
+          <li><a class="article-terms-link" href="/categories/development/">Development</a></li>
+        
+      
+    </ul>
   
   
-    
-    
-      <li class="tags">
-        <ul>
-          
-            
-            <li><a class="article-category-link" href="https://antomor.com/tags/dev">dev</a></li>
-          
-            
-            <li><a class="article-category-link" href="https://antomor.com/tags/ci/cd">ci/cd</a></li>
-          
-            
-            <li><a class="article-category-link" href="https://antomor.com/tags/gitlab">gitlab</a></li>
-          
-            
-            <li><a class="article-category-link" href="https://antomor.com/tags/nginx">nginx</a></li>
-          
-            
-            <li><a class="article-category-link" href="https://antomor.com/tags/docker">docker</a></li>
-          
-        </ul>
-      </li>
-    
+    <ul class="tags">
+      
+        
+          <li><a class="article-terms-link" href="/tags/dev/">dev</a></li>
+        
+          <li><a class="article-terms-link" href="/tags/ci/cd/">ci/cd</a></li>
+        
+          <li><a class="article-terms-link" href="/tags/gitlab/">gitlab</a></li>
+        
+          <li><a class="article-terms-link" href="/tags/nginx/">nginx</a></li>
+        
+          <li><a class="article-terms-link" href="/tags/docker/">docker</a></li>
+        
+      
+    </ul>
   
-</ul>
+</div>
 
-  </footer>
-</article>
-
-    <article class="post">
-        <div id="disqus_thread"></div>
+    </footer>
+  </article>
+  
+    
+  <article class="post">
+    <div id="disqus_thread"></div>
 <script type="application/javascript">
     var disqus_config = function () {
     
@@ -503,117 +475,82 @@ npm run build
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-    </article>
+  </article>
 
 
 
 
-<div class="pagination">
   
-    <a href="/blog/browser-extension/" class="button"><div class="previous"><div>Browser Extension Development</div></div></a>
-  
-  
-    <a href="/blog/security-headers-on-static-websites/" class="button"><div class="next"><div>Security Headers on Static Websites</div></div></a>
-  
-</div>
-
+  <div class="pagination">
+    
+      <a href="/blog/security-headers-on-static-websites/" class="button left"><span>Security Headers on Static Websites</span></a>
+    
+    
+      <a href="/blog/browser-extension/" class="button right"><span>Browser Extension Development</span></a>
+    
+  </div>
 
       </main>
       <section id="site-sidebar">
   
     <section id="recent-posts">
       <header>
-        <h1>Recent posts</h1>
+        <h1>Recent Posts</h1>
       </header>
       
       <article class="mini-post">
-        <section>
-          
-  <a href="/blog/angular-dynamic-content/" class="image featured">
-    
-      <img src="/images/angular-dynamic-component.jpg" alt="">
-    
+          <a href="/blog/angular-dynamic-content/" class="image" style="--bg-image: url('https://antomor.com/images/angular-dynamic-component.jpg');">
+    <img src="https://antomor.com/images/angular-dynamic-component.jpg" alt="Lego parts">
   </a>
-
-
-        </section>
         <header>
-          <h1><a href="/blog/angular-dynamic-content/">Angular Dynamic Content</a></h1>
-          <time class="published" datetime="">April 11, 2020</time>
+          <h2><a href="/blog/angular-dynamic-content/">Angular Dynamic Content</a></h2>
+          <time class="published" datetime="2020-04-11 10:51:42 &#43;0200 CEST">April 11, 2020</time>
         </header>
       </article>
       
       <article class="mini-post">
-        <section>
-          
-  <a href="/blog/csp-and-cors/" class="image featured">
-    
-      <img src="/images/csp-cors.jpg" alt="">
-    
+          <a href="/blog/csp-and-cors/" class="image" style="--bg-image: url('https://antomor.com/images/csp-cors.jpg');">
+    <img src="https://antomor.com/images/csp-cors.jpg" alt="A lock">
   </a>
-
-
-        </section>
         <header>
-          <h1><a href="/blog/csp-and-cors/">CSP and CORS</a></h1>
-          <time class="published" datetime="">April 11, 2020</time>
+          <h2><a href="/blog/csp-and-cors/">CSP and CORS</a></h2>
+          <time class="published" datetime="2020-04-11 10:51:20 &#43;0200 CEST">April 11, 2020</time>
         </header>
       </article>
       
       <article class="mini-post">
-        <section>
-          
-  <a href="/blog/angular-rxjs-http-requests/" class="image featured">
-    
-      <img src="/images/angular-rxjs-http-requests.jpg" alt="">
-    
+          <a href="/blog/angular-rxjs-http-requests/" class="image" style="--bg-image: url('https://antomor.com/images/angular-rxjs-http-requests.jpg');">
+    <img src="https://antomor.com/images/angular-rxjs-http-requests.jpg" alt="Sunrise in a wood">
   </a>
-
-
-        </section>
         <header>
-          <h1><a href="/blog/angular-rxjs-http-requests/">Angular and Rxjs Http Requests: Common scenarios</a></h1>
-          <time class="published" datetime="">April 9, 2020</time>
+          <h2><a href="/blog/angular-rxjs-http-requests/">Angular and Rxjs Http Requests: Common scenarios</a></h2>
+          <time class="published" datetime="2020-04-09 19:40:48 &#43;0200 CEST">April 9, 2020</time>
         </header>
       </article>
       
       <article class="mini-post">
-        <section>
-          
-  <a href="/blog/git-move-file-with-history/" class="image featured">
-    
-      <img src="/images/git-move.jpg" alt="">
-    
+          <a href="/blog/git-move-file-with-history/" class="image" style="--bg-image: url('https://antomor.com/images/git-move.jpg');">
+    <img src="https://antomor.com/images/git-move.jpg" alt="Camels at rest">
   </a>
-
-
-        </section>
         <header>
-          <h1><a href="/blog/git-move-file-with-history/">Git: Move Files Retaining History</a></h1>
-          <time class="published" datetime="">March 14, 2020</time>
+          <h2><a href="/blog/git-move-file-with-history/">Git: Move Files Retaining History</a></h2>
+          <time class="published" datetime="2020-03-14 12:28:03 &#43;0100 CET">March 14, 2020</time>
         </header>
       </article>
       
       <article class="mini-post">
-        <section>
-          
-  <a href="/blog/mongodb-query-profiler/" class="image featured">
-    
-      <img src="/images/mongodb-profiling.jpg" alt="">
-    
+          <a href="/blog/mongodb-query-profiler/" class="image" style="--bg-image: url('https://antomor.com/images/mongodb-profiling.jpg');">
+    <img src="https://antomor.com/images/mongodb-profiling.jpg" alt="A Cheetah">
   </a>
-
-
-        </section>
         <header>
-          <h1><a href="/blog/mongodb-query-profiler/">Mongodb Query Profiler</a></h1>
-          <time class="published" datetime="">December 28, 2019</time>
+          <h2><a href="/blog/mongodb-query-profiler/">Mongodb Query Profiler</a></h2>
+          <time class="published" datetime="2019-12-28 18:06:38 &#43;0100 CET">December 28, 2019</time>
         </header>
       </article>
       
       
         <footer>
-          <a href="/blog/" class="button">See more</a>
+          <a href="/blog/" class="button">See More</a>
         </footer>
       
     </section>
@@ -621,29 +558,22 @@ npm run build
 
   
     
+
       <section id="categories">
         <header>
           <h1><a href="/categories">Categories</a></h1>
         </header>
         <ul>
           
-            
-          
           
           <li>
-            
               <a href="/categories/development/">development<span class="count">7</span></a>
-            
           
           <li>
-            
               <a href="/categories/security/">security<span class="count">2</span></a>
-            
           
           <li>
-            
               <a href="/categories/other/">other<span class="count">1</span></a>
-            
           
           </li>
         </ul>
@@ -708,24 +638,22 @@ npm run build
 
 
 
+
 <li><a href="mailto:dev@antomor.com" target="_blank" title="Email" class="far fa-envelope"></a></li>
 
       </ul>
   
   <p class="copyright">
-    
-      &copy; 2020
-      
-        Antomor
-      
-    . <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.66.0' target='_blank' rel='noopener'>Hugo</a>
+    © 2020 Antomor
+      <br>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.76.5' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
 
-      <script src="/js/highlight.pack.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script><script src="/js/bundle.min.e0c399b948d3cf5c3a5e3badb94023d0b064a19ac39fd8cd79fb9f57fa4d1091.js" integrity="sha256-4MOZuUjTz1w6XjutuUAj0LBkoZrDn9jNefufV/pNEJE="></script>
+      <script src="/js/highlight.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/languages/html.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/languages/css.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/languages/js.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/languages/toml.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script><script src="/js/bundle.min.b4e669fa428a81defb8af0916c53f39cd1b8e0bbab22199c06f0b182907ba474.js" integrity="sha256-tOZp&#43;kKKgd77ivCRbFPznNG44LurIhmcBvCxgpB7pHQ="></script>
     <script src="/js/add-on.js"></script>
     </div>
   </body>
