@@ -1,0 +1,663 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+<title>Angular Dynamic Content - Antomor</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<meta name="generator" content="Hugo 0.66.0" /><meta itemprop="name" content="Angular Dynamic Content">
+<meta itemprop="description" content="An exploration of the different ways to dynamically change the content of a component.">
+<meta itemprop="datePublished" content="2020-04-11T10:51:42&#43;02:00" />
+<meta itemprop="dateModified" content="2020-04-11T10:51:42&#43;02:00" />
+<meta itemprop="wordCount" content="579">
+<meta itemprop="image" content="https://antomor.com/images/angular-dynamic-component.jpg">
+
+
+
+<meta itemprop="keywords" content="blog,tutorial,dev,angular," /><meta property="og:title" content="Angular Dynamic Content" />
+<meta property="og:description" content="An exploration of the different ways to dynamically change the content of a component." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://antomor.com/blog/angular-dynamic-content/" />
+<meta property="og:image" content="https://antomor.com/images/angular-dynamic-component.jpg" />
+<meta property="article:published_time" content="2020-04-11T10:51:42+02:00" />
+<meta property="article:modified_time" content="2020-04-11T10:51:42+02:00" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://antomor.com/images/angular-dynamic-component.jpg"/>
+
+<meta name="twitter:title" content="Angular Dynamic Content"/>
+<meta name="twitter:description" content="An exploration of the different ways to dynamically change the content of a component."/>
+<meta name="twitter:site" content="@antomor_dev"/>
+<link rel="stylesheet" href="/css/bundle.min.890f30b8b199a3d390afae9cf9f69d7a932a6a7d91fc3a3b9e5b9d780c334432.css" integrity="sha256-iQ8wuLGZo9OQr66c&#43;fadepMqan2R/Do7nludeAwzRDI=">
+        <link rel="stylesheet" href="/css/add-on.css">
+</head>
+
+  <body>
+    
+<header id="site-header">
+  <nav id="site-nav">
+    <h1 class="nav-title">
+      <a href="/">
+        
+          
+            Blog
+          
+        
+      </a>
+    </h1>
+    <menu id="site-nav-menu" class="flyout-menu">
+      
+        
+          
+          
+            <a href="/" class="link"><i class='fa fa-home'></i> Home</a>
+          
+        
+      
+        
+          
+          
+            <a href="/about/" class="link"><i class='far fa-id-card'></i> About</a>
+          
+        
+      
+        
+          
+          
+            <a href="/blog/" class="link"><i class='far fa-newspaper'></i> Blog</a>
+          
+        
+      
+        
+          
+          
+            <a href="/categories/" class="link"><i class='fas fa-sitemap'></i> Categories</a>
+          
+        
+      
+        
+          
+          
+            <a href="/contact/" class="link"><i class='far fa-envelope'></i> Contact</a>
+          
+        
+      
+      <a href="#share-menu" class="share-toggle"><i class="fas fa-share-alt">&nbsp;</i>Share</a>
+      
+
+    </menu>
+    
+
+    <a href="#share-menu" class="share-toggle"><i class="fas fa-share-alt fa-2x">&nbsp;</i></a>
+    
+    <a href="#site-nav" class="nav-toggle"><i class="fas fa-bars fa-2x"></i></a>
+  </nav>
+  
+  
+    <menu id="share-menu" class="flyout-menu">
+      <h1>Share Post</h1>
+      
+
+
+
+
+  
+    
+    <a href="//twitter.com/share?text=Angular%20Dynamic%20Content&amp;url=https%3a%2f%2fantomor.com%2fblog%2fangular-dynamic-content%2f" target="_blank" rel="noopener" class="share-btn twitter">
+        <i class="fab fa-twitter"></i><p>&nbsp;Twitter</p>
+      </a>
+  
+
+  
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fantomor.com%2fblog%2fangular-dynamic-content%2f&amp;title=Angular%20Dynamic%20Content" target="_blank" rel="noopener" class="share-btn linkedin">
+            <i class="fab fa-linkedin"></i><p>&nbsp;LinkedIn</p>
+          </a>
+  
+
+  
+        <a href="mailto:?subject=Check%20out%20this%20post%20by antomor&amp;body=https%3a%2f%2fantomor.com%2fblog%2fangular-dynamic-content%2f" target="_blank" class="share-btn email" data-proofer-ignore>
+          <i class="fas fa-envelope"></i><p>&nbsp;Email</p>
+        </a>
+  
+
+
+    </menu>
+  
+</header>
+
+    <div id="wrapper">
+      <section id="site-intro" >
+  <a href="/"><img src="/images/antomor.jpg" class="hexagon" width="150" alt="Antomor logo" /></a>
+  <header>
+    <h1>Antomor's personal website.</h1>
+  </header>
+  <main>
+    <p>Where ideas become words (maybe)</p>
+  </main>
+  
+    <footer>
+      <ul class="socnet-icons">
+        
+
+        <li><a href="//github.com/antomor" target="_blank" rel="noopener" title="GitHub" class="fab fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//linkedin.com/in/antoniomorrone" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//twitter.com/antomor_dev" target="_blank" rel="noopener" title="Twitter" class="fab fa-twitter"></a></li>
+
+
+
+
+
+
+
+
+
+
+<li><a href="mailto:dev@antomor.com" target="_blank" title="Email" class="far fa-envelope"></a></li>
+
+      </ul>
+    </footer>
+  
+</section>
+
+      <main id="site-main">
+        <article class="post">
+  <header>
+  <div class="title">
+    
+      <h2><a href="/blog/angular-dynamic-content/">Angular Dynamic Content</a></h2>
+    
+    
+      <p>An exploration of the different ways to dynamically change the content of a component.</p>
+    
+  </div>
+  <div class="meta">
+    <time class="published" datetime="2020-04-11 10:51:42 &#43;0200 CEST">
+      April 11, 2020
+    </time>
+    <span class="author">antomor</span>
+    
+      <p>3 minutes read</p>
+    
+  </div>
+</header>
+
+  <section id="socnet-share">
+    
+
+
+
+
+  
+    
+    <a href="//twitter.com/share?text=Angular%20Dynamic%20Content&amp;url=https%3a%2f%2fantomor.com%2fblog%2fangular-dynamic-content%2f" target="_blank" rel="noopener" class="share-btn twitter">
+        <i class="fab fa-twitter"></i><p>&nbsp;Twitter</p>
+      </a>
+  
+
+  
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fantomor.com%2fblog%2fangular-dynamic-content%2f&amp;title=Angular%20Dynamic%20Content" target="_blank" rel="noopener" class="share-btn linkedin">
+            <i class="fab fa-linkedin"></i><p>&nbsp;LinkedIn</p>
+          </a>
+  
+
+  
+        <a href="mailto:?subject=Check%20out%20this%20post%20by antomor&amp;body=https%3a%2f%2fantomor.com%2fblog%2fangular-dynamic-content%2f" target="_blank" class="share-btn email" data-proofer-ignore>
+          <i class="fas fa-envelope"></i><p>&nbsp;Email</p>
+        </a>
+  
+
+
+  </section>
+  
+  <a href="/blog/angular-dynamic-content/" class="image featured">
+    
+      <img src="/images/angular-dynamic-component.jpg" alt="">
+    
+  </a>
+
+
+  <div class="content">
+    <p>In many cases we would change the content of a component dynamically, like for instance, to allow the user to change view or to let the children render the data retrieved and elaborated from its parent component. Here below we are going to show some techniques to create a component without deciding how the data would be shown. According with the application needs, each technique has its own strengths, but all of them encourage component reusability. We are going to describe:</p>
+<ul>
+<li>Content projection</li>
+<li>Dynamic templates</li>
+<li>Dynamic component creation</li>
+</ul>
+<p>All the code is available on <a href="https://github.com/antomor/ng-dynamic-content">github</a> and <a href="https://stackblitz.com/github/antomor/ng-dynamic-content">Stackblits</a>.</p>
+<h2 id="projection">Projection</h2>
+<p>This is the simplest technique, and it allows the component user to decide what to show within the component. This could be useful, for example, if we want a container component to decide the main content structure without forcing what will be render in a certain section.</p>
+<p>First of all, we need to use the <code>ng-content</code> tag in the dynamic component.
+
+<div class="emgithub-container">
+    <style>
+        .emgithub-container table > tbody > tr > td:not(:first-child) {
+            text-align: left;
+        }
+    </style>
+    <script
+        src="https://emgithub.com/embed.js?target=https%3a%2f%2fgithub.com%2fantomor%2fng-dynamic-content%2fblob%2fcaf5b1de8b061cb1bbf6bc8b060f0fefad2fd151%2fsrc%2fapp%2fprojection%2fprojection-sample-one%2fprojection-sample-one.component.html%23L3&style=github&showBorder=on&showLineNumbers=off&showFileMeta=off"></script>
+</div></p>
+<p>Then, when we use the component, we could include all the content we want within the new component tag.
+
+<div class="emgithub-container">
+    <style>
+        .emgithub-container table > tbody > tr > td:not(:first-child) {
+            text-align: left;
+        }
+    </style>
+    <script
+        src="https://emgithub.com/embed.js?target=https%3a%2f%2fgithub.com%2fantomor%2fng-dynamic-content%2fblob%2fcaf5b1de8b061cb1bbf6bc8b060f0fefad2fd151%2fsrc%2fapp%2fprojection%2fprojection.component.html%23L3-L7&style=github&showBorder=on&showLineNumbers=off&showFileMeta=off"></script>
+</div></p>
+<p>A more flexible way to use content projection can be achieved by using the class selector. In this case, the dynamic content specifies by using a class selector where the content will be injected.</p>
+
+<div class="emgithub-container">
+    <style>
+        .emgithub-container table > tbody > tr > td:not(:first-child) {
+            text-align: left;
+        }
+    </style>
+    <script
+        src="https://emgithub.com/embed.js?target=https%3a%2f%2fgithub.com%2fantomor%2fng-dynamic-content%2fblob%2fcaf5b1de8b061cb1bbf6bc8b060f0fefad2fd151%2fsrc%2fapp%2fprojection%2fprojection-sample-two%2fprojection-sample-two.component.html%23L5-L12&style=github&showBorder=on&showLineNumbers=off&showFileMeta=off"></script>
+</div>
+<p>Now, in the component user, we could include two elements that will be injected in the component.
+
+<div class="emgithub-container">
+    <style>
+        .emgithub-container table > tbody > tr > td:not(:first-child) {
+            text-align: left;
+        }
+    </style>
+    <script
+        src="https://emgithub.com/embed.js?target=https%3a%2f%2fgithub.com%2fantomor%2fng-dynamic-content%2fblob%2fcaf5b1de8b061cb1bbf6bc8b060f0fefad2fd151%2fsrc%2fapp%2fprojection%2fprojection.component.html%23L9-L13&style=github&showBorder=on&showLineNumbers=off&showFileMeta=off"></script>
+</div></p>
+<h2 id="dynamic-template">Dynamic Template</h2>
+<p>Dynamic template is a very easy to use, but it comes with some problems in terms of flexibility, so it could be a good choice in case of simple mechanisms to be implemented. A typical example could be the rendering of two elements according with a condition.</p>
+
+<div class="emgithub-container">
+    <style>
+        .emgithub-container table > tbody > tr > td:not(:first-child) {
+            text-align: left;
+        }
+    </style>
+    <script
+        src="https://emgithub.com/embed.js?target=https%3a%2f%2fgithub.com%2fantomor%2fng-dynamic-content%2fblob%2fcaf5b1de8b061cb1bbf6bc8b060f0fefad2fd151%2fsrc%2fapp%2ftemplate%2fdynamic-template-sample-one%2fdynamic-template-sample-one.component.html%23L9-L15&style=github&showBorder=on&showLineNumbers=off&showFileMeta=off"></script>
+</div>
+<p>It could be very useful also to avoid template part repetitions, by writing the html part once, and by using the template context to pass data to the template.
+
+<div class="emgithub-container">
+    <style>
+        .emgithub-container table > tbody > tr > td:not(:first-child) {
+            text-align: left;
+        }
+    </style>
+    <script
+        src="https://emgithub.com/embed.js?target=https%3a%2f%2fgithub.com%2fantomor%2fng-dynamic-content%2fblob%2fcaf5b1de8b061cb1bbf6bc8b060f0fefad2fd151%2fsrc%2fapp%2ftemplate%2fdynamic-template-sample-two%2fdynamic-template-sample-two.component.html%23L9-L14&style=github&showBorder=on&showLineNumbers=off&showFileMeta=off"></script>
+</div></p>
+<h2 id="dynamic-component-creation">Dynamic Component creation</h2>
+<p>The dynamic component creation is by far the most flexible technique to use, because it allows to choose the instant on which the component will be created. On the counterpart, it is the most complicated to write, even if, after the first times, everything becomes more clear and easy to repeat.</p>
+<p>To implement this technique we need:</p>
+<ul>
+<li>
+<p>a container tag directive, used to reference the container from within the parent component, to tag where the new child component will be rendered.
+
+<div class="emgithub-container">
+    <style>
+        .emgithub-container table > tbody > tr > td:not(:first-child) {
+            text-align: left;
+        }
+    </style>
+    <script
+        src="https://emgithub.com/embed.js?target=https%3a%2f%2fgithub.com%2fantomor%2fng-dynamic-content%2fblob%2fmaster%2fsrc%2fapp%2fdynamic-component-sample%2fcontainer-tag.directive.ts&style=github&showBorder=on&showLineNumbers=off&showFileMeta=off"></script>
+</div></p>
+</li>
+<li>
+<p>from the parent component, we need to reference the container using the <code>@ViewChild</code> annotation.
+
+<div class="emgithub-container">
+    <style>
+        .emgithub-container table > tbody > tr > td:not(:first-child) {
+            text-align: left;
+        }
+    </style>
+    <script
+        src="https://emgithub.com/embed.js?target=https%3a%2f%2fgithub.com%2fantomor%2fng-dynamic-content%2fblob%2fcaf5b1de8b061cb1bbf6bc8b060f0fefad2fd151%2fsrc%2fapp%2fdynamic-component-sample%2fdynamic-component-sample.component.ts%23L14&style=github&showBorder=on&showLineNumbers=off&showFileMeta=off"></script>
+</div></p>
+</li>
+<li>
+<p>in the parent component, we use the <code>ComponentFactoryResolver</code> to create an instance of the component to be created
+
+<div class="emgithub-container">
+    <style>
+        .emgithub-container table > tbody > tr > td:not(:first-child) {
+            text-align: left;
+        }
+    </style>
+    <script
+        src="https://emgithub.com/embed.js?target=https%3a%2f%2fgithub.com%2fantomor%2fng-dynamic-content%2fblob%2fcaf5b1de8b061cb1bbf6bc8b060f0fefad2fd151%2fsrc%2fapp%2fdynamic-component-sample%2fdynamic-component-sample.component.ts%23L31-L40&style=github&showBorder=on&showLineNumbers=off&showFileMeta=off"></script>
+</div></p>
+</li>
+</ul>
+<h2 id="conclusions">Conclusions</h2>
+<p>As many other times in programming, there are different ways to accomplish the same task, but often it depends on what are the software requirements and what is the result we want to achieve. This article isn&rsquo;t intended to be a detailed guide about these techniques, but only a general description about some of the possibilities offered by Angular to dynamically draw content within a component.</p>
+<h3 id="resources">Resources</h3>
+<ul>
+<li><a href="https://blog.angular-university.io/angular-ng-content/">ng-content</a></li>
+<li><a href="https://blog.angular-university.io/angular-ng-template-ng-container-ngtemplateoutlet/">ng-template, ng-container and ng-template-outlet</a></li>
+<li><a href="https://angular.io/guide/dynamic-component-loader">Dynamic Components</a></li>
+</ul>
+
+  </div>
+  <footer>
+    <ul class="stats">
+  
+    
+    
+      <li class="categories">
+        <ul>
+          
+            
+            <li><a class="article-category-link" href="https://antomor.com/categories/development">Development</a></li>
+          
+        </ul>
+      </li>
+    
+  
+  
+    
+    
+      <li class="tags">
+        <ul>
+          
+            
+            <li><a class="article-category-link" href="https://antomor.com/tags/blog">blog</a></li>
+          
+            
+            <li><a class="article-category-link" href="https://antomor.com/tags/tutorial">tutorial</a></li>
+          
+            
+            <li><a class="article-category-link" href="https://antomor.com/tags/dev">dev</a></li>
+          
+            
+            <li><a class="article-category-link" href="https://antomor.com/tags/angular">angular</a></li>
+          
+        </ul>
+      </li>
+    
+  
+</ul>
+
+  </footer>
+</article>
+
+    <article class="post">
+        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "antomor" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </article>
+
+
+
+
+<div class="pagination">
+  
+    <a href="/blog/csp-and-cors/" class="button"><div class="previous"><div>CSP and CORS</div></div></a>
+  
+  
+</div>
+
+
+      </main>
+      <section id="site-sidebar">
+  
+    <section id="recent-posts">
+      <header>
+        <h1>Recent posts</h1>
+      </header>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/blog/angular-dynamic-content/" class="image featured">
+    
+      <img src="/images/angular-dynamic-component.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/blog/angular-dynamic-content/">Angular Dynamic Content</a></h1>
+          <time class="published" datetime="">April 11, 2020</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/blog/csp-and-cors/" class="image featured">
+    
+      <img src="/images/csp-cors.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/blog/csp-and-cors/">CSP and CORS</a></h1>
+          <time class="published" datetime="">April 11, 2020</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/blog/angular-rxjs-http-requests/" class="image featured">
+    
+      <img src="/images/angular-rxjs-http-requests.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/blog/angular-rxjs-http-requests/">Angular and Rxjs Http Requests: Common scenarios</a></h1>
+          <time class="published" datetime="">April 9, 2020</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/blog/git-move-file-with-history/" class="image featured">
+    
+      <img src="/images/git-move.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/blog/git-move-file-with-history/">Git: Move Files Retaining History</a></h1>
+          <time class="published" datetime="">March 14, 2020</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/blog/mongodb-query-profiler/" class="image featured">
+    
+      <img src="/images/mongodb-profiling.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/blog/mongodb-query-profiler/">Mongodb Query Profiler</a></h1>
+          <time class="published" datetime="">December 28, 2019</time>
+        </header>
+      </article>
+      
+      
+        <footer>
+          <a href="/blog/" class="button">See more</a>
+        </footer>
+      
+    </section>
+  
+
+  
+    
+      <section id="categories">
+        <header>
+          <h1><a href="/categories">Categories</a></h1>
+        </header>
+        <ul>
+          
+            
+          
+          
+          <li>
+            
+              <a href="/categories/development/">development<span class="count">7</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/security/">security<span class="count">2</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/other/">other<span class="count">1</span></a>
+            
+          
+          </li>
+        </ul>
+      </section>
+    
+  
+
+  
+    <section id="mini-bio">
+      <header>
+        <h1>About</h1>
+      </header>
+      <p>Software Engineer passionate about Security and Privacy. Nature and animals lover. Sports (running, yoga, boxing) practitioner.</p>
+      <footer>
+        <a href="/about" class="button">Learn More</a>
+      </footer>
+    </section>
+  
+</section>
+
+      <footer id="site-footer">
+  
+      <ul class="socnet-icons">
+        
+
+        <li><a href="//github.com/antomor" target="_blank" rel="noopener" title="GitHub" class="fab fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//linkedin.com/in/antoniomorrone" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//twitter.com/antomor_dev" target="_blank" rel="noopener" title="Twitter" class="fab fa-twitter"></a></li>
+
+
+
+
+
+
+
+
+
+
+<li><a href="mailto:dev@antomor.com" target="_blank" title="Email" class="far fa-envelope"></a></li>
+
+      </ul>
+  
+  <p class="copyright">
+    
+      &copy; 2020
+      
+        Antomor
+      
+    . <br>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.66.0' target='_blank' rel='noopener'>Hugo</a>
+  </p>
+</footer>
+<a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
+
+      <script src="/js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script><script src="/js/bundle.min.e0c399b948d3cf5c3a5e3badb94023d0b064a19ac39fd8cd79fb9f57fa4d1091.js" integrity="sha256-4MOZuUjTz1w6XjutuUAj0LBkoZrDn9jNefufV/pNEJE="></script>
+    <script src="/js/add-on.js"></script>
+    </div>
+  </body>
+</html>

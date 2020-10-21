@@ -6,10 +6,19 @@
     <description>Recent content in angular on Antomor</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 09 Apr 2020 19:40:48 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 11 Apr 2020 10:51:42 +0200</lastBuildDate>
     
 	<atom:link href="https://antomor.com/tags/angular/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Angular Dynamic Content</title>
+      <link>https://antomor.com/blog/angular-dynamic-content/</link>
+      <pubDate>Sat, 11 Apr 2020 10:51:42 +0200</pubDate>
+      
+      <guid>https://antomor.com/blog/angular-dynamic-content/</guid>
+      <description>In many cases we would change the content of a component dynamically, like for instance, to allow the user to change view or to let the children render the data retrieved and elaborated from its parent component. Here below we are going to show some techniques to create a component without deciding how the data would be shown. According with the application needs, each technique has its own strengths, but all of them encourage component reusability.</description>
+    </item>
     
     <item>
       <title>Angular and Rxjs Http Requests: Common scenarios</title>
