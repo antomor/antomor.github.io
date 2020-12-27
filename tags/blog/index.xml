@@ -6,7 +6,18 @@
     <description>Recent content in blog on Antomor</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 11 Apr 2020 10:51:42 +0200</lastBuildDate><atom:link href="https://antomor.com/tags/blog/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 25 Oct 2020 16:27:12 +0100</lastBuildDate><atom:link href="https://antomor.com/tags/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Iterators &amp; Generators in Python</title>
+      <link>https://antomor.com/blog/python-iterators-generators/</link>
+      <pubDate>Sun, 25 Oct 2020 16:27:12 +0100</pubDate>
+      
+      <guid>https://antomor.com/blog/python-iterators-generators/</guid>
+      <description>This post aims to describe the basic mechanisms behind iterators and generators.
+Iterator protocol As in many programming languages, Python allows to iterate over a collection. The iteration mechanism is often useful when we need to scan a sequence, operation that is very common in programming. In Python the iterator protocol involves two components: an iterable and an iterator.
+Iterable The iterable is the container through which we want to iterate.</description>
+    </item>
+    
     <item>
       <title>Angular Dynamic Content</title>
       <link>https://antomor.com/blog/angular-dynamic-content/</link>

@@ -2,32 +2,32 @@
 <html lang="en">
   <head>
   <meta charset="utf-8">
-<title>Mongodb Query Profiler - Antomor</title>
+<title>Iterators &amp; Generators in Python - Antomor</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<meta name="generator" content="Hugo 0.76.5" /><meta itemprop="name" content="Mongodb Query Profiler">
-<meta itemprop="description" content="Steps involved to analyse the performance of a MongoDB query">
-<meta itemprop="datePublished" content="2019-12-28T18:06:38+01:00" />
-<meta itemprop="dateModified" content="2019-12-28T18:06:38+01:00" />
-<meta itemprop="wordCount" content="412">
+<meta name="generator" content="Hugo 0.76.5" /><meta itemprop="name" content="Iterators &amp; Generators in Python">
+<meta itemprop="description" content="A detailed description about iterators and generators, and the differences between them.">
+<meta itemprop="datePublished" content="2020-10-25T16:27:12+01:00" />
+<meta itemprop="dateModified" content="2020-10-25T16:27:12+01:00" />
+<meta itemprop="wordCount" content="460">
 <meta itemprop="image" content="">
 
 
 
-<meta itemprop="keywords" content="dev,blog,tutorial,mongodb,nosql," />
-<meta property="og:title" content="Mongodb Query Profiler" />
-<meta property="og:description" content="Steps involved to analyse the performance of a MongoDB query" />
+<meta itemprop="keywords" content="blog,python," />
+<meta property="og:title" content="Iterators &amp; Generators in Python" />
+<meta property="og:description" content="A detailed description about iterators and generators, and the differences between them." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://antomor.com/blog/mongodb-query-profiler/" />
+<meta property="og:url" content="https://antomor.com/blog/python-iterators-generators/" />
 <meta property="og:image" content="" />
-<meta property="article:published_time" content="2019-12-28T18:06:38+01:00" />
-<meta property="article:modified_time" content="2019-12-28T18:06:38+01:00" />
+<meta property="article:published_time" content="2020-10-25T16:27:12+01:00" />
+<meta property="article:modified_time" content="2020-10-25T16:27:12+01:00" />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content=""/>
 
-<meta name="twitter:title" content="Mongodb Query Profiler"/>
-<meta name="twitter:description" content="Steps involved to analyse the performance of a MongoDB query"/>
+<meta name="twitter:title" content="Iterators &amp; Generators in Python"/>
+<meta name="twitter:description" content="A detailed description about iterators and generators, and the differences between them."/>
 <meta name="twitter:site" content="@antomor_dev"/>
 
             <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/styles/github.min.css">
@@ -93,19 +93,19 @@
 
   
     
-    <a href="//twitter.com/share?text=Mongodb%20Query%20Profiler&amp;url=https%3a%2f%2fantomor.com%2fblog%2fmongodb-query-profiler%2f" target="_blank" rel="noopener" class="nav share-btn twitter">
+    <a href="//twitter.com/share?text=Iterators%20%26%20Generators%20in%20Python&amp;url=https%3a%2f%2fantomor.com%2fblog%2fpython-iterators-generators%2f" target="_blank" rel="noopener" class="nav share-btn twitter">
         <p>Twitter</p>
       </a>
   
 
   
-        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fantomor.com%2fblog%2fmongodb-query-profiler%2f&amp;title=Mongodb%20Query%20Profiler" target="_blank" rel="noopener" class="nav share-btn linkedin">
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fantomor.com%2fblog%2fpython-iterators-generators%2f&amp;title=Iterators%20%26%20Generators%20in%20Python" target="_blank" rel="noopener" class="nav share-btn linkedin">
             <p>LinkedIn</p>
           </a>
   
 
   
-        <a href="mailto:?subject=Check%20out%20this%20post%20by antomor&amp;body=https%3a%2f%2fantomor.com%2fblog%2fmongodb-query-profiler%2f" target="_blank" class="nav share-btn email" data-proofer-ignore>
+        <a href="mailto:?subject=Check%20out%20this%20post%20by antomor&amp;body=https%3a%2f%2fantomor.com%2fblog%2fpython-iterators-generators%2f" target="_blank" class="nav share-btn email" data-proofer-ignore>
           <p>Email</p>
         </a>
   
@@ -182,16 +182,16 @@
     <header>
   <div class="title">
     
-      <h2><a href="/blog/mongodb-query-profiler/">Mongodb Query Profiler</a></h2>
+      <h2><a href="/blog/python-iterators-generators/">Iterators &amp; Generators in Python</a></h2>
     
     
-      <p>Steps involved to analyse the performance of a MongoDB query</p>
+      <p>A detailed description about iterators and generators, and the differences between them.</p>
     
   </div>
   <div class="meta">
-    <time datetime="2019-12-28 18:06:38 &#43;0100 &#43;0100">December 28, 2019</time>
+    <time datetime="2020-10-25 16:27:12 &#43;0100 &#43;0100">October 25, 2020</time>
     <p>antomor</p>
-    <p>2-Minute Read</p>
+    <p>3-Minute Read</p>
   </div>
 </header>
 
@@ -203,19 +203,19 @@
 
   
     
-    <a href="//twitter.com/share?text=Mongodb%20Query%20Profiler&amp;url=https%3a%2f%2fantomor.com%2fblog%2fmongodb-query-profiler%2f" target="_blank" rel="noopener" class="nav share-btn twitter">
+    <a href="//twitter.com/share?text=Iterators%20%26%20Generators%20in%20Python&amp;url=https%3a%2f%2fantomor.com%2fblog%2fpython-iterators-generators%2f" target="_blank" rel="noopener" class="nav share-btn twitter">
         <p>Twitter</p>
       </a>
   
 
   
-        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fantomor.com%2fblog%2fmongodb-query-profiler%2f&amp;title=Mongodb%20Query%20Profiler" target="_blank" rel="noopener" class="nav share-btn linkedin">
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fantomor.com%2fblog%2fpython-iterators-generators%2f&amp;title=Iterators%20%26%20Generators%20in%20Python" target="_blank" rel="noopener" class="nav share-btn linkedin">
             <p>LinkedIn</p>
           </a>
   
 
   
-        <a href="mailto:?subject=Check%20out%20this%20post%20by antomor&amp;body=https%3a%2f%2fantomor.com%2fblog%2fmongodb-query-profiler%2f" target="_blank" class="nav share-btn email" data-proofer-ignore>
+        <a href="mailto:?subject=Check%20out%20this%20post%20by antomor&amp;body=https%3a%2f%2fantomor.com%2fblog%2fpython-iterators-generators%2f" target="_blank" class="nav share-btn email" data-proofer-ignore>
           <p>Email</p>
         </a>
   
@@ -223,55 +223,49 @@
 
     </div>
     <div class="content">
-      <a href="/blog/mongodb-query-profiler/" class="image" style="--bg-image: url('https://antomor.com/images/mongodb-profiling.jpg');">
-    <img src="https://antomor.com/images/mongodb-profiling.jpg" alt="A Cheetah">
+      <a href="/blog/python-iterators-generators/" class="image" style="--bg-image: url('https://antomor.com/images/iterables-iterators-generators.jpg');">
+    <img src="https://antomor.com/images/iterables-iterators-generators.jpg" alt="Low angle photography of black metal framed tower">
   </a>
-      <p>Some months ago, I was creating a web page to show some aggregated data, but I soon noticed the API used to retrieve the data was very slow. After investigating on the possible issue, we discovered the bottleneck: the database. The solution was to re-structure the data to make it consumable from a web page.</p>
-<p>Although I had used sometimes the SQLServer profiler, I had no experience about MongoDB profiler, so here below the steps involved to analyse a MongoDB query.</p>
-<blockquote>
-<p>It doesn&rsquo;t apply to our case, but in many situations performance problems are related to missing or wrongly implemented <a href="https://docs.mongodb.com/manual/indexes/">MongoDB Indexes</a>.</p>
-</blockquote>
-<h2 id="enable-mongodb-profiler">Enable MongoDB profiler</h2>
-<p>By default, MongoDB doesn&rsquo;t profile any query. It is possible to set the profiling level executing:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Javascript" data-lang="Javascript"><span style="color:#a6e22e">db</span>.<span style="color:#a6e22e">setProfilingLevel</span>(<span style="color:#f92672">&lt;</span><span style="color:#a6e22e">profile_level</span><span style="color:#f92672">&gt;</span>)
-</code></pre></div><p>where <code>profile_level</code> can be:</p>
+      <p>This post aims to describe the basic mechanisms behind iterators and generators.</p>
+<h2 id="iterator-protocol">Iterator protocol</h2>
+<p>As in many programming languages, Python allows to iterate over a collection. The iteration mechanism is often useful when we need to scan a sequence, operation that is very common in programming.
+In Python the iterator protocol involves two components: an <em>iterable</em> and an <em>iterator</em>.</p>
+<h2 id="iterable">Iterable</h2>
+<p>The <em>iterable</em> is the container through which we want to iterate. It is the object that needs to be scanned to retrieve all the elements (or some of them). Some of well-known iterables are lists, tuples, dictionaries, ranges. In the <em>iterator protocol</em> the <em>iterable</em> exposes a <strong><strong>iter</strong></strong> method that returns an <em>iterator</em> object.</p>
+<h2 id="iterator">Iterator</h2>
+<p>The <em>iterator</em> is the data structure that allows the scan through the container. It could seem a complication, but actually, with the separation of concerns, it lets the developer separate the concept of container, from the concept of iteration. The container object doesn&rsquo;t need to keep the state of an iteration and furthermore, on the same object, many iterations at the same time can take place, so keeping the iteration state in a different object is a must. The container is a collection of elements, while the iterator is kind of an handler of the container, it exposes the same elements (owned by the container) one-by-one with a specific order and . In the <em>iterator protocol</em>, the <em>iterator</em> exposes two methods:  <strong><strong>iter</strong></strong> and <strong><strong>next</strong></strong>. While the first one return the object itself (it allows the usage of both container and iterator in <em>for</em> and <em>in</em> statements), the latter return the next item from the container. What does it make the iterator end the iteration? The <strong>StopIteration</strong> exception.</p>
+<h2 id="iterable-and-iterator-examples">Iterable and Iterator Examples</h2>
+<p>Below an example of iterator protocol implementation:</p>
+<script type="application/javascript" src="https://gist.github.com/antomor/c26816773b028eb9c3b5be8835d36669.js?file=TenIntegers.py"></script>
+
+<p>And its usage:</p>
+<script type="application/javascript" src="https://gist.github.com/antomor/c26816773b028eb9c3b5be8835d36669.js?file=iterable_iterator_examples.py"></script>
+
+<h2 id="generator">Generator</h2>
+<p><em>Generators</em> are methods with yield statements. The <em>yield</em> statement has the power to suspend the function execution and store its state, so that it can be resumed. Behind the scenes, python returns the control to the function caller and save the function state; in this way, at the next execution, the function will start where it left, without letting the developer worrying about the state of the function. <em>Generators</em> ARE <em>iterators</em>, but not vice-versa.</p>
+<p>Here an example of generator:</p>
+<script type="application/javascript" src="https://gist.github.com/antomor/c26816773b028eb9c3b5be8835d36669.js?file=%20ten_integers_generator.py"></script>
+
+<p>and its usage:</p>
+<script type="application/javascript" src="https://gist.github.com/antomor/c26816773b028eb9c3b5be8835d36669.js?file=ten_integers_generator_examples.py"></script>
+
+<h3 id="async-generator">Async generator</h3>
+<p>Like <em>generators</em> they are <strong>async</strong> function with a <em>yield</em> statement.</p>
+<h2 id="conclusions">Conclusions</h2>
 <ul>
-<li><code>0</code> - the profiler is off, so it doesn&rsquo;t collect any data.</li>
-<li><code>1</code> - the profiler collects data only if the operation takes more than <code>slowms</code> (a configurable threshold).</li>
-<li><code>2</code> - the profiler collects data for all operations.</li>
+<li>Iterators are iterables.</li>
+<li>Iterators are objects that implement the <code>iterator protocol</code> consisting in implementing both <code>__iter__</code> and <code>__next__</code>.</li>
+<li>Iterator iterations stop when <code>StopIteration</code> is raised.</li>
+<li>Generators are methods with yield statements.</li>
+<li>Async generators are async methods with yield statements.</li>
+<li>Whenever possible, generator must be the preferred method due to its simplicity, while the protocol implementation gives much more control.</li>
 </ul>
-<blockquote>
-<p>IMPORTANT: At the end of the analysis, please remember to disable profiling with: <code>db.setProfilingLevel(0)</code>, since that it can affect MongoDB performance.</p>
-</blockquote>
-<h2 id="retrieve-last-query-profile">Retrieve last query profile</h2>
-<p>Once profiling is enabled, it is possible to retrieve last query <strong>profiled</strong> (meaning that the query must be executed after setting the profiling level) with the command:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Javascript" data-lang="Javascript"><span style="color:#a6e22e">db</span>.<span style="color:#a6e22e">system</span>.<span style="color:#a6e22e">profile</span>.<span style="color:#a6e22e">find</span>().<span style="color:#a6e22e">limit</span>(<span style="color:#ae81ff">1</span>).<span style="color:#a6e22e">sort</span>({<span style="color:#a6e22e">ts</span><span style="color:#f92672">:-</span><span style="color:#ae81ff">1</span>}).<span style="color:#a6e22e">pretty</span>()
-</code></pre></div><h2 id="explain">Explain</h2>
-<p>The <a href="https://docs.mongodb.com/manual/reference/command/explain/#dbcmd.explain">explain command</a> comes in handy, since that it provides information on many common operations such as <code>aggregate</code>, <code>count</code>, <code>distinct</code>, <code>find</code>, <code>findAndModify</code>, <code>delete</code> and <code>update</code>. Nevertheless a method with the same name, is available on <code>collection</code> and <code>cursor</code> also.</p>
-<p>So if we want to analyse the information associated with an <code>aggregate</code> operation we can execute:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Javascript" data-lang="Javascript"><span style="color:#a6e22e">db</span>.<span style="color:#f92672">&lt;</span><span style="color:#a6e22e">collection_name</span><span style="color:#f92672">&gt;</span>.<span style="color:#a6e22e">explain</span>(<span style="color:#f92672">&lt;</span><span style="color:#a6e22e">verbosity</span><span style="color:#f92672">&gt;</span>).<span style="color:#a6e22e">aggregate</span>(...)
-</code></pre></div><p>where:</p>
-<ul>
-<li><code>&lt;collection_name&gt;</code> is the name of the collection on which the aggregation is performed</li>
-<li><code>&lt;verbosity&gt;</code> is the level of verbosity we want to extract.</li>
-</ul>
-<h3 id="explain-verbosity">Explain verbosity</h3>
-<p>The <code>explain</code> command accepts one of the following verbosity levels:</p>
-<ul>
-<li><code>queryPlanner</code> - It returns the <a href="https://docs.mongodb.com/manual/reference/explain-results/#explain.queryPlanner">queryPlanner</a> information about the winning plan evaluation.</li>
-<li><code>executionStats</code> - It returns <a href="https://docs.mongodb.com/manual/reference/explain-results/#explain.queryPlanner">queryPlanner</a> and the <a href="https://docs.mongodb.com/manual/reference/explain-results/#explain.executionStats">executionStats</a> information, but rejected plans are not included in the latter.</li>
-<li><code>allPlansExecution</code> - It returns <a href="https://docs.mongodb.com/manual/reference/explain-results/#explain.queryPlanner">queryPlanner</a> and the <a href="https://docs.mongodb.com/manual/reference/explain-results/#explain.executionStats">executionStats</a> information about all the evaluated plans (including also rejected plans).</li>
-</ul>
-<h2 id="conclusion">Conclusion</h2>
-<p>Only by understanding how the query was executed by MongoDB, we were able to improve its performance.</p>
-<blockquote>
-<p>Not our case, but I would remind that performance problems are often associated to missing or wrongly implemented indexes. If so, please have a look at <a href="https://docs.mongodb.com/manual/indexes/">MongoDB Indexes</a>.</p>
-</blockquote>
 <h3 id="resources">Resources</h3>
 <ul>
-<li><a href="https://docs.mongodb.com/manual/tutorial/manage-the-database-profiler/">MongoDB database profiler</a></li>
-<li><a href="https://docs.mongodb.com/manual/reference/explain-results/">Explain results</a></li>
-<li><a href="https://docs.mongodb.com/manual/indexes/">MongoDB Indexes</a></li>
+<li><a href="https://docs.python.org/3.7/library/stdtypes.html#iterator-types">Iterator types</a></li>
+<li><a href="https://docs.python.org/3.7/library/stdtypes.html#generator-types">Generator types</a></li>
+<li><a href="https://docs.python.org/3.7/reference/expressions.html#yieldexpr">Yield expression</a></li>
+<li><a href="https://stackoverflow.com/questions/2776829/difference-between-pythons-generators-and-iterators">Generators and iterators</a></li>
 </ul>
 
     </div>
@@ -290,15 +284,9 @@
     <ul class="tags">
       
         
-          <li><a class="article-terms-link" href="/tags/dev/">dev</a></li>
-        
           <li><a class="article-terms-link" href="/tags/blog/">blog</a></li>
         
-          <li><a class="article-terms-link" href="/tags/tutorial/">tutorial</a></li>
-        
-          <li><a class="article-terms-link" href="/tags/mongodb/">mongodb</a></li>
-        
-          <li><a class="article-terms-link" href="/tags/nosql/">nosql</a></li>
+          <li><a class="article-terms-link" href="/tags/python/">python</a></li>
         
       
     </ul>
@@ -338,10 +326,8 @@
   
   <div class="pagination">
     
-      <a href="/blog/git-move-file-with-history/" class="button left"><span>Git: Move Files Retaining History</span></a>
     
-    
-      <a href="/blog/security-headers-on-static-websites/" class="button right"><span>Security Headers on Static Websites</span></a>
+      <a href="/blog/angular-dynamic-content/" class="button right"><span>Angular Dynamic Content</span></a>
     
   </div>
 
