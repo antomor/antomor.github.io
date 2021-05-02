@@ -6,32 +6,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<meta name="generator" content="Hugo 0.76.5" /><meta itemprop="name" content="SPA deployment with GitLab">
-<meta itemprop="description" content="A small example of a single-page application deployment using GitLab, docker and nginx">
-<meta itemprop="datePublished" content="2019-12-13T10:53:54+01:00" />
-<meta itemprop="dateModified" content="2019-12-13T10:53:54+01:00" />
-<meta itemprop="wordCount" content="907">
-<meta itemprop="image" content="">
-
-
-
-<meta itemprop="keywords" content="dev,ci/cd,gitlab,nginx,docker," />
-<meta property="og:title" content="SPA deployment with GitLab" />
-<meta property="og:description" content="A small example of a single-page application deployment using GitLab, docker and nginx" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://antomor.com/blog/gitlab-cd/" />
-<meta property="og:image" content="" />
-<meta property="article:published_time" content="2019-12-13T10:53:54+01:00" />
-<meta property="article:modified_time" content="2019-12-13T10:53:54+01:00" />
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content=""/>
-
-<meta name="twitter:title" content="SPA deployment with GitLab"/>
-<meta name="twitter:description" content="A small example of a single-page application deployment using GitLab, docker and nginx"/>
-<meta name="twitter:site" content="@antomor_dev"/>
-
-            <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/styles/github.min.css">
-          <link rel="stylesheet" href="/css/bundle.min.307f33cd8015e5bab28d6ebda9b400f8d3059bc248b4e60adf4d23469fab5a2b.css" integrity="sha256-MH8zzYAV5bqyjW69qbQA&#43;NMFm8JItOYK300jRp&#43;rWis="><link rel="stylesheet" href="/css/add-on.css">
+<meta name="generator" content="Hugo 0.83.0" /><meta property="og:site_name" content="Antomor">
+  <meta property="og:title" content="SPA deployment with GitLab">
+  <meta property="og:description" content="A small example of a single-page application deployment using GitLab, docker and nginx">
+  <meta property="description" content="A small example of a single-page application deployment using GitLab, docker and nginx">
+  <meta property="og:url" content="https://antomor.com/blog/gitlab-cd/">
+  <meta property="og:type" content="article">
+  
+    
+      <meta property="og:image" content="https://antomor.com/images/gitlab-unsplash.jpg">
+      <meta property="og:image:alt" content="Gitlab logo">
+    
+  
+  
+            <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/github.min.css">
+          <link rel="stylesheet" href="/css/bundle.min.1bfccf86359e3de974865922b006112447a52f942c2a9c2bf93d159980ae641b.css" integrity="sha256-G/zPhjWePel0hlkisAYRJEelL5QsKpwr&#43;T0VmYCuZBs="><link rel="stylesheet" href="/css/add-on.css">
 </head>
 
   <body>
@@ -141,7 +130,7 @@
 
 
 
-<li><a href="//linkedin.com/in/antoniomorrone" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
+<li><a href="//www.linkedin.com/in/antoniomorrone" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
 
 
 
@@ -178,8 +167,9 @@
 
       <main id="site-main">
         
-  <article class="post">
-    <header>
+  <article>
+    <div class="post">
+      <header>
   <div class="title">
     
       <h2><a href="/blog/gitlab-cd/">SPA deployment with GitLab</a></h2>
@@ -189,14 +179,14 @@
     
   </div>
   <div class="meta">
-    <time datetime="2019-12-13 10:53:54 &#43;0100 &#43;0100">December 13, 2019</time>
+    <time datetime="2019-12-13 10:53:54 &#43;0100 CET">December 13, 2019</time>
     <p>antomor</p>
     <p>5-Minute Read</p>
   </div>
 </header>
 
-    <div id="socnet-share">
-      
+      <div id="socnet-share">
+        
 
 
 
@@ -221,12 +211,12 @@
   
 
 
-    </div>
-    <div class="content">
-      <a href="/blog/gitlab-cd/" class="image" style="--bg-image: url('https://antomor.com/images/gitlab-unsplash.jpg');">
+      </div>
+      <div class="content">
+        <a href="/blog/gitlab-cd/" class="image" style="--bg-image: url('https://antomor.com/images/gitlab-unsplash.jpg');">
     <img src="https://antomor.com/images/gitlab-unsplash.jpg" alt="Gitlab logo">
   </a>
-      <p>In the last projects, I started using <a href="https://about.gitlab.com/">GitLab</a>, not only as git repository server, but also as DevOps platform. So here I am going to describe a very simple architecture to deploy a single page application using <a href="https://www.docker.com/">Docker</a> and <a href="https://docs.docker.com/compose/">docker-compose</a>, <a href="https://www.nginx.com/">nginx</a>.
+        <p>In the last projects, I started using <a href="https://about.gitlab.com/">GitLab</a>, not only as git repository server, but also as DevOps platform. So here I am going to describe a very simple architecture to deploy a single page application using <a href="https://www.docker.com/">Docker</a> and <a href="https://docs.docker.com/compose/">docker-compose</a>, <a href="https://www.nginx.com/">nginx</a>.
 In this specific project I used also <a href="https://docs.microsoft.com/en-us/dotnet/core/">dotnet-core</a> for the back-end API and <a href="https://vuejs.org/">VueJS</a> as front-end framework, but it is language-agnostic, meaning that you can replace whatever back-end or front-end you prefer.</p>
 <p>First of all, following the separation of concerns, let&rsquo;s consider each part on its own. I have created 3 repositories:</p>
 <ol>
@@ -419,9 +409,9 @@ npm run build
 <p>While the setup of the <em>GitLab runner</em> used to deploy the application is required, the front-end and back-end builds make use of the <em>shared runners</em> available in GitLab.</p>
 <p>For further details, please don&rsquo;t hesitate to get in touch!</p>
 
-    </div>
-    <footer>
-      <div class="stats">
+      </div>
+      <footer>
+        <div class="stats">
   
     <ul class="categories">
       
@@ -450,11 +440,11 @@ npm run build
   
 </div>
 
-    </footer>
-  </article>
-  
+      </footer>
+    </div>
     
-  <article class="post">
+      
+  <div class='post'>
     <div id="disqus_thread"></div>
 <script type="application/javascript">
     var disqus_config = function () {
@@ -475,12 +465,12 @@ npm run build
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+  </div>
+
+
+
+    
   </article>
-
-
-
-
-  
   <div class="pagination">
     
       <a href="/blog/security-headers-on-static-websites/" class="button left"><span>Security Headers on Static Websites</span></a>
@@ -504,7 +494,7 @@ npm run build
   </a>
         <header>
           <h2><a href="/blog/python-iterators-generators/">Iterators &amp; Generators in Python</a></h2>
-          <time class="published" datetime="2020-10-25 16:27:12 &#43;0100 &#43;0100">October 25, 2020</time>
+          <time class="published" datetime="2020-10-25 16:27:12 &#43;0100 CET">October 25, 2020</time>
         </header>
       </article>
       
@@ -514,7 +504,7 @@ npm run build
   </a>
         <header>
           <h2><a href="/blog/angular-dynamic-content/">Angular Dynamic Content</a></h2>
-          <time class="published" datetime="2020-04-11 10:51:42 &#43;0200 &#43;0200">April 11, 2020</time>
+          <time class="published" datetime="2020-04-11 10:51:42 &#43;0200 CEST">April 11, 2020</time>
         </header>
       </article>
       
@@ -524,7 +514,7 @@ npm run build
   </a>
         <header>
           <h2><a href="/blog/csp-and-cors/">CSP and CORS</a></h2>
-          <time class="published" datetime="2020-04-11 10:51:20 &#43;0200 &#43;0200">April 11, 2020</time>
+          <time class="published" datetime="2020-04-11 10:51:20 &#43;0200 CEST">April 11, 2020</time>
         </header>
       </article>
       
@@ -534,7 +524,7 @@ npm run build
   </a>
         <header>
           <h2><a href="/blog/angular-rxjs-http-requests/">Angular and Rxjs Http Requests: Common scenarios</a></h2>
-          <time class="published" datetime="2020-04-09 19:40:48 &#43;0200 &#43;0200">April 9, 2020</time>
+          <time class="published" datetime="2020-04-09 19:40:48 &#43;0200 CEST">April 9, 2020</time>
         </header>
       </article>
       
@@ -544,7 +534,7 @@ npm run build
   </a>
         <header>
           <h2><a href="/blog/git-move-file-with-history/">Git: Move Files Retaining History</a></h2>
-          <time class="published" datetime="2020-03-14 12:28:03 &#43;0100 &#43;0100">March 14, 2020</time>
+          <time class="published" datetime="2020-03-14 12:28:03 &#43;0100 CET">March 14, 2020</time>
         </header>
       </article>
       
@@ -611,7 +601,7 @@ npm run build
 
 
 
-<li><a href="//linkedin.com/in/antoniomorrone" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
+<li><a href="//www.linkedin.com/in/antoniomorrone" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
 
 
 
@@ -646,14 +636,14 @@ npm run build
   <p class="copyright">
     © 2020 Antomor
       <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.76.5' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.83.0' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
 
       <script src="/js/highlight.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/languages/html.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/languages/css.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/languages/js.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/languages/toml.min.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script><script src="/js/bundle.min.b4e669fa428a81defb8af0916c53f39cd1b8e0bbab22199c06f0b182907ba474.js" integrity="sha256-tOZp&#43;kKKgd77ivCRbFPznNG44LurIhmcBvCxgpB7pHQ="></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/html.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/css.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/js.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/toml.min.js"></script>
+    <script>hljs.highlightAll();</script><script src="/js/bundle.min.00ed6026078a50712d52fc4913cee0aa3da150bcd9998ae9ffa29e71db579734.js" integrity="sha256-AO1gJgeKUHEtUvxJE87gqj2hULzZmYrp/6KecdtXlzQ="></script>
     <script src="/js/add-on.js"></script>
     </div>
   </body>

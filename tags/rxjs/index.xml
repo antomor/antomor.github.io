@@ -15,7 +15,7 @@
       <guid>https://antomor.com/blog/angular-rxjs-http-requests/</guid>
       <description>Any modern web application needs soon or later to perform some http request to retrieve data. Here below I&amp;rsquo;ll describe some common scenario and how to perform such requests using RxJS.
 Single request The most common scenario, no special rxjs handling, since that Angular provides an Http service that returns an Observable.
-services.getItems().subscribe();  Is that easy? Yes. In the particular example, I assumed the http service call was inside the service.</description>
+services.getItems().subscribe(); Is that easy? Yes. In the particular example, I assumed the http service call was inside the service.</description>
     </item>
     
   </channel>

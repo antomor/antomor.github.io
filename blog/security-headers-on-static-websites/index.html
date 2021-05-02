@@ -6,32 +6,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<meta name="generator" content="Hugo 0.76.5" /><meta itemprop="name" content="Security Headers on Static Websites">
-<meta itemprop="description" content="Security implication on hosting a static website on GitHub Pages">
-<meta itemprop="datePublished" content="2019-12-26T10:56:23+01:00" />
-<meta itemprop="dateModified" content="2019-12-26T10:56:23+01:00" />
-<meta itemprop="wordCount" content="594">
-<meta itemprop="image" content="">
-
-
-
-<meta itemprop="keywords" content="sec,blog,tutorial,dev,sec," />
-<meta property="og:title" content="Security Headers on Static Websites" />
-<meta property="og:description" content="Security implication on hosting a static website on GitHub Pages" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://antomor.com/blog/security-headers-on-static-websites/" />
-<meta property="og:image" content="" />
-<meta property="article:published_time" content="2019-12-26T10:56:23+01:00" />
-<meta property="article:modified_time" content="2019-12-26T10:56:23+01:00" />
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content=""/>
-
-<meta name="twitter:title" content="Security Headers on Static Websites"/>
-<meta name="twitter:description" content="Security implication on hosting a static website on GitHub Pages"/>
-<meta name="twitter:site" content="@antomor_dev"/>
-
-            <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/styles/github.min.css">
-          <link rel="stylesheet" href="/css/bundle.min.307f33cd8015e5bab28d6ebda9b400f8d3059bc248b4e60adf4d23469fab5a2b.css" integrity="sha256-MH8zzYAV5bqyjW69qbQA&#43;NMFm8JItOYK300jRp&#43;rWis="><link rel="stylesheet" href="/css/add-on.css">
+<meta name="generator" content="Hugo 0.83.0" /><meta property="og:site_name" content="Antomor">
+  <meta property="og:title" content="Security Headers on Static Websites">
+  <meta property="og:description" content="Security implication on hosting a static website on GitHub Pages">
+  <meta property="description" content="Security implication on hosting a static website on GitHub Pages">
+  <meta property="og:url" content="https://antomor.com/blog/security-headers-on-static-websites/">
+  <meta property="og:type" content="article">
+  
+    
+      <meta property="og:image" content="https://antomor.com/images/sec-headers/key.jpg">
+      <meta property="og:image:alt" content="A key in a human hand">
+    
+  
+  
+            <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/github.min.css">
+          <link rel="stylesheet" href="/css/bundle.min.1bfccf86359e3de974865922b006112447a52f942c2a9c2bf93d159980ae641b.css" integrity="sha256-G/zPhjWePel0hlkisAYRJEelL5QsKpwr&#43;T0VmYCuZBs="><link rel="stylesheet" href="/css/add-on.css">
 </head>
 
   <body>
@@ -141,7 +130,7 @@
 
 
 
-<li><a href="//linkedin.com/in/antoniomorrone" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
+<li><a href="//www.linkedin.com/in/antoniomorrone" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
 
 
 
@@ -178,8 +167,9 @@
 
       <main id="site-main">
         
-  <article class="post">
-    <header>
+  <article>
+    <div class="post">
+      <header>
   <div class="title">
     
       <h2><a href="/blog/security-headers-on-static-websites/">Security Headers on Static Websites</a></h2>
@@ -189,14 +179,14 @@
     
   </div>
   <div class="meta">
-    <time datetime="2019-12-26 10:56:23 &#43;0100 &#43;0100">December 26, 2019</time>
+    <time datetime="2019-12-26 10:56:23 &#43;0100 CET">December 26, 2019</time>
     <p>antomor</p>
     <p>3-Minute Read</p>
   </div>
 </header>
 
-    <div id="socnet-share">
-      
+      <div id="socnet-share">
+        
 
 
 
@@ -221,12 +211,12 @@
   
 
 
-    </div>
-    <div class="content">
-      <a href="/blog/security-headers-on-static-websites/" class="image" style="--bg-image: url('https://antomor.com/images/sec-headers/key.jpg');">
+      </div>
+      <div class="content">
+        <a href="/blog/security-headers-on-static-websites/" class="image" style="--bg-image: url('https://antomor.com/images/sec-headers/key.jpg');">
     <img src="https://antomor.com/images/sec-headers/key.jpg" alt="A key in a human hand">
   </a>
-      <p>When I started this blog, I evaluated many options:</p>
+        <p>When I started this blog, I evaluated many options:</p>
 <ul>
 <li>blogging platform vs static-generated website</li>
 <li>self-hosted vs hosted solutions</li>
@@ -240,16 +230,14 @@ The response to question is:</p>
 <blockquote>
 <p>&ldquo;When she/he encounters <a href="https://securityheaders.com/">securityheaders.com</a> and she/he get an <strong>F</strong>&rdquo;.</p>
 </blockquote>
-<figure>
-    <img src="/images/sec-headers/omg.gif"
-         alt="O.M.G."/> 
+<figure><img src="/images/sec-headers/omg.gif"
+         alt="O.M.G."/>
 </figure>
 
 <p>I believe that many people do not apply the required security constraints due to the barriers they encounter to understand the reason behind. On the contrary, <a href="https://securityheaders.com/">securityheaders.com</a> made a very good job to let people understand what is wrong with the security headers, and why it is necessary to change them accordingly.</p>
 <h2 id="why">Why</h2>
-<figure>
-    <img src="/images/sec-headers/why.jpg"
-         alt="Why?"/> 
+<figure><img src="/images/sec-headers/why.jpg"
+         alt="Why?"/>
 </figure>
 
 <p>Although there is a misleading conception that static websites are intrinsically secure, web server misconfiguration represents one of the attack vectors shared among dynamic and static websites.</p>
@@ -286,9 +274,8 @@ The response to question is:</p>
 </ul>
 <p>For a much detailed description about the risks associated with HTML5 page, please have a look at <a href="https://cheatsheetseries.owasp.org/cheatsheets/HTML5_Security_Cheat_Sheet.html">OWASP HTML5 Security Cheat Sheet</a>.</p>
 <h2 id="how">How</h2>
-<figure>
-    <img src="/images/sec-headers/you-are-here.jpg"
-         alt="You are here"/> 
+<figure><img src="/images/sec-headers/you-are-here.jpg"
+         alt="You are here"/>
 </figure>
 
 <p>So, back to this blog, how it is possible to reach an <strong>A+</strong> report, running a static website on GitHub Pages? No, you don&rsquo;t need to pay something to improve your website security.</p>
@@ -357,9 +344,9 @@ The response to question is:</p>
 <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers">HTTP Headers on MDN</a></li>
 </ul>
 
-    </div>
-    <footer>
-      <div class="stats">
+      </div>
+      <footer>
+        <div class="stats">
   
     <ul class="categories">
       
@@ -388,11 +375,11 @@ The response to question is:</p>
   
 </div>
 
-    </footer>
-  </article>
-  
+      </footer>
+    </div>
     
-  <article class="post">
+      
+  <div class='post'>
     <div id="disqus_thread"></div>
 <script type="application/javascript">
     var disqus_config = function () {
@@ -413,12 +400,12 @@ The response to question is:</p>
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+  </div>
+
+
+
+    
   </article>
-
-
-
-
-  
   <div class="pagination">
     
       <a href="/blog/mongodb-query-profiler/" class="button left"><span>Mongodb Query Profiler</span></a>
@@ -442,7 +429,7 @@ The response to question is:</p>
   </a>
         <header>
           <h2><a href="/blog/python-iterators-generators/">Iterators &amp; Generators in Python</a></h2>
-          <time class="published" datetime="2020-10-25 16:27:12 &#43;0100 &#43;0100">October 25, 2020</time>
+          <time class="published" datetime="2020-10-25 16:27:12 &#43;0100 CET">October 25, 2020</time>
         </header>
       </article>
       
@@ -452,7 +439,7 @@ The response to question is:</p>
   </a>
         <header>
           <h2><a href="/blog/angular-dynamic-content/">Angular Dynamic Content</a></h2>
-          <time class="published" datetime="2020-04-11 10:51:42 &#43;0200 &#43;0200">April 11, 2020</time>
+          <time class="published" datetime="2020-04-11 10:51:42 &#43;0200 CEST">April 11, 2020</time>
         </header>
       </article>
       
@@ -462,7 +449,7 @@ The response to question is:</p>
   </a>
         <header>
           <h2><a href="/blog/csp-and-cors/">CSP and CORS</a></h2>
-          <time class="published" datetime="2020-04-11 10:51:20 &#43;0200 &#43;0200">April 11, 2020</time>
+          <time class="published" datetime="2020-04-11 10:51:20 &#43;0200 CEST">April 11, 2020</time>
         </header>
       </article>
       
@@ -472,7 +459,7 @@ The response to question is:</p>
   </a>
         <header>
           <h2><a href="/blog/angular-rxjs-http-requests/">Angular and Rxjs Http Requests: Common scenarios</a></h2>
-          <time class="published" datetime="2020-04-09 19:40:48 &#43;0200 &#43;0200">April 9, 2020</time>
+          <time class="published" datetime="2020-04-09 19:40:48 &#43;0200 CEST">April 9, 2020</time>
         </header>
       </article>
       
@@ -482,7 +469,7 @@ The response to question is:</p>
   </a>
         <header>
           <h2><a href="/blog/git-move-file-with-history/">Git: Move Files Retaining History</a></h2>
-          <time class="published" datetime="2020-03-14 12:28:03 &#43;0100 &#43;0100">March 14, 2020</time>
+          <time class="published" datetime="2020-03-14 12:28:03 &#43;0100 CET">March 14, 2020</time>
         </header>
       </article>
       
@@ -549,7 +536,7 @@ The response to question is:</p>
 
 
 
-<li><a href="//linkedin.com/in/antoniomorrone" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
+<li><a href="//www.linkedin.com/in/antoniomorrone" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
 
 
 
@@ -584,14 +571,14 @@ The response to question is:</p>
   <p class="copyright">
     © 2020 Antomor
       <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.76.5' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.83.0' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
 
       <script src="/js/highlight.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/languages/html.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/languages/css.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/languages/js.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/languages/toml.min.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script><script src="/js/bundle.min.b4e669fa428a81defb8af0916c53f39cd1b8e0bbab22199c06f0b182907ba474.js" integrity="sha256-tOZp&#43;kKKgd77ivCRbFPznNG44LurIhmcBvCxgpB7pHQ="></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/html.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/css.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/js.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/toml.min.js"></script>
+    <script>hljs.highlightAll();</script><script src="/js/bundle.min.00ed6026078a50712d52fc4913cee0aa3da150bcd9998ae9ffa29e71db579734.js" integrity="sha256-AO1gJgeKUHEtUvxJE87gqj2hULzZmYrp/6KecdtXlzQ="></script>
     <script src="/js/add-on.js"></script>
     </div>
   </body>
