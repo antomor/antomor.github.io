@@ -3,24 +3,27 @@
   <head>
   <meta charset="utf-8">
 <title>Git: Move Files Retaining History - Antomor</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="How to move files among git repository retaining the history">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="twitter:card" content="summary_large_image">
+
+<meta property="og:site_name" content="Antomor">
+<meta property="og:title" content="Git: Move Files Retaining History">
+<meta property="og:description" content="How to move files among git repository retaining the history">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://antomor.com/blog/git-move-file-with-history/">
+    <meta property="og:image" content="https://antomor.com/images/git-move.jpg">
+    <meta property="og:image:alt" content="Camels at rest">
 
 
-<meta name="generator" content="Hugo 0.83.0" /><meta property="og:site_name" content="Antomor">
-  <meta property="og:title" content="Git: Move Files Retaining History">
-  <meta property="og:description" content="How to move files among git repository retaining the history">
-  <meta property="description" content="How to move files among git repository retaining the history">
-  <meta property="og:url" content="https://antomor.com/blog/git-move-file-with-history/">
-  <meta property="og:type" content="article">
-  
-    
-      <meta property="og:image" content="https://antomor.com/images/git-move.jpg">
-      <meta property="og:image:alt" content="Camels at rest">
-    
-  
+  <link rel="shortcut icon" href="/favicon.ico?v=1">
+
+
+  <meta name="generator" content="Hugo 0.83.0" />
   
             <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/github.min.css">
-          <link rel="stylesheet" href="/css/bundle.min.1bfccf86359e3de974865922b006112447a52f942c2a9c2bf93d159980ae641b.css" integrity="sha256-G/zPhjWePel0hlkisAYRJEelL5QsKpwr&#43;T0VmYCuZBs="><link rel="stylesheet" href="/css/add-on.css">
+          <link rel="stylesheet" href="/css/bundle.min.3b1b5f2e683d24b1ea3b5a08c8254622e40aa935e0ead75ba6d45c0f14c2f965.css" integrity="sha256-OxtfLmg9JLHqO1oIyCVGIuQKqTXg6tdbptRcDxTC&#43;WU="><link rel="stylesheet" href="/css/add-on.css">
 </head>
 
   <body>
@@ -106,7 +109,7 @@
 
     <div id="wrapper">
       <section id="site-intro" >
-  <a href="/"><img src="https://antomor.com/images/antomor.jpg" class="hexagon" width="150" alt="Antomor logo" /></a>
+  <a href="/"><img src="/images/antomor.jpg" class="hexagon" width="150" alt="Antomor logo" /></a>
   <header>
     <h1>Antomor's personal website.</h1>
   </header>
@@ -213,9 +216,10 @@
 
       </div>
       <div class="content">
-        <a href="/blog/git-move-file-with-history/" class="image" style="--bg-image: url('https://antomor.com/images/git-move.jpg');">
-    <img src="https://antomor.com/images/git-move.jpg" alt="Camels at rest">
+        <a href="/blog/git-move-file-with-history/" class="image" style="--bg-image: url('/images/git-move.jpg');">
+    <img src="/images/git-move.jpg" alt="Camels at rest">
   </a>
+        
         <p>Sometimes ago we need to create a new product, that shares many functionalities with the existing one. The first idea was to extract some of the code in a library, to be then imported and used independently in the two projects.</p>
 <p>After creating the repository for the library, the first action I would have done was copying the files from one repo to another. Well, it works like a charm, it’s fast and it doesn’t require any particular expertise, a normal drag and drop operation. What’s best? It could be a very effective approach, but &hellip;</p>
 <p>During a PR review, I learnt there was a cleaver way to perform such operation and I wasn’t even aware of such possibility before:</p>
@@ -360,8 +364,8 @@ mv * &lt;directory&gt;
       </header>
       
       <article class="mini-post">
-          <a href="/blog/python-iterators-generators/" class="image" style="--bg-image: url('https://antomor.com/images/iterables-iterators-generators.jpg');">
-    <img src="https://antomor.com/images/iterables-iterators-generators.jpg" alt="Low angle photography of black metal framed tower">
+          <a href="/blog/python-iterators-generators/" class="image" style="--bg-image: url('/images/iterables-iterators-generators.jpg');">
+    <img src="/images/iterables-iterators-generators.jpg" alt="Low angle photography of black metal framed tower">
   </a>
         <header>
           <h2><a href="/blog/python-iterators-generators/">Iterators &amp; Generators in Python</a></h2>
@@ -370,8 +374,8 @@ mv * &lt;directory&gt;
       </article>
       
       <article class="mini-post">
-          <a href="/blog/angular-dynamic-content/" class="image" style="--bg-image: url('https://antomor.com/images/angular-dynamic-component.jpg');">
-    <img src="https://antomor.com/images/angular-dynamic-component.jpg" alt="Lego parts">
+          <a href="/blog/angular-dynamic-content/" class="image" style="--bg-image: url('/images/angular-dynamic-component.jpg');">
+    <img src="/images/angular-dynamic-component.jpg" alt="Lego parts">
   </a>
         <header>
           <h2><a href="/blog/angular-dynamic-content/">Angular Dynamic Content</a></h2>
@@ -380,8 +384,8 @@ mv * &lt;directory&gt;
       </article>
       
       <article class="mini-post">
-          <a href="/blog/csp-and-cors/" class="image" style="--bg-image: url('https://antomor.com/images/csp-cors.jpg');">
-    <img src="https://antomor.com/images/csp-cors.jpg" alt="A lock">
+          <a href="/blog/csp-and-cors/" class="image" style="--bg-image: url('/images/csp-cors.jpg');">
+    <img src="/images/csp-cors.jpg" alt="A lock">
   </a>
         <header>
           <h2><a href="/blog/csp-and-cors/">CSP and CORS</a></h2>
@@ -390,8 +394,8 @@ mv * &lt;directory&gt;
       </article>
       
       <article class="mini-post">
-          <a href="/blog/angular-rxjs-http-requests/" class="image" style="--bg-image: url('https://antomor.com/images/angular-rxjs-http-requests.jpg');">
-    <img src="https://antomor.com/images/angular-rxjs-http-requests.jpg" alt="Sunrise in a wood">
+          <a href="/blog/angular-rxjs-http-requests/" class="image" style="--bg-image: url('/images/angular-rxjs-http-requests.jpg');">
+    <img src="/images/angular-rxjs-http-requests.jpg" alt="Sunrise in a wood">
   </a>
         <header>
           <h2><a href="/blog/angular-rxjs-http-requests/">Angular and Rxjs Http Requests: Common scenarios</a></h2>
@@ -400,8 +404,8 @@ mv * &lt;directory&gt;
       </article>
       
       <article class="mini-post">
-          <a href="/blog/git-move-file-with-history/" class="image" style="--bg-image: url('https://antomor.com/images/git-move.jpg');">
-    <img src="https://antomor.com/images/git-move.jpg" alt="Camels at rest">
+          <a href="/blog/git-move-file-with-history/" class="image" style="--bg-image: url('/images/git-move.jpg');">
+    <img src="/images/git-move.jpg" alt="Camels at rest">
   </a>
         <header>
           <h2><a href="/blog/git-move-file-with-history/">Git: Move Files Retaining History</a></h2>
